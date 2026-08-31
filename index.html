@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="description"
-    content="Elah Safaris - Bespoke Sub-Saharan safari and cultural tours from Nairobi, Kenya.">
+content="Elah Safaris - Bespoke Sub-Saharan safari, wildlife, cultural and coastal tours from Nairobi, Kenya.">
 
 <title>Elah Safaris | Explore. Dream. Discover Africa.</title>
 
@@ -17,3054 +15,4010 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-    /* =========================
-       HEADER LOGO + NAME
-    ========================== */
+/* =========================================================
+   ELAH SAFARIS - COMPLETE WEBSITE
+========================================================= */
 
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-    }
+:root {
+    --cream: #fffdf8;
+    --cream2: #f7f1e5;
+    --brown: #3b3121;
+    --gold: #9a6a2f;
+    --gold-light: #c99a55;
+    --dark: #17150f;
+    --text: #443b2d;
+    --muted: #766c5d;
+    --white: #ffffff;
+    --border: rgba(50,42,28,.12);
+}
 
-    .brand img {
-        width: 70px !important;
-        height: 70px !important;
-        object-fit: contain;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    .brand-name {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 30px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        color: #ffffff;
-        white-space: nowrap;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    /* =========================
-       HERO VIDEO
-    ========================== */
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.6;
+}
 
-    .hero-video {
-        position: relative;
-        overflow: hidden;
-        isolation: isolate;
-        min-height: 100svh;
-    }
+body.modal-open {
+    overflow: hidden;
+}
 
-    .hero-videos {
-        position: absolute;
-        inset: 0;
-        z-index: -2;
-        background: #17150f;
-        overflow: hidden;
-    }
+a {
+    color: inherit;
+}
 
-    .hero-video-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
+}
+
+section {
+    padding: 95px 0;
+}
+
+.eyebrow {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--brown);
+    line-height: 1.05;
+}
+
+h1 {
+    font-size: clamp(3.3rem, 7vw, 6.5rem);
+    margin: 15px 0 22px;
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin: 12px 0 22px;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+em {
+    color: var(--gold);
+    font-style: italic;
+}
+
+p {
+    color: var(--muted);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 21px;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn.gold {
+    background: var(--gold);
+    color: #fff;
+}
+
+.btn.light {
+    background: rgba(255,255,255,.13);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.55);
+}
+
+.link {
+    color: var(--gold);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 5000;
+    padding: 15px 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,0)
+    );
+}
+
+.header-inner {
+    width: min(1280px, calc(100% - 35px));
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    display: block;
+}
+
+.brand-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.menu {
+    display: none;
+    border: 1px solid rgba(255,255,255,.4);
+    background: rgba(0,0,0,.25);
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav > a {
+    color: #fff;
+    text-decoration: none;
+    font-size: .87rem;
+    font-weight: 600;
+}
+
+nav > a:hover {
+    color: #e4bd7b;
+}
+
+.pill {
+    padding: 10px 16px;
+    background: var(--gold);
+    border-radius: 999px;
+}
+
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
+
+.language-selector {
+    position: relative;
+}
+
+.language-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 999px;
+    background: rgba(0,0,0,.22);
+    color: #fff;
+    font-size: .84rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+.language-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 9px);
+    min-width: 160px;
+    padding: 7px;
+    background: #fffdf8;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.18);
+    display: none;
+}
+
+.language-selector.open .language-menu {
+    display: block;
+}
+
+.language-menu button {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--brown);
+    padding: 10px 12px;
+    border-radius: 9px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.language-menu button:hover {
+    background: rgba(154,106,47,.1);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 75svh;
+    height: 75svh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.hero-videos {
+    position: absolute;
+    inset: 0;
+    background: #17150f;
+}
+
+.hero-video-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.hero-video-slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.70),
+            rgba(0,0,0,.34) 55%,
+            rgba(0,0,0,.20)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.50),
+            rgba(0,0,0,.08) 65%,
+            rgba(0,0,0,.30)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 70px;
+}
+
+.hero-content .eyebrow {
+    color: #e4bd7b;
+}
+
+.hero-content h1 {
+    color: #fff;
+}
+
+.hero-content h1 span {
+    color: #e4bd7b;
+}
+
+.hero-content > p {
+    max-width: 650px;
+    color: rgba(255,255,255,.88);
+    font-size: 1.05rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.scroll-text {
+    display: block;
+    margin-top: 35px;
+    color: rgba(255,255,255,.7);
+    font-size: .7rem;
+    letter-spacing: .15em;
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 9px;
+}
+
+.hero-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: transparent;
+    cursor: pointer;
+}
+
+.hero-dot.active {
+    width: 28px;
+    border-radius: 20px;
+    background: #fff;
+}
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+/* =========================================================
+   DESTINATIONS
+========================================================= */
+
+.heading {
+    max-width: 720px;
+    margin-bottom: 45px;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.destination {
+    min-height: 330px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.destination::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        transparent 25%,
+        rgba(0,0,0,.82)
+    );
+}
+
+.destination > div {
+    position: relative;
+    z-index: 2;
+    padding: 25px;
+    color: #fff;
+}
+
+.destination b {
+    font-size: .72rem;
+    letter-spacing: .15em;
+}
+
+.destination h3 {
+    color: #fff;
+    margin: 8px 0;
+}
+
+.destination p {
+    color: rgba(255,255,255,.82);
+    margin: 0 0 10px;
+}
+
+.destination a {
+    color: #e6bd78;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mara {
+    background-image: url("mara.jpg");
+}
+
+.amboseli {
+    background-image: url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85");
+}
+
+.tsavo {
+    background-image: url("tsavo-east.jpg");
+}
+
+.olpejeta {
+    background-image: url("samburu-olpejeta.jpg");
+}
+
+.north {
+    background-image: url("https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85");
+}
+
+.coast {
+    background-image: url("mombasa.jpg");
+}
+
+/* =========================================================
+   PACKAGES
+========================================================= */
+
+.safari-packages {
+    background: var(--cream2);
+}
+
+.package-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.package-slider {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 8px 2px 25px;
+    flex: 1;
+}
+
+.package-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.package-card {
+    flex: 0 0 calc((100% - 44px) / 3);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 38px rgba(30,25,15,.1);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.package-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+
+.pkg-mara {
+    background-image: url("mara.jpg");
+}
+
+.pkg-amboseli {
+    background-image: url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-tsavo-east {
+    background-image: url("tsavo-east.jpg");
+}
+
+.pkg-tsavo-west {
+    background-image: url("https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-tsavo-both {
+    background-image: url("tsavo-both.jpg");
+}
+
+.pkg-samburu {
+    background-image: url("samburu-olpejeta.jpg");
+}
+
+.pkg-northern {
+    background-image: url("https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-diani {
+    background-image: url("diani.jpg");
+}
+
+.pkg-mombasa {
+    background-image: url("mombasa.jpg");
+}
+
+.pkg-chalbi {
+    background-image: url("chalbi-maldives.jpg");
+}
+
+.pkg-central {
+    background-image: url("https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-nairobi {
+    background-image: url("nairobi.jpg");
+}
+
+.pkg-nairobi-park {
+    background-image: url("nairobi-national-park.jpg");
+}
+
+.pkg-western {
+    background-image: url("western-kenya.jpg");
+}
+
+.pkg-malindi {
+    background-image: url("malindi.jpg");
+}
+
+.pkg-watamu {
+    background-image: url("watamu-kisite.jpg");
+}
+
+.package-body {
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.package-days {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.package-body h3 {
+    margin: 8px 0 10px;
+}
+
+.package-body p {
+    flex: 1;
+}
+
+.package-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.package-bottom strong {
+    font-size: .92rem;
+}
+
+.package-bottom small {
+    opacity: .65;
+    font-weight: 400;
+}
+
+.view-package {
+    border: 0;
+    border-radius: 999px;
+    padding: 11px 17px;
+    background: var(--gold);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.package-arrow {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--brown);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.package-slider-hint {
+    text-align: center;
+    margin-top: 8px;
+    font-size: .7rem;
+    letter-spacing: .13em;
+    color: var(--muted);
+}
+
+/* =========================================================
+   PACKAGE MODAL
+========================================================= */
+
+.package-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.package-modal.active {
+    display: flex;
+}
+
+.package-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,13,9,.82);
+    backdrop-filter: blur(6px);
+}
+
+.package-modal-content {
+    position: relative;
+    z-index: 2;
+    width: min(920px,100%);
+    max-height: 94svh;
+    overflow-y: auto;
+    background: #fffdf8;
+    border-radius: 22px;
+    box-shadow: 0 30px 90px rgba(0,0,0,.4);
+    animation: modalIn .25s ease;
+}
+
+@keyframes modalIn {
+    from {
         opacity: 0;
-        transition: opacity 1.2s ease-in-out;
-        pointer-events: none;
+        transform: translateY(20px) scale(.98);
     }
 
-    .hero-video-slide.active {
+    to {
         opacity: 1;
+        transform: translateY(0) scale(1);
     }
+}
 
-    .hero-video-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-        background:
-            linear-gradient(
-                90deg,
-                rgba(0,0,0,.68),
-                rgba(0,0,0,.34) 50%,
-                rgba(0,0,0,.22)
-            ),
-            linear-gradient(
-                0deg,
-                rgba(0,0,0,.48),
-                rgba(0,0,0,.08) 60%,
-                rgba(0,0,0,.30)
-            );
-    }
+.package-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 5;
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,.65);
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
 
-    .hero-video .hero-content {
-        position: relative;
-        z-index: 3;
-    }
+.package-modal-image {
+    height: 310px;
+    background-size: cover;
+    background-position: center;
+}
 
-    .hero-video-dots {
-        position: absolute;
-        left: 50%;
-        bottom: 34px;
-        transform: translateX(-50%);
-        z-index: 5;
-        display: flex;
-        gap: 9px;
-        align-items: center;
-    }
+.package-modal-body {
+    padding: 32px;
+}
 
-    .hero-video-dot {
-        width: 9px;
-        height: 9px;
-        padding: 0;
-        border: 1px solid rgba(255,255,255,.85);
-        border-radius: 50%;
-        background: transparent;
-        cursor: pointer;
-        transition: all .3s ease;
-    }
+.package-modal-body h2 {
+    margin: 8px 0;
+}
 
-    .hero-video-dot.active {
-        width: 28px;
-        border-radius: 20px;
-        background: #ffffff;
-    }
+.package-modal-price {
+    font-weight: 700;
+    color: var(--gold);
+}
 
-    /* =========================
-       SAFARI PACKAGE SLIDER
-    ========================== */
+.itinerary {
+    display: grid;
+    gap: 13px;
+    margin-top: 30px;
+}
 
-    .safari-packages {
-        overflow: hidden;
-    }
+.itinerary-day {
+    border-left: 3px solid var(--gold);
+    background: rgba(154,106,47,.06);
+    padding: 17px 18px;
+    border-radius: 0 12px 12px 0;
+}
 
-    .package-slider-wrap {
-        position: relative;
-        margin-top: 42px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
+.itinerary-day h4 {
+    margin: 0 0 7px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+}
 
-    .package-slider {
-        display: flex;
-        gap: 22px;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        padding: 8px 2px 24px;
-        flex: 1;
-        overscroll-behavior-x: contain;
-        -webkit-overflow-scrolling: touch;
-    }
+.itinerary-day p {
+    margin: 0;
+}
 
-    .package-slider::-webkit-scrollbar {
-        display: none;
+.package-includes {
+    margin-top: 30px;
+}
+
+.package-includes ul {
+    padding-left: 20px;
+    display: grid;
+    gap: 8px;
+}
+
+.package-book-btn {
+    margin-top: 25px;
+}
+
+/* =========================================================
+   EXPERIENCES
+========================================================= */
+
+.experience {
+    gap: 65px;
+}
+
+.bigphoto {
+    min-height: 580px;
+    border-radius: 20px;
+    background:
+        linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+}
+
+.experience ul {
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+}
+
+.experience li {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.experience li > b {
+    color: var(--gold);
+}
+
+.experience li span {
+    display: grid;
+    gap: 4px;
+}
+
+.experience li strong {
+    color: var(--brown);
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-auto-rows: 230px;
+    gap: 15px;
+}
+
+.g {
+    background-size: cover;
+    background-position: center;
+    border-radius: 17px;
+}
+
+.g1 {
+    grid-row: span 2;
+    background-image: url("mara.jpg");
+}
+
+.g2 {
+    background-image: url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=85");
+}
+
+.g3 {
+    background-image: url("amboseli.jpg");
+}
+
+.g4 {
+    background-image: url("mombasa.jpg");
+}
+
+.g5 {
+    background-image: url("diani.jpg");
+}
+
+.g6 {
+    background-image: url("https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=900&q=85");
+}
+
+/* =========================================================
+   BOOKING
+========================================================= */
+
+form {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(30,25,15,.06);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+label {
+    display: grid;
+    gap: 7px;
+    margin-bottom: 17px;
+    font-weight: 600;
+    color: var(--brown);
+    font-size: .9rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px;
+    background: #fffdf8;
+    color: var(--text);
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--gold);
+}
+
+textarea {
+    resize: vertical;
+}
+
+#status {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.details {
+    display: grid;
+    gap: 15px;
+}
+
+.details > a,
+.details > span {
+    text-decoration: none;
+    color: var(--brown);
+    font-weight: 600;
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.socials a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #211c13;
+    color: rgba(255,255,255,.7);
+    padding: 35px 0;
+}
+
+.foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+.footer-brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.footer-brand strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+}
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 4000;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.6rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px) {
+
+    nav {
+        gap: 12px;
     }
 
     .package-card {
-        flex: 0 0 calc((100% - 44px) / 3);
-        background: #fff;
-        border: 1px solid rgba(50,42,28,.10);
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 14px 38px rgba(30,25,15,.10);
-        scroll-snap-align: start;
-        display: flex;
-        flex-direction: column;
-        transition: transform .3s ease, box-shadow .3s ease;
+        flex-basis: calc((100% - 22px)/2);
     }
-
-    .package-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 45px rgba(30,25,15,.15);
-    }
-
-    .package-image {
-        height: 225px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-    }
-
-    .package-image::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            180deg,
-            rgba(0,0,0,.02),
-            rgba(0,0,0,.30)
-        );
-    }
-
-    /* =========================
-       YOUR OWN PACKAGE PHOTOS
-       These files must be in the
-       SAME folder as index.html
-    ========================== */
-
-    .pkg-mara {
-        background-image: url("mara.jpg");
-    }
-
-    .pkg-tsavo-east {
-        background-image: url("tsavo-east.jpg");
-    }
-
-    .pkg-samburu {
-        background-image: url("samburu-olpejeta.jpg");
-    }
-
-    .pkg-diani {
-        background-image: url("diani.jpg");
-    }
-
-    .pkg-mombasa {
-        background-image: url("mombasa.jpg");
-    }
-
-    .pkg-chalbi {
-        background-image: url("chalbi-maldives.jpg");
-    }
-
-    .pkg-nairobi {
-        background-image: url("nairobi.jpg");
-    }
-
-    .pkg-nairobi-park {
-        background-image: url("nairobi-national-park.jpg");
-    }
-
-    .pkg-western {
-        background-image: url("western-kenya.jpg");
-    }
-
-    .pkg-malindi {
-        background-image: url("malindi.jpg");
-    }
-
-    .pkg-watamu {
-        background-image: url("watamu-kisite.jpg");
-    }
-
-    /* Existing images for remaining packages */
-
-    .pkg-amboseli {
-        background-image: url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85");
-    }
-
-    .pkg-tsavo-west {
-        background-image: url("https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1200&q=85");
-    }
-
-    .pkg-tsavo-both {
-    background-image: url("tsavo-both.jpg");
 }
-    .pkg-northern {
-        background-image: url("https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85");
+
+@media(max-width:850px) {
+
+    .menu {
+        display: block;
     }
 
-    .pkg-central {
-        background-image: url("https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1200&q=85");
-    }
-
-    .package-body {
-        padding: 24px;
-        display: flex;
+    nav {
+        position: absolute;
+        top: 85px;
+        left: 20px;
+        right: 20px;
+        display: none;
         flex-direction: column;
-        flex: 1;
+        align-items: stretch;
+        background: rgba(25,21,14,.97);
+        padding: 18px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0,0,0,.25);
     }
 
-    .package-days {
-        display: inline-block;
-        font-size: .72rem;
-        font-weight: 700;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-        opacity: .68;
-    }
-
-    .package-body h3 {
-        margin: 8px 0 10px;
-    }
-
-    .package-body p {
-        margin: 0 0 22px;
-        line-height: 1.65;
-        flex: 1;
-    }
-
-    .package-bottom {
+    nav.open {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        flex-wrap: wrap;
-        margin-top: auto;
     }
 
-    .package-bottom strong {
-        font-size: .95rem;
+    nav > a {
+        padding: 10px;
     }
 
-    .package-bottom strong small {
-        font-weight: 500;
-        opacity: .7;
+    .language-selector {
+        width: 100%;
     }
 
-    .view-package {
-        border: 0;
-        border-radius: 999px;
-        padding: 11px 17px;
-        background: #9a6a2f;
-        color: #fff;
-        font: inherit;
-        font-weight: 700;
-        cursor: pointer;
-        transition: transform .2s ease, opacity .2s ease;
+    .language-button {
+        width: 100%;
+        justify-content: center;
     }
 
-    .view-package:hover {
-        transform: translateY(-2px);
-        opacity: .9;
+    .language-menu {
+        position: static;
+        margin-top: 8px;
+    }
+
+    .two {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .g1 {
+        grid-row: span 1;
+    }
+}
+
+@media(max-width:650px) {
+
+    section {
+        padding: 70px 0;
+    }
+
+    .container {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .brand img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand-name {
+        font-size: 23px;
+    }
+
+    .hero {
+        min-height: 72svh;
+        height: 72svh;
+    }
+
+    .hero-content {
+        padding-top: 60px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .package-card {
+        flex-basis: 88%;
     }
 
     .package-arrow {
-        flex: 0 0 48px;
-        width: 48px;
-        height: 48px;
-        border: 1px solid rgba(50,42,28,.16);
-        border-radius: 50%;
-        background: #fff;
-        color: #3b3121;
-        font-size: 2rem;
-        line-height: 1;
-        cursor: pointer;
-        box-shadow: 0 8px 22px rgba(30,25,15,.10);
-        z-index: 2;
+        display: none;
     }
 
-    .package-slider-hint {
-        text-align: center;
-        margin-top: 5px;
-        font-size: .7rem;
-        letter-spacing: .13em;
-        opacity: .55;
+    .package-bottom {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .package-slider-hint span {
-        font-weight: 700;
+    .view-package {
+        width: 100%;
     }
 
-    /* =========================
-       PACKAGE DETAIL POPUP
-    ========================== */
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 
-    body.package-modal-open {
-        overflow: hidden;
+    .gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+
+    .bigphoto {
+        min-height: 400px;
     }
 
     .package-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-
-    .package-modal.active {
-        display: flex;
-    }
-
-    .package-modal-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(15,13,9,.78);
-        backdrop-filter: blur(5px);
+        padding: 8px;
     }
 
     .package-modal-content {
-        position: relative;
-        width: min(920px,100%);
-        max-height: min(900px,94svh);
-        overflow-y: auto;
-        background: #fffdf8;
-        border-radius: 22px;
-        box-shadow: 0 30px 90px rgba(0,0,0,.35);
-        z-index: 1;
-        animation: packageModalIn .28s ease;
-    }
-
-    @keyframes packageModalIn {
-        from {
-            opacity: 0;
-            transform: translateY(18px) scale(.98);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+        max-height: 96svh;
+        border-radius: 17px;
     }
 
     .package-modal-image {
-        height: 300px;
-        background-size: cover;
-        background-position: center;
+        height: 220px;
     }
 
     .package-modal-body {
-        padding: 32px;
+        padding: 23px 20px 28px;
     }
-
-    .package-modal-body h2 {
-        margin: 8px 0 6px;
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2rem,5vw,3.2rem);
-    }
-
-    .package-modal-price {
-        font-weight: 700;
-        font-size: 1.05rem;
-        margin-bottom: 20px;
-    }
-
-    .package-modal-body > p {
-        line-height: 1.75;
-    }
-
-    .package-modal-close {
-        position: absolute;
-        right: 16px;
-        top: 16px;
-        width: 44px;
-        height: 44px;
-        border: 0;
-        border-radius: 50%;
-        background: rgba(0,0,0,.62);
-        color: #fff;
-        font-size: 1.9rem;
-        line-height: 1;
-        cursor: pointer;
-        z-index: 3;
-    }
-
-    .itinerary {
-        margin-top: 28px;
-        display: grid;
-        gap: 12px;
-    }
-
-    .itinerary-day {
-        border-left: 3px solid #9a6a2f;
-        background: rgba(154,106,47,.06);
-        padding: 18px;
-        border-radius: 0 12px 12px 0;
-    }
-
-    .itinerary-day h4 {
-        margin: 0 0 7px;
-        font-size: 1rem;
-    }
-
-    .itinerary-day p {
-        margin: 0;
-        line-height: 1.7;
-    }
-
-    .package-includes {
-        margin-top: 30px;
-    }
-
-    .package-includes h3 {
-        margin-bottom: 12px;
-    }
-
-    .package-includes ul {
-        margin: 0;
-        padding-left: 20px;
-        display: grid;
-        gap: 8px;
-    }
-
-    .package-book-btn {
-        display: inline-block;
-        margin-top: 28px;
-        text-decoration: none;
-    }
-
-    @media (max-width:1000px) {
-        .package-card {
-            flex-basis: calc((100% - 22px)/2);
-        }
-    }
-
-    @media (max-width:700px) {
-
-        .brand {
-            gap: 8px;
-        }
-
-        .brand img {
-            width: 55px !important;
-            height: 55px !important;
-        }
-
-        .brand-name {
-            font-size: 24px;
-        }
-
-        .package-slider-wrap {
-            gap: 7px;
-        }
-
-        .package-card {
-            flex-basis: 88%;
-        }
-
-        .package-arrow {
-            display: none;
-        }
-
-        .package-image {
-            height: 205px;
-        }
-
-        .package-body {
-            padding: 20px;
-        }
-
-        .package-bottom {
-            align-items: stretch;
-        }
-
-        .view-package {
-            width: 100%;
-        }
-
-        .package-modal {
-            padding: 8px;
-        }
-
-        .package-modal-content {
-            max-height: 96svh;
-            border-radius: 17px;
-        }
-
-        .package-modal-image {
-            height: 220px;
-        }
-
-        .package-modal-body {
-            padding: 23px 20px 28px;
-        }
-
-        .hero-video-slide {
-            object-position: center;
-        }
-
-        .hero-video-dots {
-            bottom: 22px;
-        }
-    }
-
-    @media (max-width:420px) {
-
-        .brand img {
-            width: 48px !important;
-            height: 48px !important;
-        }
-
-        .brand-name {
-            font-size: 21px;
-        }
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-
-        .hero-video-slide {
-            transition: none;
-        }
-
-        .package-slider {
-            scroll-behavior: auto;
-        }
-
-        .package-modal-content {
-            animation: none;
-        }
-    }
+}
 
 </style>
-
 </head>
+
 
 <body>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
-    <div class="container nav">
+
+<div class="header-inner">
+
+<a class="brand" href="#home">
+
+<img src="logo.png" alt="Elah Safaris Logo">
+
+<span class="brand-name">
+Elah Safaris
+</span>
+
+</a>
+
+<button class="menu"
+type="button"
+aria-label="Open navigation menu">
+☰
+</button>
+
+<nav id="nav">
+
+<a href="#home" data-i18n="home">Home</a>
+<a href="#about" data-i18n="about">About</a>
+<a href="#safaris" data-i18n="safaris">Safaris</a>
+<a href="#destinations" data-i18n="destinations">Destinations</a>
+<a href="#experiences" data-i18n="experiences">Experiences</a>
+<a href="#gallery" data-i18n="gallery">Gallery</a>
+<a href="#contact" data-i18n="contact">Contact</a>
 
 
-    <a class="brand" href="#home">
-        <img src="logo.png" alt="Elah Safaris Logo">
-        <span class="brand-name">Elah Safaris</span>
-    </a>
+<div class="language-selector"
+id="languageSelector">
 
-    <button
-        class="menu"
-        aria-label="Open navigation menu"
-        type="button">
-        ☰
-    </button>
+<button class="language-button"
+type="button"
+id="languageButton"
+aria-expanded="false">
 
-    <nav id="nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#safaris">Safaris</a>
-        <a href="#destinations">Destinations</a>
-        <a href="#experiences">Experiences</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-        <a class="pill" href="#booking">Book Now</a>
-    </nav>
+🌐
+<span id="currentLanguage">English</span>
+⌄
+
+</button>
+
+<div class="language-menu">
+
+<button type="button"
+data-lang="en">
+🇬🇧 English
+</button>
+
+<button type="button"
+data-lang="fr">
+🇫🇷 Français
+</button>
+
+<button type="button"
+data-lang="de">
+🇩🇪 Deutsch
+</button>
+
+<button type="button"
+data-lang="es">
+🇪🇸 Español
+</button>
+
+<button type="button"
+data-lang="it">
+🇮🇹 Italiano
+</button>
+
+</div>
+
+</div>
+
+
+<a class="pill"
+href="#booking"
+data-i18n="bookNow">
+Book Now
+</a>
+
+</nav>
 
 </div>
 
 </header>
 
-<main>
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-<section class="hero hero-video" id="home">
+<section class="hero"
+id="home">
 
-<div class="hero-videos" aria-hidden="true">
+<div class="hero-videos">
 
-    <video
-        class="hero-video-slide active"
-        src="safari-video-1.mp4"
-        muted
-        playsinline
-        preload="auto">
-    </video>
+<video
+class="hero-video-slide active"
+src="safari-video-1.mp4"
+muted
+playsinline
+autoplay
+preload="auto">
+</video>
 
-    <video
-        class="hero-video-slide"
-        src="safari-video-2.mp4"
-        muted
-        playsinline
-        preload="metadata">
-    </video>
+<video
+class="hero-video-slide"
+src="safari-video-2.mp4"
+muted
+playsinline
+preload="metadata">
+</video>
 
-    <video
-        class="hero-video-slide"
-        src="safari-video-3.mp4"
-        muted
-        playsinline
-        preload="metadata">
-    </video>
+<video
+class="hero-video-slide"
+src="safari-video-3.mp4"
+muted
+playsinline
+preload="metadata">
+</video>
 
-    <div class="hero-video-overlay"></div>
+<div class="hero-overlay"></div>
 
 </div>
+
 
 <div class="container hero-content">
 
-    <p class="eyebrow">
-        ELAH SAFARIS • KENYA
-    </p>
+<p class="eyebrow">
+ELAH SAFARIS • KENYA
+</p>
 
-    <h1>
-        Explore. Dream.
-        <br>
-        <span>Discover Africa.</span>
-    </h1>
+<h1>
+Explore. Dream.
+<br>
+<span>Discover Africa.</span>
+</h1>
 
-    <p>
-        Offering bespoke Sub-Saharan safari and cultural tours
-        designed around your journey, your interests and your dreams.
-    </p>
+<p data-i18n="heroText">
+Offering bespoke Sub-Saharan safari and cultural tours
+designed around your journey, your interests and your dreams.
+</p>
 
-    <div>
+<div class="hero-buttons">
 
-        <a class="btn gold" href="#safaris">
-            Explore Safaris
-        </a>
+<a class="btn gold"
+href="#safaris"
+data-i18n="exploreSafaris">
+Explore Safaris
+</a>
 
-        <a class="btn light" href="#booking">
-            Plan My Safari
-        </a>
-
-    </div>
-
-    <small>
-        SCROLL TO EXPLORE ↓
-    </small>
+<a class="btn light"
+href="#booking"
+data-i18n="planSafari">
+Plan My Safari
+</a>
 
 </div>
 
-<div
-    class="hero-video-dots"
-    aria-label="Hero video navigation">
-
-    <button
-        class="hero-video-dot active"
-        type="button"
-        aria-label="Show safari video 1">
-    </button>
-
-    <button
-        class="hero-video-dot"
-        type="button"
-        aria-label="Show safari video 2">
-    </button>
-
-    <button
-        class="hero-video-dot"
-        type="button"
-        aria-label="Show safari video 3">
-    </button>
+<small class="scroll-text">
+SCROLL TO EXPLORE ↓
+</small>
 
 </div>
 
+
+<div class="hero-dots">
+
+<button class="hero-dot active"
+type="button"
+data-video="0"></button>
+
+<button class="hero-dot"
+type="button"
+data-video="1"></button>
+
+<button class="hero-dot"
+type="button"
+data-video="2"></button>
+
+</div>
 
 </section>
 
-<!-- ABOUT -->
 
-<section class="section intro" id="about">
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
+<section id="about">
 
 <div class="container two">
 
-    <div>
+<div>
 
-        <p class="eyebrow">
-            WELCOME TO ELAH SAFARIS
-        </p>
+<p class="eyebrow"
+data-i18n="welcome">
+WELCOME TO ELAH SAFARIS
+</p>
 
-        <h2>
-            Journeys shaped around
-            <em>you.</em>
-        </h2>
-
-    </div>
-
-    <div>
-
-        <p>
-            Elah Safaris is a Nairobi-based safari and cultural tour
-            company creating thoughtful journeys across Kenya and
-            the wider Sub-Saharan region. We combine wildlife,
-            landscapes, culture and warm Kenyan hospitality to
-            create memorable experiences.
-        </p>
-
-        <a class="link" href="#contact">
-            Talk to our safari team →
-        </a>
-
-    </div>
+<h2>
+Journeys shaped around
+<em>you.</em>
+</h2>
 
 </div>
 
+<div>
+
+<p data-i18n="aboutText">
+Elah Safaris is a Nairobi-based safari and cultural tour
+company creating thoughtful journeys across Kenya and
+the wider Sub-Saharan region. We combine wildlife,
+landscapes, culture and warm Kenyan hospitality to
+create memorable experiences.
+</p>
+
+<a class="link"
+href="#contact"
+data-i18n="talkTeam">
+Talk to our safari team →
+</a>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- DESTINATIONS -->
 
-<section class="section destinations" id="destinations">
+<!-- =====================================================
+     DESTINATIONS
+===================================================== -->
+
+<section id="destinations">
 
 <div class="container">
 
-    <div class="heading">
+<div class="heading">
 
-        <p class="eyebrow">
-            WHERE WE TAKE YOU
-        </p>
+<p class="eyebrow">
+WHERE WE TAKE YOU
+</p>
 
-        <h2>
-            Discover Kenya's
-            <em>wild side.</em>
-        </h2>
+<h2>
+Discover Kenya's
+<em>wild side.</em>
+</h2>
 
-        <p>
-            From iconic savannahs to remote northern landscapes
-            and the Indian Ocean coast.
-        </p>
+<p>
+From iconic savannahs to remote northern landscapes
+and the Indian Ocean coast.
+</p>
 
-    </div>
+</div>
 
-    <div class="destination-grid">
 
-        <article class="destination mara">
-            <div>
-                <b>01</b>
-                <h3>Maasai Mara</h3>
-                <p>
-                    Big cats, endless savannah and unforgettable
-                    wildlife encounters.
-                </p>
-                <a href="#booking">Explore →</a>
-            </div>
-        </article>
+<div class="destination-grid">
 
-        <article class="destination amboseli">
-            <div>
-                <b>02</b>
-                <h3>Amboseli</h3>
-                <p>
-                    Elephants beneath the spectacular backdrop
-                    of Mount Kilimanjaro.
-                </p>
-                <a href="#booking">Explore →</a>
-            </div>
-        </article>
+<article class="destination mara">
+<div>
+<b>01</b>
+<h3>Maasai Mara</h3>
+<p>Big cats, endless savannah and unforgettable wildlife encounters.</p>
+<a href="#booking">Explore →</a>
+</div>
+</article>
 
-        <article class="destination tsavo">
-            <div>
-                <b>03</b>
-                <h3>Tsavo</h3>
-                <p>
-                    Vast wilderness, red elephants and
-                    remarkable landscapes.
-                </p>
-                <a href="#booking">Explore →</a>
-            </div>
-        </article>
 
-        <article class="destination olpejeta">
-            <div>
-                <b>04</b>
-                <h3>Ol Pejeta</h3>
-                <p>
-                    Wildlife conservation, rhinos and intimate
-                    safari experiences.
-                </p>
-                <a href="#booking">Explore →</a>
-            </div>
-        </article>
+<article class="destination amboseli">
+<div>
+<b>02</b>
+<h3>Amboseli</h3>
+<p>Elephants beneath the spectacular backdrop of Mount Kilimanjaro.</p>
+<a href="#booking">Explore →</a>
+</div>
+</article>
 
-        <article class="destination north">
-            <div>
-                <b>05</b>
-                <h3>Northern Kenya</h3>
-                <p>
-                    Remote beauty, ancient cultures and
-                    extraordinary adventures.
-                </p>
-                <a href="#booking">Explore →</a>
-            </div>
-        </article>
 
-        <article class="destination coast">
-            <div>
-                <b>06</b>
-                <h3>Kenya Coast</h3>
-                <p>
-                    Indian Ocean beaches, Swahili heritage
-                    and tropical relaxation.
-                </p>
-                <a href="#booking">Explore →</a>
-            </div>
-        </article>
+<article class="destination tsavo">
+<div>
+<b>03</b>
+<h3>Tsavo</h3>
+<p>Vast wilderness, red elephants and remarkable landscapes.</p>
+<a href="#booking">Explore →</a>
+</div>
+</article>
 
-    </div>
+
+<article class="destination olpejeta">
+<div>
+<b>04</b>
+<h3>Ol Pejeta</h3>
+<p>Wildlife conservation, rhinos and intimate safari experiences.</p>
+<a href="#booking">Explore →</a>
+</div>
+</article>
+
+
+<article class="destination north">
+<div>
+<b>05</b>
+<h3>Northern Kenya</h3>
+<p>Remote beauty, ancient cultures and extraordinary adventures.</p>
+<a href="#booking">Explore →</a>
+</div>
+</article>
+
+
+<article class="destination coast">
+<div>
+<b>06</b>
+<h3>Kenya Coast</h3>
+<p>Indian Ocean beaches, Swahili heritage and tropical relaxation.</p>
+<a href="#booking">Explore →</a>
+</div>
+</article>
+
+</div>
 
 </div>
 
 </section>
 
-<!-- SAFARI PACKAGES -->
 
-<section class="section safari-packages" id="safaris">
+<!-- =====================================================
+     PACKAGES
+===================================================== -->
 
+<section class="safari-packages"
+id="safaris">
 
 <div class="container">
 
-    <div class="heading">
-
-        <p class="eyebrow">
-            ELAH SAFARIS PACKAGES
-        </p>
-
-        <h2>
-            Journeys worth
-            <em>remembering.</em>
-        </h2>
-
-        <p>
-            Explore our handpicked Kenya safari, cultural and coastal
-            journeys. Swipe through the packages and select
-            <strong>View Package</strong> to see the full itinerary.
-        </p>
-
-    </div>
-
-    <div class="package-slider-wrap">
-
-        <button
-            class="package-arrow prev"
-            type="button"
-            aria-label="Previous packages">
-            ‹
-        </button>
-
-        <div class="package-slider" id="packageSlider">
-
-            <!-- 1 -->
-
-            <article class="package-card" data-package="mara">
-
-                <div class="package-image pkg-mara"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • WILDLIFE
-                    </span>
-
-                    <h3>Maasai Mara</h3>
-
-                    <p>
-                        Big cats, endless savannah and unforgettable
-                        wildlife encounters in Kenya's iconic reserve.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 2 -->
-
-            <article class="package-card" data-package="amboseli">
-
-                <div class="package-image pkg-amboseli"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • WILDLIFE
-                    </span>
-
-                    <h3>Amboseli</h3>
-
-                    <p>
-                        Elephants, open plains and spectacular views
-                        of Mount Kilimanjaro.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 3 -->
-
-            <article class="package-card" data-package="tsavo-east">
-
-                <div class="package-image pkg-tsavo-east"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • WILDLIFE
-                    </span>
-
-                    <h3>Tsavo East</h3>
-
-                    <p>
-                        Discover vast wilderness, red elephants,
-                        dramatic scenery and memorable game drives.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 4 -->
-
-            <article class="package-card" data-package="tsavo-west">
-
-                <div class="package-image pkg-tsavo-west"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • WILDLIFE
-                    </span>
-
-                    <h3>Tsavo West</h3>
-
-                    <p>
-                        Volcanic landscapes, wildlife and the beautiful
-                        natural scenery of Tsavo West.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 5 -->
-
-            <article class="package-card" data-package="tsavo-both">
-
-                <div class="package-image pkg-tsavo-both"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        5 DAYS • WILDLIFE
-                    </span>
-
-                    <h3>Tsavo East &amp; West</h3>
-
-                    <p>
-                        A deeper Tsavo experience combining two
-                        extraordinary sides of Kenya's wilderness.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 4,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 6 -->
-
-            <article class="package-card" data-package="samburu-olpejeta">
-
-                <div class="package-image pkg-samburu"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        5 DAYS • WILDLIFE &amp; CONSERVATION
-                    </span>
-
-                    <h3>Samburu &amp; Ol Pejeta</h3>
-
-                    <p>
-                        Experience northern Kenya's unique wildlife
-                        alongside one of Kenya's leading conservancies.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 4,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 7 -->
-
-            <article class="package-card" data-package="northern">
-
-                <div class="package-image pkg-northern"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        6 DAYS • NORTHERN KENYA
-                    </span>
-
-                    <h3>Northern Kenya</h3>
-
-                    <p>
-                        Remote landscapes, distinctive cultures and
-                        extraordinary northern adventures.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            Price on request
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 8 -->
-
-            <article class="package-card" data-package="diani">
-
-                <div class="package-image pkg-diani"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        4 DAYS • BEACH
-                    </span>
-
-                    <h3>Diani — Fly In</h3>
-
-                    <p>
-                        Fly into Kenya's beautiful coast for a relaxing
-                        Diani Beach escape beside the Indian Ocean.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,500
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 9 -->
-
-            <article class="package-card" data-package="mombasa">
-
-                <div class="package-image pkg-mombasa"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • COAST &amp; CULTURE
-                    </span>
-
-                    <h3>Mombasa Kenya</h3>
-
-                    <p>
-                        Discover Swahili heritage, historic landmarks,
-                        coastal culture and the Indian Ocean.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 10 -->
-
-            <article class="package-card" data-package="chalbi">
-
-                <div class="package-image pkg-chalbi"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        5 DAYS • ADVENTURE
-                    </span>
-
-                    <h3>Chalbi Desert &amp; Maldives</h3>
-
-                    <p>
-                        A striking contrast of remote desert landscapes
-                        followed by a tropical coastal escape.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 4,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 11 -->
-
-            <article class="package-card" data-package="central">
-
-                <div class="package-image pkg-central"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        5 DAYS • CENTRAL KENYA
-                    </span>
-
-                    <h3>Central Kenya Circuit</h3>
-
-                    <p>
-                        Explore scenic highlands, wildlife and some
-                        of the finest landscapes in central Kenya.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 4,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 12 -->
-
-            <article class="package-card" data-package="nairobi">
-
-                <div class="package-image pkg-nairobi"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • CITY &amp; CULTURE
-                    </span>
-
-                    <h3>Nairobi</h3>
-
-                    <p>
-                        Combine city highlights, wildlife and cultural
-                        experiences in Kenya's vibrant capital city.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 13 -->
-
-            <article class="package-card" data-package="nairobi-park">
-
-                <div class="package-image pkg-nairobi-park"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        2 DAYS • WILDLIFE
-                    </span>
-
-                    <h3>Nairobi National Park</h3>
-
-                    <p>
-                        Enjoy a convenient wildlife escape just outside
-                        the capital.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            Price on request
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 14 -->
-
-            <article class="package-card" data-package="western">
-
-                <div class="package-image pkg-western"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        4 DAYS • CULTURE &amp; WILDLIFE
-                    </span>
-
-                    <h3>Western Kenya Circuit</h3>
-
-                    <p>
-                        Discover western Kenya's landscapes, culture,
-                        wildlife and memorable local experiences.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,500
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 15 -->
-
-            <article class="package-card" data-package="malindi">
-
-                <div class="package-image pkg-malindi"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        3 DAYS • COAST
-                    </span>
-
-                    <h3>Malindi</h3>
-
-                    <p>
-                        Enjoy tropical beaches, Swahili heritage and
-                        the relaxed atmosphere of Kenya's northern coast.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,000
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- 16 -->
-
-            <article class="package-card" data-package="watamu">
-
-                <div class="package-image pkg-watamu"></div>
-
-                <div class="package-body">
-
-                    <span class="package-days">
-                        4 DAYS • MARINE &amp; COAST
-                    </span>
-
-                    <h3>
-                        Watamu, Kisite-Mpunguti &amp; Marine Park
-                    </h3>
-
-                    <p>
-                        A coastal adventure combining beaches, marine
-                        experiences and Kenya's spectacular ocean environment.
-                    </p>
-
-                    <div class="package-bottom">
-
-                        <strong>
-                            From USD 3,500
-                            <small>/ person</small>
-                        </strong>
-
-                        <button class="view-package" type="button">
-                            View Package
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-        <button
-            class="package-arrow next"
-            type="button"
-            aria-label="Next packages">
-            ›
-        </button>
-
-    </div>
-
-    <div class="package-slider-hint">
-        SWIPE TO EXPLORE •
-        <span>16 PACKAGES</span>
-    </div>
+<div class="heading">
+
+<p class="eyebrow">
+ELAH SAFARIS PACKAGES
+</p>
+
+<h2>
+Journeys worth
+<em>remembering.</em>
+</h2>
+
+<p>
+Explore our handpicked Kenya safari, cultural and coastal journeys.
+Select <strong>View Package</strong> to see the complete itinerary,
+destinations and package highlights.
+</p>
 
 </div>
 
+
+<div class="package-slider-wrap">
+
+<button class="package-arrow prev"
+type="button"
+aria-label="Previous packages">
+‹
+</button>
+
+
+<div class="package-slider"
+id="packageSlider">
+
+
+<!-- 1 -->
+
+<article class="package-card"
+data-package="mara">
+
+<div class="package-image pkg-mara"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • WILDLIFE
+</span>
+
+<h3>Maasai Mara</h3>
+
+<p>
+Explore Maasai Mara National Reserve with Big Five game drives,
+savannah landscapes and an optional Maasai cultural experience.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 2 -->
+
+<article class="package-card"
+data-package="amboseli">
+
+<div class="package-image pkg-amboseli"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • WILDLIFE
+</span>
+
+<h3>Amboseli</h3>
+
+<p>
+Discover Amboseli National Park, large elephant herds,
+Observation Hill and Mount Kilimanjaro views.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 3 -->
+
+<article class="package-card"
+data-package="tsavo-east">
+
+<div class="package-image pkg-tsavo-east"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • WILDLIFE
+</span>
+
+<h3>Tsavo East</h3>
+
+<p>
+Experience red elephants, Galana River, Aruba Dam and
+the vast savannah of Tsavo East National Park.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 4 -->
+
+<article class="package-card"
+data-package="tsavo-west">
+
+<div class="package-image pkg-tsavo-west"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • WILDLIFE
+</span>
+
+<h3>Tsavo West</h3>
+
+<p>
+Explore volcanic landscapes, Mzima Springs and the wildlife
+of Tsavo West National Park.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 5 -->
+
+<article class="package-card"
+data-package="tsavo-both">
+
+<div class="package-image pkg-tsavo-both"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+5 DAYS • WILDLIFE
+</span>
+
+<h3>Tsavo East & West</h3>
+
+<p>
+Experience both Tsavo ecosystems with wildlife,
+Mzima Springs and extensive game drives.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 4,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 6 -->
+
+<article class="package-card"
+data-package="samburu-olpejeta">
+
+<div class="package-image pkg-samburu"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+5 DAYS • WILDLIFE & CONSERVATION
+</span>
+
+<h3>Samburu & Ol Pejeta</h3>
+
+<p>
+Combine Ol Pejeta Conservancy with Samburu National Reserve
+and discover northern Kenya's unique wildlife.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 4,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 7 -->
+
+<article class="package-card"
+data-package="northern">
+
+<div class="package-image pkg-northern"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+6 DAYS • NORTHERN KENYA
+</span>
+
+<h3>Northern Kenya</h3>
+
+<p>
+Travel through Samburu and the Chalbi region for landscapes,
+wildlife and authentic northern Kenyan experiences.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+Price on request
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 8 -->
+
+<article class="package-card"
+data-package="diani">
+
+<div class="package-image pkg-diani"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+4 DAYS • BEACH
+</span>
+
+<h3>Diani — Fly In</h3>
+
+<p>
+Fly from Nairobi to the coast and enjoy Diani Beach,
+marine activities and beach relaxation.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,500
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 9 -->
+
+<article class="package-card"
+data-package="mombasa">
+
+<div class="package-image pkg-mombasa"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • COAST & CULTURE
+</span>
+
+<h3>Mombasa Kenya</h3>
+
+<p>
+Explore Fort Jesus, Mombasa Old Town, Swahili culture,
+spice markets and the Indian Ocean coastline.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 10 -->
+
+<article class="package-card"
+data-package="chalbi">
+
+<div class="package-image pkg-chalbi"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+5 DAYS • KENYA & INTERNATIONAL
+</span>
+
+<h3>Chalbi Desert & Maldives</h3>
+
+<p>
+Combine the extraordinary Chalbi Desert experience with
+a separate tropical Maldives escape.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 4,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 11 -->
+
+<article class="package-card"
+data-package="central">
+
+<div class="package-image pkg-central"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+5 DAYS • CENTRAL KENYA
+</span>
+
+<h3>Central Kenya Circuit</h3>
+
+<p>
+Explore the central highlands, Lake Naivasha, Aberdare
+landscapes and Ol Pejeta Conservancy.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 4,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 12 -->
+
+<article class="package-card"
+data-package="nairobi">
+
+<div class="package-image pkg-nairobi"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • CITY & CULTURE
+</span>
+
+<h3>Nairobi</h3>
+
+<p>
+Discover Nairobi National Park, Giraffe Centre, Karen heritage
+and cultural attractions.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 13 -->
+
+<article class="package-card"
+data-package="nairobi-park">
+
+<div class="package-image pkg-nairobi-park"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+2 DAYS • WILDLIFE
+</span>
+
+<h3>Nairobi National Park</h3>
+
+<p>
+Enjoy game drives close to the city with opportunities
+to see lions, rhinos, giraffes, zebras and buffalo.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+Price on request
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 14 -->
+
+<article class="package-card"
+data-package="western">
+
+<div class="package-image pkg-western"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+4 DAYS • CULTURE & WILDLIFE
+</span>
+
+<h3>Western Kenya Circuit</h3>
+
+<p>
+Discover Lake Nakuru, Lake Naivasha and western Kenya
+through wildlife and cultural experiences.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,500
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 15 -->
+
+<article class="package-card"
+data-package="malindi">
+
+<div class="package-image pkg-malindi"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+3 DAYS • COAST
+</span>
+
+<h3>Malindi</h3>
+
+<p>
+Discover Malindi Marine National Park, Vasco da Gama Pillar,
+beaches and Swahili coastal heritage.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,000
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- 16 -->
+
+<article class="package-card"
+data-package="watamu">
+
+<div class="package-image pkg-watamu"></div>
+
+<div class="package-body">
+
+<span class="package-days">
+4 DAYS • MARINE & COAST
+</span>
+
+<h3>Watamu, Kisite-Mpunguti & Marine Park</h3>
+
+<p>
+Experience Watamu Marine National Park, snorkeling,
+boat excursions and Kisite-Mpunguti.
+</p>
+
+<div class="package-bottom">
+
+<strong>
+From USD 3,500
+<small>/ person</small>
+</strong>
+
+<button class="view-package">
+View Package
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+
+<button class="package-arrow next"
+type="button"
+aria-label="Next packages">
+›
+</button>
+
+</div>
+
+
+<div class="package-slider-hint">
+SWIPE TO EXPLORE •
+<strong>16 PACKAGES</strong>
+</div>
+
+</div>
 
 </section>
 
-<!-- PACKAGE DETAIL POPUP -->
 
-<div
-    class="package-modal"
-    id="packageModal"
-    aria-hidden="true">
+<!-- =====================================================
+     PACKAGE MODAL
+===================================================== -->
 
+<div class="package-modal"
+id="packageModal"
+aria-hidden="true">
 
-<div
-    class="package-modal-backdrop"
-    data-close-package>
+<div class="package-modal-backdrop"
+id="packageBackdrop">
 </div>
 
-<div
-    class="package-modal-content"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="packageModalTitle">
+<div class="package-modal-content"
+role="dialog"
+aria-modal="true">
 
-    <button
-        class="package-modal-close"
-        type="button"
-        aria-label="Close package details"
-        data-close-package>
-        ×
-    </button>
+<button class="package-modal-close"
+id="packageClose"
+type="button"
+aria-label="Close package details">
+×
+</button>
 
-    <div
-        class="package-modal-image"
-        id="packageModalImage">
-    </div>
+<div class="package-modal-image"
+id="packageModalImage">
+</div>
 
-    <div class="package-modal-body">
+<div class="package-modal-body">
 
-        <span
-            class="package-days"
-            id="packageModalDays">
-        </span>
+<span class="package-days"
+id="packageModalDays">
+</span>
 
-        <h2 id="packageModalTitle"></h2>
+<h2 id="packageModalTitle"></h2>
 
-        <p
-            class="package-modal-price"
-            id="packageModalPrice">
-        </p>
+<p class="package-modal-price"
+id="packageModalPrice">
+</p>
 
-        <p id="packageModalIntro"></p>
+<p id="packageModalIntro"></p>
 
-        <div
-            class="itinerary"
-            id="packageModalItinerary">
-        </div>
+<div class="itinerary"
+id="packageModalItinerary">
+</div>
 
-        <div class="package-includes">
+<div class="package-includes">
 
-            <h3>
-                Package Highlights
-            </h3>
+<h3>
+Package Highlights
+</h3>
 
-            <ul id="packageModalHighlights"></ul>
+<ul id="packageModalHighlights"></ul>
 
-        </div>
+</div>
 
-        <a
-            class="btn gold package-book-btn"
-            id="packageBookButton"
-            href="#booking">
-            Book This Package
-        </a>
+<a class="btn gold package-book-btn"
+id="packageBookButton"
+href="#booking">
+Book This Package
+</a>
 
-    </div>
+</div>
+
+</div>
 
 </div>
 
 
-</div>
+<!-- =====================================================
+     EXPERIENCES
+===================================================== -->
 
-<!-- EXPERIENCES -->
-
-<section class="section cream2" id="experiences">
-
+<section id="experiences">
 
 <div class="container two experience">
 
-    <div class="bigphoto"></div>
+<div class="bigphoto"></div>
 
-    <div>
+<div>
 
-        <p class="eyebrow">
-            MORE THAN A SAFARI
-        </p>
+<p class="eyebrow">
+MORE THAN A SAFARI
+</p>
 
-        <h2>
-            Travel with purpose.
-            <br>
-            <em>Return with stories.</em>
-        </h2>
+<h2>
+Travel with purpose.
+<br>
+<em>Return with stories.</em>
+</h2>
 
-        <p>
-            Our journeys are designed to connect you with the
-            people, wildlife and landscapes that make Kenya
-            extraordinary.
-        </p>
+<p>
+Our journeys are designed to connect you with the people,
+wildlife and landscapes that make Kenya extraordinary.
+</p>
 
-        <ul>
+<ul>
 
-            <li>
-                <b>01</b>
-                <span>
-                    <strong>Bespoke planning</strong>
-                    Tailor-made trips built around you.
-                </span>
-            </li>
+<li>
+<b>01</b>
+<span>
+<strong>Bespoke planning</strong>
+Tailor-made trips built around you.
+</span>
+</li>
 
-            <li>
-                <b>02</b>
-                <span>
-                    <strong>Local insight</strong>
-                    Knowledgeable guides and genuine experiences.
-                </span>
-            </li>
+<li>
+<b>02</b>
+<span>
+<strong>Local insight</strong>
+Knowledgeable guides and genuine experiences.
+</span>
+</li>
 
-            <li>
-                <b>03</b>
-                <span>
-                    <strong>Seamless service</strong>
-                    Support before and throughout your journey.
-                </span>
-            </li>
+<li>
+<b>03</b>
+<span>
+<strong>Seamless service</strong>
+Support before and throughout your journey.
+</span>
+</li>
 
-        </ul>
-
-    </div>
+</ul>
 
 </div>
 
+</div>
 
 </section>
 
-<!-- GALLERY -->
 
-<section class="section" id="gallery">
+<!-- =====================================================
+     GALLERY
+===================================================== -->
 
+<section id="gallery">
 
 <div class="container">
 
-    <div class="heading">
+<div class="heading">
 
-        <p class="eyebrow">
-            THE ELAH MOMENT
-        </p>
+<p class="eyebrow">
+THE ELAH MOMENT
+</p>
 
-        <h2>
-            Wild places.
-            <em>Beautiful memories.</em>
-        </h2>
-
-    </div>
-
-    <div class="gallery">
-
-        <div class="g g1"></div>
-        <div class="g g2"></div>
-        <div class="g g3"></div>
-        <div class="g g4"></div>
-        <div class="g g5"></div>
-        <div class="g g6"></div>
-
-    </div>
+<h2>
+Wild places.
+<em>Beautiful memories.</em>
+</h2>
 
 </div>
 
+<div class="gallery">
+
+<div class="g g1"></div>
+<div class="g g2"></div>
+<div class="g g3"></div>
+<div class="g g4"></div>
+<div class="g g5"></div>
+<div class="g g6"></div>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- BOOKING -->
 
-<section class="section booking" id="booking">
+<!-- =====================================================
+     BOOKING
+===================================================== -->
 
+<section id="booking">
 
 <div class="container two">
 
-    <div>
+<div>
 
-        <p class="eyebrow">
-            START YOUR JOURNEY
-        </p>
+<p class="eyebrow">
+START YOUR JOURNEY
+</p>
 
-        <h2>
-            Tell us your
-            <em>dream safari.</em>
-        </h2>
+<h2>
+Tell us your
+<em>dream safari.</em>
+</h2>
 
-        <p>
-            Send us a few details and our team will help shape
-            the perfect itinerary.
-        </p>
+<p>
+Send us a few details and our team will help shape
+the perfect itinerary.
+</p>
 
-        <div class="contact-mini">
+<div class="contact-mini">
 
-            <a href="tel:+254710666222">
-                +254 710 666 222
-            </a>
+<a href="tel:+254710666222">
++254 710 666 222
+</a>
 
-            <a href="mailto:elah.safaris@gmail.com">
-                elah.safaris@gmail.com
-            </a>
+<br>
 
-            <span>
-                Nairobi, Kenya
-            </span>
+<a href="mailto:elah.safaris@gmail.com">
+elah.safaris@gmail.com
+</a>
 
-        </div>
+<br>
 
-    </div>
+<span>
+Nairobi, Kenya
+</span>
 
-    <form id="form">
-
-        <div class="row">
-
-            <label>
-                Full name
-                <input
-                    required
-                    name="name"
-                    placeholder="Your name">
-            </label>
-
-            <label>
-                Email
-                <input
-                    required
-                    type="email"
-                    name="email"
-                    placeholder="you@example.com">
-            </label>
-
-        </div>
-
-        <div class="row">
-
-            <label>
-                Phone / WhatsApp
-                <input
-                    name="phone"
-                    placeholder="+254...">
-            </label>
-
-            <label>
-                Travel dates
-                <input
-                    name="dates"
-                    placeholder="e.g. 10–18 September">
-            </label>
-
-        </div>
-
-        <label>
-
-            Destination
-
-            <select name="destination">
-
-                <option>Maasai Mara</option>
-                <option>Amboseli</option>
-                <option>Tsavo East</option>
-                <option>Tsavo West</option>
-                <option>Tsavo East &amp; West</option>
-                <option>Samburu &amp; Ol Pejeta</option>
-                <option>Northern Kenya</option>
-                <option>Diani — Flight In</option>
-                <option>Mombasa Kenya</option>
-                <option>Chalbi Desert &amp; Maldives</option>
-                <option>Central Kenya Circuit</option>
-                <option>Nairobi</option>
-                <option>Nairobi National Park</option>
-                <option>Western Kenya Circuit</option>
-                <option>Malindi</option>
-                <option>Watamu, Kisite-Mpunguti &amp; Marine Park</option>
-                <option>Multiple destinations</option>
-
-            </select>
-
-        </label>
-
-        <label>
-
-            Tell us about your trip
-
-            <textarea
-                name="message"
-                rows="5"
-                placeholder="Number of travellers, interests, accommodation, budget, etc.">
-            </textarea>
-
-        </label>
-
-        <button
-            class="btn gold"
-            type="submit">
-            Send Safari Enquiry
-        </button>
-
-        <p id="status"></p>
-
-    </form>
+</div>
 
 </div>
 
 
+<form id="form">
+
+<div class="row">
+
+<label>
+Full name
+
+<input
+required
+name="name"
+placeholder="Your name">
+
+</label>
+
+
+<label>
+Email
+
+<input
+required
+type="email"
+name="email"
+placeholder="you@example.com">
+
+</label>
+
+</div>
+
+
+<div class="row">
+
+<label>
+Phone / WhatsApp
+
+<input
+name="phone"
+placeholder="+254...">
+
+</label>
+
+
+<label>
+Travel dates
+
+<input
+name="dates"
+placeholder="e.g. 10–18 September">
+
+</label>
+
+</div>
+
+
+<label>
+
+Destination
+
+<select name="destination">
+
+<option>Maasai Mara</option>
+<option>Amboseli</option>
+<option>Tsavo East</option>
+<option>Tsavo West</option>
+<option>Tsavo East & West</option>
+<option>Samburu & Ol Pejeta</option>
+<option>Northern Kenya</option>
+<option>Diani — Flight In</option>
+<option>Mombasa Kenya</option>
+<option>Chalbi Desert & Maldives</option>
+<option>Central Kenya Circuit</option>
+<option>Nairobi</option>
+<option>Nairobi National Park</option>
+<option>Western Kenya Circuit</option>
+<option>Malindi</option>
+<option>Watamu, Kisite-Mpunguti & Marine Park</option>
+<option>Multiple destinations</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Tell us about your trip
+
+<textarea
+name="message"
+rows="5"
+placeholder="Number of travellers, interests, accommodation, budget, etc."></textarea>
+
+</label>
+
+
+<button
+class="btn gold"
+type="submit">
+Send Safari Enquiry
+</button>
+
+<p id="status"></p>
+
+</form>
+
+</div>
+
 </section>
 
-<!-- CONTACT -->
 
-<section class="section contact" id="contact">
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
+<section id="contact">
 
 <div class="container two">
 
-    <div>
+<div>
 
-        <p class="eyebrow">
-            CONTACT ELAH SAFARIS
-        </p>
+<p class="eyebrow">
+CONTACT ELAH SAFARIS
+</p>
 
-        <h2>
-            Let's make Africa
-            <em>your next story.</em>
-        </h2>
-
-    </div>
-
-    <div class="details">
-
-        <a href="tel:+254710666222">
-            📞 +254 710 666 222
-        </a>
-
-        <a href="mailto:elah.safaris@gmail.com">
-            ✉ elah.safaris@gmail.com
-        </a>
-
-        <span>
-            📍 Nairobi, Kenya
-        </span>
-
-        <div class="socials">
-
-            <a href="#" target="_blank" rel="noopener">
-                Instagram — Elah Safaris
-            </a>
-
-            <a href="#" target="_blank" rel="noopener">
-                Facebook — Elah Safaris
-            </a>
-
-            <a href="#" target="_blank" rel="noopener">
-                TikTok — Elah Safaris
-            </a>
-
-        </div>
-
-    </div>
+<h2>
+Let's make Africa
+<em>your next story.</em>
+</h2>
 
 </div>
 
 
+<div class="details">
+
+<a href="tel:+254710666222">
+📞 +254 710 666 222
+</a>
+
+<a href="mailto:elah.safaris@gmail.com">
+✉ elah.safaris@gmail.com
+</a>
+
+<span>
+📍 Nairobi, Kenya
+</span>
+
+
+<div class="socials">
+
+<a href="#" target="_blank">
+Instagram — Elah Safaris
+</a>
+
+<a href="#" target="_blank">
+Facebook — Elah Safaris
+</a>
+
+<a href="#" target="_blank">
+TikTok — Elah Safaris
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-
 <div class="container foot">
 
-    <div class="footer-brand">
+<div class="footer-brand">
 
-        <img
-            src="logo.png"
-            alt="Elah Safaris Logo">
+<img src="logo.png"
+alt="Elah Safaris Logo">
 
-        <strong>
-            Elah Safaris
-        </strong>
-
-    </div>
-
-    <span>
-        Offering bespoke Sub-Saharan safari and cultural tours.
-    </span>
-
-    <span>
-        © <b id="year"></b> Elah Safaris
-    </span>
+<strong>
+Elah Safaris
+</strong>
 
 </div>
 
+<span>
+Offering bespoke Sub-Saharan safari and cultural tours.
+</span>
+
+<span>
+© <b id="year"></b> Elah Safaris
+</span>
+
+</div>
 
 </footer>
 
-<a
- class="wa"
- href="https://wa.me/254710666222?text=Hello%20Elah%20Safaris%2C%20I%20would%20like%20to%20plan%20a%20safari."
- target="_blank"
- rel="noopener"
- aria-label="Chat with Elah Safaris on WhatsApp">
-WA </a>
 
-<!-- HERO VIDEO JAVASCRIPT -->
+<a class="whatsapp"
+href="https://wa.me/254710666222?text=Hello%20Elah%20Safaris,%20I%20would%20like%20to%20plan%20a%20safari."
+target="_blank"
+rel="noopener"
+aria-label="Chat with Elah Safaris on WhatsApp">
+☏
+</a>
+
 
 <script>
 
-(function () {
+/* =========================================================
+   ELAH SAFARIS JAVASCRIPT
+========================================================= */
 
-    const slides =
-        [...document.querySelectorAll(".hero-video-slide")];
 
-    const dots =
-        [...document.querySelectorAll(".hero-video-dot")];
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-    if (!slides.length) return;
+const menuButton = document.querySelector(".menu");
+const nav = document.getElementById("nav");
 
-    let current = 0;
-    let timer;
+menuButton.addEventListener("click", () => {
+    nav.classList.toggle("open");
+});
 
-    function schedule() {
 
-        clearTimeout(timer);
+document.querySelectorAll("nav > a").forEach(link => {
 
-        const duration =
-            slides[current].duration;
-
-        timer = setTimeout(
-            () => show(current + 1),
-            Number.isFinite(duration) && duration > 0
-                ? duration * 1000
-                : 10000
-        );
-
-    }
-
-    function show(index) {
-
-        current =
-            (index + slides.length) % slides.length;
-
-        slides.forEach((video, number) => {
-
-            video.classList.toggle(
-                "active",
-                number === current
-            );
-
-            if (number !== current) {
-
-                video.pause();
-
-                try {
-                    video.currentTime = 0;
-                } catch (e) {}
-
-            }
-
-        });
-
-        dots.forEach((dot, number) => {
-
-            dot.classList.toggle(
-                "active",
-                number === current
-            );
-
-            dot.setAttribute(
-                "aria-current",
-                number === current
-                    ? "true"
-                    : "false"
-            );
-
-        });
-
-        const playPromise =
-            slides[current].play();
-
-        if (playPromise) {
-            playPromise.catch(() => {});
-        }
-
-        schedule();
-
-    }
-
-    slides.forEach((video, number) => {
-
-        video.addEventListener(
-            "ended",
-            () => {
-
-                if (number === current) {
-                    show(current + 1);
-                }
-
-            }
-        );
-
-        video.addEventListener(
-            "loadedmetadata",
-            () => {
-
-                if (number === current) {
-                    schedule();
-                }
-
-            }
-        );
-
-        video.addEventListener(
-            "error",
-            () => {
-
-                if (number === current) {
-
-                    clearTimeout(timer);
-
-                    timer = setTimeout(
-                        () => show(current + 1),
-                        1500
-                    );
-
-                }
-
-            }
-        );
-
+    link.addEventListener("click", () => {
+        nav.classList.remove("open");
     });
 
-    dots.forEach((dot, number) => {
+});
 
-        dot.addEventListener(
-            "click",
-            () => show(number)
-        );
 
-    });
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
 
-    show(0);
+const languageSelector =
+document.getElementById("languageSelector");
 
-    document.addEventListener(
-        "visibilitychange",
-        () => {
+const languageButton =
+document.getElementById("languageButton");
 
-            if (document.hidden) {
+languageButton.addEventListener("click", (event) => {
 
-                slides[current].pause();
+    event.stopPropagation();
 
-                clearTimeout(timer);
+    languageSelector.classList.toggle("open");
 
-            } else {
-
-                const playPromise =
-                    slides[current].play();
-
-                if (playPromise) {
-                    playPromise.catch(() => {});
-                }
-
-                schedule();
-
-            }
-
-        }
+    languageButton.setAttribute(
+        "aria-expanded",
+        languageSelector.classList.contains("open")
     );
 
-})();
+});
 
-</script>
 
-<!-- PACKAGE POPUP JAVASCRIPT -->
+document.addEventListener("click", () => {
 
-<script>
+    languageSelector.classList.remove("open");
 
-(function () {
-
-    const packageData = {
-
-        mara: {
-            title: "3 Days Maasai Mara",
-            days: "3 DAYS • WILDLIFE",
-            price: "From USD 3,000 per person",
-            image: "pkg-mara",
-
-            intro:
-                "Experience the legendary Maasai Mara through carefully planned game drives, spectacular savannah landscapes and opportunities to encounter Kenya's most iconic wildlife.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Maasai Mara",
-                    "Depart Nairobi in the morning and travel through the Great Rift Valley toward the Maasai Mara. Enjoy scenic countryside views and optional stops along the way. Arrive at your lodge or camp for lunch, check in and relax briefly. In the afternoon, head out for your first game drive across the Mara plains. Search for elephants, giraffes, zebras, buffalo, antelope and big cats before returning to camp for dinner and an overnight stay."
-                ],
-
-                [
-                    "Day 2 — Full-Day Maasai Mara Safari",
-                    "After an early breakfast, spend a full day exploring the Maasai Mara. Follow wildlife-rich areas with your guide and look for lions, cheetahs, leopards, elephants, buffalo and other plains game. A picnic lunch can be arranged in the reserve, allowing more time for wildlife viewing. Continue with afternoon exploration before returning to your accommodation in the evening."
-                ],
-
-                [
-                    "Day 3 — Sunrise Safari & Return to Nairobi",
-                    "Enjoy an early morning game drive when wildlife activity is often at its best. Return for breakfast before checking out. Begin the journey back to Nairobi, with opportunities for scenic stops along the way. Arrive in Nairobi later in the day for your onward arrangements."
-                ]
-
-            ],
-
-            highlights: [
-                "Maasai Mara National Reserve",
-                "Big Five wildlife viewing",
-                "Morning and afternoon game drives",
-                "Professional safari guide",
-                "Savannah landscapes",
-                "Wildlife photography opportunities",
-                "Optional Maasai cultural experience"
-            ]
-        },
-
-        amboseli: {
-            title: "3 Days Amboseli",
-            days: "3 DAYS • WILDLIFE",
-            price: "From USD 3,000 per person",
-            image: "pkg-amboseli",
-
-            intro:
-                "Discover Amboseli National Park, famous for its large elephant herds, open plains and spectacular views toward Mount Kilimanjaro.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Amboseli",
-                    "Depart Nairobi in the morning and travel south toward Amboseli. Arrive at your lodge or camp, check in and enjoy lunch. In the afternoon, begin your first game drive across the park, exploring the open plains and wetlands while searching for elephants, giraffes, zebras, buffalo and predators."
-                ],
-
-                [
-                    "Day 2 — Full-Day Amboseli Safari",
-                    "Start with an early morning game drive to take advantage of the cooler hours and excellent wildlife activity. Return for breakfast and later continue exploring the park. Enjoy a full-day safari with opportunities to photograph elephant herds against the dramatic Mount Kilimanjaro backdrop. Return to camp in the evening."
-                ],
-
-                [
-                    "Day 3 — Morning Safari & Nairobi",
-                    "Enjoy a final early morning game drive before breakfast. Check out and begin your return journey to Nairobi, arriving later in the day."
-                ]
-
-            ],
-
-            highlights: [
-                "Large elephant herds",
-                "Mount Kilimanjaro views",
-                "Morning game drives",
-                "Wetlands and open plains",
-                "Wildlife photography",
-                "Professional safari guide"
-            ]
-        },
-
-        "tsavo-east": {
-            title: "3 Days Tsavo East",
-            days: "3 DAYS • WILDLIFE",
-            price: "From USD 3,000 per person",
-            image: "pkg-tsavo-east",
-
-            intro:
-                "Explore the vast wilderness of Tsavo East, one of Kenya's great safari destinations, known for its red elephants, open landscapes and diverse wildlife.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Tsavo East",
-                    "Depart Nairobi and travel toward Tsavo East National Park. After arrival, check into your accommodation and enjoy lunch. Head out for an afternoon game drive through the park, exploring wildlife-rich areas before returning for dinner."
-                ],
-
-                [
-                    "Day 2 — Full-Day Tsavo East Safari",
-                    "Enjoy an early breakfast followed by a full-day safari. Explore the park's plains, waterholes and wildlife areas while searching for elephants, lions, buffalo, giraffes, zebras and other species. Enjoy a picnic lunch or return to the lodge depending on the day's arrangement."
-                ],
-
-                [
-                    "Day 3 — Sunrise Game Drive & Departure",
-                    "Begin with an early morning game drive, taking advantage of the cooler temperatures and active wildlife. Return for breakfast, check out and depart Tsavo East for Nairobi or your onward destination."
-                ]
-
-            ],
-
-            highlights: [
-                "Tsavo East National Park",
-                "Famous red elephants",
-                "Big game viewing",
-                "Morning and afternoon game drives",
-                "Photography opportunities",
-                "Vast wilderness landscapes"
-            ]
-        },
-
-        "tsavo-west": {
-            title: "3 Days Tsavo West",
-            days: "3 DAYS • WILDLIFE",
-            price: "From USD 3,000 per person",
-            image: "pkg-tsavo-west",
-
-            intro:
-                "Experience Tsavo West through wildlife viewing, volcanic scenery, natural attractions and beautiful landscapes.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Tsavo West",
-                    "Depart Nairobi and travel to Tsavo West National Park. Arrive for lunch before checking in. Enjoy an afternoon game drive through the park, exploring scenic areas and looking for elephants, buffalo, giraffes, zebras and predators."
-                ],
-
-                [
-                    "Day 2 — Full-Day Tsavo West Safari",
-                    "Spend the day exploring Tsavo West. Enjoy morning and afternoon wildlife drives and visit selected natural attractions depending on park conditions and timing. Your guide will look for wildlife while explaining the park's ecosystems, volcanic landscapes and conservation story."
-                ],
-
-                [
-                    "Day 3 — Morning Safari & Departure",
-                    "Enjoy an early morning game drive before breakfast. Check out and begin your journey toward Nairobi or your onward destination."
-                ]
-
-            ],
-
-            highlights: [
-                "Tsavo West National Park",
-                "Wildlife viewing",
-                "Volcanic landscapes",
-                "Scenic viewpoints",
-                "Game drives",
-                "Nature and photography"
-            ]
-        },
-
-        "tsavo-both": {
-            title: "5 Days Tsavo East & West",
-            days: "5 DAYS • WILDLIFE",
-            price: "From USD 4,000 per person",
-            image: "pkg-tsavo-both",
-
-            intro:
-                "Discover both sides of Tsavo on an immersive five-day safari combining the expansive wilderness of Tsavo East with the dramatic scenery of Tsavo West.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Tsavo East",
-                    "Depart Nairobi and travel to Tsavo East. Arrive in time for lunch followed by an afternoon game drive. Explore the park's vast plains and begin your search for elephants and other wildlife."
-                ],
-
-                [
-                    "Day 2 — Full-Day Tsavo East",
-                    "Spend the day exploring Tsavo East with morning and afternoon game drives. Visit wildlife-rich areas and water sources while searching for elephants, lions, buffalo, giraffes and other species."
-                ],
-
-                [
-                    "Day 3 — Tsavo East to Tsavo West",
-                    "Enjoy an early morning game drive before breakfast. Check out and travel toward Tsavo West. Arrive for lunch followed by an afternoon game drive through the park."
-                ],
-
-                [
-                    "Day 4 — Full-Day Tsavo West",
-                    "Explore Tsavo West throughout the day. Discover its wildlife, volcanic landscapes, scenic viewpoints and natural attractions. Enjoy extensive game viewing with your professional guide."
-                ],
-
-                [
-                    "Day 5 — Morning Safari & Departure",
-                    "Enjoy a final sunrise game drive before breakfast. Check out and depart for Nairobi or your onward destination."
-                ]
-
-            ],
-
-            highlights: [
-                "Tsavo East",
-                "Tsavo West",
-                "Red elephants",
-                "Volcanic scenery",
-                "Full-day game drives",
-                "Wildlife photography",
-                "Diverse ecosystems"
-            ]
-        },
-
-        "samburu-olpejeta": {
-            title: "5 Days Samburu & Ol Pejeta",
-            days: "5 DAYS • WILDLIFE & CONSERVATION",
-            price: "From USD 4,000 per person",
-            image: "pkg-samburu",
-
-            intro:
-                "Combine the unique wildlife and landscapes of northern Kenya with the conservation story of Ol Pejeta Conservancy.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Ol Pejeta",
-                    "Depart Nairobi and travel north toward Ol Pejeta Conservancy. Arrive for lunch and settle into your accommodation. Enjoy an afternoon game drive introducing you to the conservancy's wildlife and landscapes."
-                ],
-
-                [
-                    "Day 2 — Full-Day Ol Pejeta",
-                    "Enjoy a full day exploring Ol Pejeta. Take part in game drives and conservation-focused experiences where available. Look for rhinos, elephants, lions, buffalo, giraffes and other wildlife while learning about the conservancy's conservation work."
-                ],
-
-                [
-                    "Day 3 — Ol Pejeta to Samburu",
-                    "Enjoy a morning experience at Ol Pejeta before travelling north toward Samburu. Arrive in the afternoon, check in and enjoy a short game drive or scenic experience."
-                ],
-
-                [
-                    "Day 4 — Full-Day Samburu Safari",
-                    "Spend the day exploring Samburu National Reserve. Search for northern Kenya's distinctive wildlife, including Grevy's zebra, reticulated giraffe, gerenuk and Somali ostrich, together with elephants, lions and other species."
-                ],
-
-                [
-                    "Day 5 — Morning Samburu Safari & Departure",
-                    "Enjoy a final early morning game drive before breakfast. Check out and begin the return journey toward Nairobi or your onward destination."
-                ]
-
-            ],
-
-            highlights: [
-                "Ol Pejeta Conservancy",
-                "Rhino conservation",
-                "Samburu National Reserve",
-                "Unique northern wildlife",
-                "Cultural experiences",
-                "Game drives",
-                "Scenic northern landscapes"
-            ]
-        },
-
-        northern: {
-            title: "6 Days Northern Kenya",
-            days: "6 DAYS • NORTHERN KENYA",
-            price: "Price on request",
-            image: "pkg-northern",
-
-            intro:
-                "A remote Kenya adventure designed around dramatic landscapes, distinctive communities, cultural encounters and unforgettable northern experiences.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Northern Kenya",
-                    "Begin your journey from Nairobi and travel north through changing landscapes. Enjoy scenic stops and local encounters along the route before settling into your overnight accommodation."
-                ],
-
-                [
-                    "Day 2 — Journey Deeper North",
-                    "Continue toward the remote northern region. Enjoy scenic drives through changing terrain and opportunities to experience the unique character of northern Kenya."
-                ],
-
-                [
-                    "Day 3 — Culture & Community",
-                    "Spend time discovering local communities, traditions and ways of life. Enjoy guided cultural encounters designed to encourage respectful interaction and genuine understanding."
-                ],
-
-                [
-                    "Day 4 — Northern Adventure",
-                    "Explore the surrounding landscapes through guided activities and scenic drives. Depending on the selected route, activities may include nature walks, photography and cultural experiences."
-                ],
-
-                [
-                    "Day 5 — Remote Kenya Experience",
-                    "Enjoy another day immersed in the region's landscapes and communities. Experience the peace and remoteness of northern Kenya before preparing for the return journey."
-                ],
-
-                [
-                    "Day 6 — Return Journey",
-                    "Enjoy a final morning experience before beginning the journey back toward Nairobi or your onward destination."
-                ]
-
-            ],
-
-            highlights: [
-                "Remote northern Kenya",
-                "Cultural encounters",
-                "Distinctive landscapes",
-                "Scenic drives",
-                "Adventure experiences",
-                "Local communities"
-            ]
-        },
-
-        diani: {
-            title: "4 Days Diani — Flight In",
-            days: "4 DAYS • BEACH",
-            price: "From USD 3,500 per person",
-            image: "pkg-diani",
-
-            intro:
-                "Fly directly into Kenya's coast and enjoy a relaxed Diani Beach holiday combining beautiful beaches, Indian Ocean experiences and coastal relaxation.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Flight to Diani",
-                    "Take your scheduled flight to the Kenyan coast. Meet your representative on arrival and transfer to your Diani accommodation. Check in, relax and enjoy the beach or resort facilities."
-                ],
-
-                [
-                    "Day 2 — Diani Beach Leisure",
-                    "Enjoy a relaxed coastal day. Spend time on the beach, swim or choose optional activities such as snorkeling, kayaking, kite surfing or a guided coastal experience."
-                ],
-
-                [
-                    "Day 3 — Coastal Adventure",
-                    "Enjoy a selected coastal or marine experience depending on your interests. Options may include a marine excursion, snorkeling, sandbank experience or cultural activity. Return to Diani for leisure."
-                ],
-
-                [
-                    "Day 4 — Final Beach Morning & Departure",
-                    "Enjoy a final breakfast and morning by the Indian Ocean before your transfer to the airport for your return flight or onward journey."
-                ]
-
-            ],
-
-            highlights: [
-                "Diani Beach",
-                "Flight-in arrangement",
-                "Indian Ocean",
-                "Beach relaxation",
-                "Optional water activities",
-                "Coastal excursions"
-            ]
-        },
-
-        mombasa: {
-            title: "3 Days Mombasa Kenya",
-            days: "3 DAYS • COAST & CULTURE",
-            price: "From USD 3,000 per person",
-            image: "pkg-mombasa",
-
-            intro:
-                "Discover Mombasa through historic landmarks, Swahili culture, coastal cuisine, local experiences and the warm waters of the Indian Ocean.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Mombasa Old Town & Heritage",
-                    "Arrive in Mombasa and begin your cultural experience. Explore Mombasa Old Town, historic streets and selected heritage landmarks. Learn about the city's Swahili, Arab, Portuguese and Indian influences before settling into your accommodation."
-                ],
-
-                [
-                    "Day 2 — Coastal & Cultural Experience",
-                    "Enjoy a full day exploring selected coastal attractions. Depending on your interests, the day may include a beach experience, local food, cultural activities and additional heritage sites."
-                ],
-
-                [
-                    "Day 3 — Final Mombasa Experience & Departure",
-                    "Enjoy a relaxed final morning in Mombasa. Take a final walk, shopping experience or coastal activity before your transfer for departure or onward travel."
-                ]
-
-            ],
-
-            highlights: [
-                "Mombasa Old Town",
-                "Swahili heritage",
-                "Historic landmarks",
-                "Indian Ocean coast",
-                "Local cuisine",
-                "Cultural experiences"
-            ]
-        },
-
-        chalbi: {
-            title: "5 Days Chalbi Desert & Maldives",
-            days: "5 DAYS • ADVENTURE",
-            price: "From USD 4,000 per person",
-            image: "pkg-chalbi",
-
-            intro:
-                "Experience an extraordinary contrast between the remote landscapes of northern Kenya's Chalbi Desert and a tropical island-style coastal escape.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Journey Toward Northern Kenya",
-                    "Depart and begin your journey toward northern Kenya. Travel through changing landscapes and enjoy scenic stops before reaching your selected overnight destination."
-                ],
-
-                [
-                    "Day 2 — Chalbi Desert Exploration",
-                    "Explore the dramatic Chalbi Desert environment. Enjoy guided scenic drives, photography opportunities and cultural encounters with local communities where available."
-                ],
-
-                [
-                    "Day 3 — Desert to Coastal Escape",
-                    "Begin the transition from the northern desert landscape toward the coastal portion of the journey. Travel arrangements can be tailored according to the selected transport and flight connections."
-                ],
-
-                [
-                    "Day 4 — Maldives-Style Coastal Experience",
-                    "Enjoy a full day of tropical relaxation with ocean views, beach time and optional water activities. This day is designed to contrast beautifully with the remote desert experience."
-                ],
-
-                [
-                    "Day 5 — Final Coastal Experience & Departure",
-                    "Enjoy breakfast and a final morning by the coast before your transfer for departure or your onward journey."
-                ]
-
-            ],
-
-            highlights: [
-                "Chalbi Desert",
-                "Northern Kenya",
-                "Remote landscapes",
-                "Cultural encounters",
-                "Tropical coastal escape",
-                "Beach relaxation",
-                "Adventure and photography"
-            ]
-        },
-
-        central: {
-            title: "5 Days Central Kenya Circuit",
-            days: "5 DAYS • CENTRAL KENYA",
-            price: "From USD 4,000 per person",
-            image: "pkg-central",
-
-            intro:
-                "Explore the scenic heart of Kenya through highland landscapes, wildlife, culture, countryside experiences and selected attractions.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Central Kenya",
-                    "Depart Nairobi and travel into the central Kenya highlands. Enjoy scenic countryside views and selected stops before arriving at your accommodation."
-                ],
-
-                [
-                    "Day 2 — Wildlife & Highlands",
-                    "Explore selected wildlife and nature attractions in the central region. Enjoy guided activities and scenic drives through the highlands."
-                ],
-
-                [
-                    "Day 3 — Culture & Local Experiences",
-                    "Spend the day connecting with local communities and discovering traditions, food, crafts and rural life. Activities are selected according to your interests."
-                ],
-
-                [
-                    "Day 4 — Nature & Exploration",
-                    "Enjoy another day of guided exploration through scenic landscapes and selected attractions. Photography, nature walks and wildlife experiences can be included."
-                ],
-
-                [
-                    "Day 5 — Return to Nairobi",
-                    "Enjoy a final morning experience before beginning your journey back to Nairobi. Arrive later in the day for your onward arrangements."
-                ]
-
-            ],
-
-            highlights: [
-                "Central Kenya highlands",
-                "Wildlife",
-                "Countryside landscapes",
-                "Culture",
-                "Local communities",
-                "Nature experiences"
-            ]
-        },
-
-        nairobi: {
-            title: "3 Days Nairobi",
-            days: "3 DAYS • CITY & CULTURE",
-            price: "From USD 3,000 per person",
-            image: "pkg-nairobi",
-
-            intro:
-                "Experience Nairobi through a carefully balanced combination of wildlife, culture, heritage, food and city attractions.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi City Experience",
-                    "Begin with a guided introduction to Nairobi. Explore selected city landmarks, markets, cultural attractions and local neighbourhoods according to your interests."
-                ],
-
-                [
-                    "Day 2 — Wildlife & Heritage",
-                    "Enjoy a wildlife or conservation experience around Nairobi followed by a heritage or cultural attraction. The day can be tailored around your interests and available time."
-                ],
-
-                [
-                    "Day 3 — Culture, Shopping & Departure",
-                    "Enjoy a relaxed final morning with optional shopping, local cuisine or a cultural experience before your departure or onward safari."
-                ]
-
-            ],
-
-            highlights: [
-                "Nairobi city",
-                "Wildlife experiences",
-                "Culture",
-                "Heritage",
-                "Local cuisine",
-                "Shopping and city exploration"
-            ]
-        },
-
-        "nairobi-park": {
-            title: "2 Days Nairobi National Park",
-            days: "2 DAYS • WILDLIFE",
-            price: "Price on request",
-            image: "pkg-nairobi-park",
-
-            intro:
-                "Enjoy a short but rewarding safari experience in Nairobi National Park, conveniently located close to Kenya's capital.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi National Park",
-                    "Depart for Nairobi National Park and enjoy an afternoon game drive. Explore the park's plains and wildlife habitats while looking for lions, giraffes, zebras, buffalo, rhinos and other species."
-                ],
-
-                [
-                    "Day 2 — Sunrise Game Drive & Departure",
-                    "Enjoy an early morning game drive when wildlife activity is high. Return for breakfast, check out and conclude the safari with your onward journey."
-                ]
-
-            ],
-
-            highlights: [
-                "Nairobi National Park",
-                "Wildlife close to Nairobi",
-                "Lion sightings",
-                "Rhino viewing",
-                "Morning game drive",
-                "Wildlife photography"
-            ]
-        },
-
-        western: {
-            title: "4 Days Western Kenya Circuit",
-            days: "4 DAYS • CULTURE & WILDLIFE",
-            price: "From USD 3,500 per person",
-            image: "pkg-western",
-
-            intro:
-                "Discover the character of western Kenya through wildlife, beautiful landscapes, cultural encounters and authentic community experiences.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Nairobi to Western Kenya",
-                    "Begin your journey west from Nairobi. Travel through scenic landscapes with selected stops before arriving at your accommodation."
-                ],
-
-                [
-                    "Day 2 — Wildlife & Nature",
-                    "Explore selected wildlife and nature attractions. Enjoy guided experiences focused on wildlife, landscapes and photography."
-                ],
-
-                [
-                    "Day 3 — Culture & Community",
-                    "Connect with local communities and discover regional traditions, food, crafts and ways of life through a respectful guided cultural experience."
-                ],
-
-                [
-                    "Day 4 — Final Experience & Nairobi",
-                    "Enjoy a final morning experience before beginning the journey back to Nairobi. Arrive later in the day for your onward arrangements."
-                ]
-
-            ],
-
-            highlights: [
-                "Western Kenya",
-                "Wildlife",
-                "Culture",
-                "Community experiences",
-                "Scenic landscapes",
-                "Photography"
-            ]
-        },
-
-        malindi: {
-            title: "3 Days Malindi",
-            days: "3 DAYS • COAST",
-            price: "From USD 3,000 per person",
-            image: "pkg-malindi",
-
-            intro:
-                "Relax on Kenya's northern coast while discovering Malindi's beaches, marine environment, heritage and Swahili coastal culture.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Arrival in Malindi",
-                    "Arrive in Malindi and transfer to your accommodation. Check in and enjoy a relaxed afternoon on the beach or around the resort."
-                ],
-
-                [
-                    "Day 2 — Malindi Coastal Experience",
-                    "Explore selected marine and coastal attractions. Depending on your interests, activities may include snorkeling, boat excursions, beach time and cultural exploration."
-                ],
-
-                [
-                    "Day 3 — Final Coastal Morning & Departure",
-                    "Enjoy breakfast and a final morning by the Indian Ocean before your transfer for departure or onward travel."
-                ]
-
-            ],
-
-            highlights: [
-                "Malindi beaches",
-                "Indian Ocean",
-                "Marine experiences",
-                "Swahili coastal culture",
-                "Beach relaxation",
-                "Optional boat activities"
-            ]
-        },
-
-        watamu: {
-            title: "4 Days Watamu, Kisite-Mpunguti & Marine Park",
-            days: "4 DAYS • MARINE & COAST",
-            price: "From USD 3,500 per person",
-            image: "pkg-watamu",
-
-            intro:
-                "A marine-focused coastal journey combining Watamu, beautiful Indian Ocean beaches and a memorable Kisite-Mpunguti marine adventure.",
-
-            itinerary: [
-
-                [
-                    "Day 1 — Arrival & Watamu",
-                    "Arrive on the Kenyan coast and transfer to Watamu. Check in and enjoy a relaxed afternoon on the beach. Take time to settle in and enjoy the coastal atmosphere."
-                ],
-
-                [
-                    "Day 2 — Watamu Marine Experience",
-                    "Explore Watamu's marine environment through a selected excursion. Enjoy opportunities for snorkeling, boat rides, beach activities and marine wildlife viewing depending on conditions."
-                ],
-
-                [
-                    "Day 3 — Kisite-Mpunguti Marine Adventure",
-                    "Enjoy a full marine excursion to the Kisite-Mpunguti area. Explore the spectacular waters, islands and marine environment, with opportunities for snorkeling and wildlife viewing subject to sea conditions."
-                ],
-
-                [
-                    "Day 4 — Final Marine Experience & Departure",
-                    "Enjoy a relaxed final morning by the coast. Depending on your departure time, take part in a short coastal activity before transferring for your onward journey."
-                ]
-
-            ],
-
-            highlights: [
-                "Watamu",
-                "Kisite-Mpunguti",
-                "Marine experiences",
-                "Indian Ocean beaches",
-                "Snorkeling",
-                "Boat excursions",
-                "Coastal relaxation"
-            ]
-        }
-
-    };
-
-    const slider =
-        document.getElementById("packageSlider");
-
-    const modal =
-        document.getElementById("packageModal");
-
-    if (!slider || !modal) return;
-
-    const title =
-        document.getElementById("packageModalTitle");
-
-    const days =
-        document.getElementById("packageModalDays");
-
-    const price =
-        document.getElementById("packageModalPrice");
-
-    const intro =
-        document.getElementById("packageModalIntro");
-
-    const image =
-        document.getElementById("packageModalImage");
-
-    const itinerary =
-        document.getElementById("packageModalItinerary");
-
-    const highlights =
-        document.getElementById("packageModalHighlights");
-
-    const book =
-        document.getElementById("packageBookButton");
-
-    function openPackage(key) {
-
-        const pkg =
-            packageData[key];
-
-        if (!pkg) return;
-
-        title.textContent =
-            pkg.title;
-
-        days.textContent =
-            pkg.days;
-
-        price.textContent =
-            pkg.price;
-
-        intro.textContent =
-            pkg.intro;
-
-        image.className =
-            "package-modal-image " + pkg.image;
-
-        itinerary.innerHTML =
-            pkg.itinerary.map(day => {
-
-                return `
-                    <div class="itinerary-day">
-                        <h4>${day[0]}</h4>
-                        <p>${day[1]}</p>
-                    </div>
-                `;
-
-            }).join("");
-
-        highlights.innerHTML =
-            pkg.highlights.map(item => {
-
-                return `<li>${item}</li>`;
-
-            }).join("");
-
-        book.dataset.package =
-            pkg.title;
-
-        modal.classList.add("active");
-
-        modal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.classList.add(
-            "package-modal-open"
-        );
-
-        const modalContent =
-            modal.querySelector(
-                ".package-modal-content"
-            );
-
-        if (modalContent) {
-            modalContent.scrollTop = 0;
-        }
-
-    }
-
-    function closePackage() {
-
-        modal.classList.remove(
-            "active"
-        );
-
-        modal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        document.body.classList.remove(
-            "package-modal-open"
-        );
-
-    }
-
-    document
-        .querySelectorAll(".view-package")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    const card =
-                        this.closest(
-                            ".package-card"
-                        );
-
-                    if (card) {
-
-                        openPackage(
-                            card.dataset.package
-                        );
-
-                    }
-
-                }
-            );
-
-        });
-
-    document
-        .querySelectorAll("[data-close-package]")
-        .forEach(element => {
-
-            element.addEventListener(
-                "click",
-                closePackage
-            );
-
-        });
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape" &&
-                modal.classList.contains("active")
-            ) {
-
-                closePackage();
-
-            }
-
-        }
+    languageButton.setAttribute(
+        "aria-expanded",
+        "false"
     );
 
-    book.addEventListener(
-        "click",
-        function () {
+});
 
-            const destination =
-                document.querySelector(
-                    'select[name="destination"]'
-                );
 
-            const wanted =
-                this.dataset.package;
+/* =========================================================
+   LANGUAGE TRANSLATIONS
+========================================================= */
 
-            if (
-                destination &&
-                wanted
-            ) {
+const translations = {
 
-                const option =
-                    [...destination.options]
-                    .find(
-                        option =>
-                            option.textContent
-                                .trim() === wanted
-                    );
+en: {
 
-                if (option) {
-                    destination.value =
-                        option.value;
-                }
+home:"Home",
+about:"About",
+safaris:"Safaris",
+destinations:"Destinations",
+experiences:"Experiences",
+gallery:"Gallery",
+contact:"Contact",
+bookNow:"Book Now",
 
-            }
+heroText:
+"Offering bespoke Sub-Saharan safari and cultural tours designed around your journey, your interests and your dreams.",
 
-            closePackage();
+exploreSafaris:"Explore Safaris",
+planSafari:"Plan My Safari",
 
-        }
-    );
+welcome:"WELCOME TO ELAH SAFARIS",
 
-    const prev =
-        document.querySelector(
-            ".package-arrow.prev"
-        );
+talkTeam:"Talk to our safari team →"
 
-    const next =
-        document.querySelector(
-            ".package-arrow.next"
-        );
+},
 
-    function slide(direction) {
+fr: {
 
-        const card =
-            slider.querySelector(
-                ".package-card"
-            );
+home:"Accueil",
+about:"À propos",
+safaris:"Safaris",
+destinations:"Destinations",
+experiences:"Expériences",
+gallery:"Galerie",
+contact:"Contact",
+bookNow:"Réserver",
 
-        if (!card) return;
+heroText:
+"Nous proposons des safaris et circuits culturels sur mesure en Afrique subsaharienne, conçus autour de votre voyage, de vos intérêts et de vos rêves.",
 
-        slider.scrollBy({
+exploreSafaris:"Explorer les safaris",
+planSafari:"Planifier mon safari",
 
-            left:
-                direction *
-                (
-                    card.getBoundingClientRect()
-                        .width + 22
-                ),
+welcome:"BIENVENUE CHEZ ELAH SAFARIS",
 
-            behavior: "smooth"
+talkTeam:"Parler à notre équipe safari →"
 
-        });
+},
 
-    }
+de: {
 
-    if (prev) {
+home:"Startseite",
+about:"Über uns",
+safaris:"Safaris",
+destinations:"Reiseziele",
+experiences:"Erlebnisse",
+gallery:"Galerie",
+contact:"Kontakt",
+bookNow:"Jetzt buchen",
 
-        prev.addEventListener(
-            "click",
-            () => slide(-1)
-        );
+heroText:
+"Wir bieten maßgeschneiderte Safaris und Kulturreisen in Subsahara-Afrika, die auf Ihre Reise, Interessen und Träume abgestimmt sind.",
 
-    }
+exploreSafaris:"Safaris entdecken",
+planSafari:"Safari planen",
 
-    if (next) {
+welcome:"WILLKOMMEN BEI ELAH SAFARIS",
 
-        next.addEventListener(
-            "click",
-            () => slide(1)
-        );
+talkTeam:"Mit unserem Safari-Team sprechen →"
 
-    }
+},
 
-})();
+es: {
 
-</script>
+home:"Inicio",
+about:"Nosotros",
+safaris:"Safaris",
+destinations:"Destinos",
+experiences:"Experiencias",
+gallery:"Galería",
+contact:"Contacto",
+bookNow:"Reservar",
 
-<script src="script.js"></script>
+heroText:
+"Ofrecemos safaris y viajes culturales personalizados por el África subsahariana, diseñados según su viaje, intereses y sueños.",
 
-<script>
+exploreSafaris:"Explorar safaris",
+planSafari:"Planificar mi safari",
 
-    const year =
-        document.getElementById("year");
+welcome:"BIENVENIDO A ELAH SAFARIS",
 
-    if (year) {
+talkTeam:"Hablar con nuestro equipo de safari →"
 
-        year.textContent =
-            new Date().getFullYear();
+},
 
-    }
+it: {
+
+home:"Home",
+about:"Chi siamo",
+safaris:"Safari",
+destinations:"Destinazioni",
+experiences:"Esperienze",
+gallery:"Galleria",
+contact:"Contatti",
+bookNow:"Prenota",
+
+heroText:
+"Offriamo safari e viaggi culturali personalizzati nell'Africa subsahariana, progettati intorno al vostro viaggio, ai vostri interessi e ai vostri sogni.",
+
+exploreSafaris:"Esplora i safari",
+planSafari:"Pianifica il mio safari",
+
+welcome:"BENVENUTI A ELAH SAFARIS",
+
+talkTeam:"Parla con il nostro team safari →"
+
+}
+
+};
+
+
+const languageNames = {
+
+en:"English",
+fr:"Français",
+de:"Deutsch",
+es:"Español",
+it:"Italiano"
+
+};
+
+
+function changeLanguage(lang) {
+
+const data = translations[lang];
+
+if (!data) return;
+
+
+/* Translate all marked elements */
+
+document.querySelectorAll("[data-i18n]").forEach(element => {
+
+const key = element.getAttribute("data-i18n");
+
+if (data[key]) {
+element.textContent = data[key];
+}
+
+});
+
+
+/* Update language button */
+
+document.getElementById("currentLanguage").textContent =
+languageNames[lang];
+
+document.documentElement.lang = lang;
+
+
+/* Remember selected language */
+
+localStorage.setItem(
+"elahLanguage",
+lang
+);
+
+
+/* Close menu */
+
+languageSelector.classList.remove("open");
+
+languageButton.setAttribute(
+"aria-expanded",
+"false"
+);
+
+}
+
+
+/* Language buttons */
+
+document.querySelectorAll(
+".language-menu button"
+).forEach(button => {
+
+button.addEventListener("click", () => {
+
+changeLanguage(
+button.dataset.lang
+);
+
+});
+
+});
+
+
+/* Load saved language */
+
+const savedLanguage =
+localStorage.getItem("elahLanguage") || "en";
+
+changeLanguage(savedLanguage);
+
+
+/* =========================================================
+   HERO VIDEO SLIDER
+========================================================= */
+
+const videos =
+document.querySelectorAll(".hero-video-slide");
+
+const heroDots =
+document.querySelectorAll(".hero-dot");
+
+let currentVideo = 0;
+let heroTimer;
+
+
+function showVideo(index) {
+
+if (index < 0)
+index = videos.length - 1;
+
+if (index >= videos.length)
+index = 0;
+
+videos.forEach((video, i) => {
+
+video.classList.toggle(
+"active",
+i === index
+);
+
+if (i !== index) {
+
+video.pause();
+
+video.currentTime = 0;
+
+}
+
+});
+
+
+heroDots.forEach((dot, i) => {
+
+dot.classList.toggle(
+"active",
+i === index
+);
+
+});
+
+
+currentVideo = index;
+
+
+/* Start selected video */
+
+videos[index].play().catch(() => {});
+
+}
+
+
+function nextVideo() {
+
+showVideo(
+(currentVideo + 1) % videos.length
+);
+
+}
+
+
+function startHeroTimer() {
+
+clearInterval(heroTimer);
+
+heroTimer = setInterval(
+nextVideo,
+8000
+);
+
+}
+
+
+heroDots.forEach((dot, index) => {
+
+dot.addEventListener("click", () => {
+
+showVideo(index);
+
+startHeroTimer();
+
+});
+
+});
+
+
+videos.forEach(video => {
+
+video.addEventListener("ended", () => {
+
+nextVideo();
+
+startHeroTimer();
+
+});
+
+});
+
+
+showVideo(0);
+startHeroTimer();
+
+
+/* =========================================================
+   PACKAGE SLIDER
+========================================================= */
+
+const packageSlider =
+document.getElementById("packageSlider");
+
+const nextButton =
+document.querySelector(".package-arrow.next");
+
+const prevButton =
+document.querySelector(".package-arrow.prev");
+
+
+nextButton.addEventListener("click", () => {
+
+packageSlider.scrollBy({
+left: packageSlider.clientWidth * .85,
+behavior: "smooth"
+});
+
+});
+
+
+prevButton.addEventListener("click", () => {
+
+packageSlider.scrollBy({
+left: -packageSlider.clientWidth * .85,
+behavior: "smooth"
+});
+
+});
+
+
+/* =========================================================
+   PACKAGE DATA
+   THIS IS WHAT MAKES THE POPUPS WORK
+========================================================= */
+
+const packages = {
+
+
+"mara": {
+
+title:"Maasai Mara",
+days:"3 DAYS • WILDLIFE",
+price:"From USD 3,000 per person",
+
+image:"mara.jpg",
+
+intro:
+"Experience the legendary Maasai Mara National Reserve with expertly guided game drives, spectacular savannah landscapes and opportunities to encounter lions, elephants, buffalo, leopards and cheetahs.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Maasai Mara",
+"Depart Nairobi in the morning and travel through the Great Rift Valley to the Maasai Mara. Arrive for lunch followed by an afternoon game drive across the reserve. Enjoy sunset over the savannah before returning to your lodge or camp for dinner."],
+
+["Day 2 — Full Day Maasai Mara",
+"Enjoy an early morning game drive when wildlife is most active. Return for breakfast and later continue with a full-day exploration of the reserve, including a packed lunch. Search for the Big Five and other wildlife before an evening return to camp."],
+
+["Day 3 — Maasai Mara to Nairobi",
+"Enjoy an early morning game drive followed by breakfast. Depart the Mara and travel back toward Nairobi with scenic stops along the way. Arrive in Nairobi in the afternoon or evening."]
+],
+
+highlights:[
+"Big Five wildlife viewing",
+"Professional safari guide",
+"Great Rift Valley scenery",
+"Morning and afternoon game drives",
+"Optional Maasai cultural visit",
+"Photography opportunities"
+]
+
+},
+
+
+"amboseli": {
+
+title:"Amboseli",
+days:"3 DAYS • WILDLIFE",
+price:"From USD 3,000 per person",
+
+image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1400&q=85",
+
+intro:
+"Discover Amboseli National Park, famous for its large elephant herds and spectacular views of Mount Kilimanjaro.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Amboseli",
+"Depart Nairobi and drive south toward Amboseli National Park. Arrive for lunch and enjoy an afternoon game drive through the park, searching for elephants, zebras, giraffes and predators."],
+
+["Day 2 — Full Day Amboseli",
+"Enjoy an early morning game drive with Mount Kilimanjaro often providing a spectacular backdrop. After breakfast, continue exploring the park, visiting Observation Hill and wildlife-rich areas before an afternoon game drive."],
+
+["Day 3 — Amboseli to Nairobi",
+"Enjoy a final morning game drive followed by breakfast. Depart Amboseli and travel back to Nairobi, arriving later in the day."]
+],
+
+highlights:[
+"Large elephant herds",
+"Mount Kilimanjaro views",
+"Observation Hill",
+"Morning and afternoon game drives",
+"Professional safari guide",
+"Wildlife photography"
+]
+
+},
+
+
+"tsavo-east": {
+
+title:"Tsavo East",
+days:"3 DAYS • WILDLIFE",
+price:"From USD 3,000 per person",
+
+image:"tsavo-east.jpg",
+
+intro:
+"Explore the vast wilderness of Tsavo East National Park, home to red-dusted elephants, lions, giraffes, buffalo and diverse birdlife.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Tsavo East",
+"Depart Nairobi and travel toward Tsavo East. After arrival and lunch, enjoy an afternoon game drive through the park, exploring the open savannah and wildlife-rich areas."],
+
+["Day 2 — Full Day Tsavo East",
+"Begin with an early morning game drive. After breakfast, continue exploring areas around Aruba Dam and the Galana ecosystem. Enjoy a picnic lunch before an afternoon wildlife drive."],
+
+["Day 3 — Tsavo East to Nairobi",
+"Enjoy an early morning game drive before breakfast. Depart the park and travel back to Nairobi, arriving later in the day."]
+],
+
+highlights:[
+"Red elephants of Tsavo",
+"Aruba Dam",
+"Galana River region",
+"Lions and large herbivores",
+"Birdwatching",
+"Extensive game drives"
+]
+
+},
+
+
+"tsavo-west": {
+
+title:"Tsavo West",
+days:"3 DAYS • WILDLIFE",
+price:"From USD 3,000 per person",
+
+image:"https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1400&q=85",
+
+intro:
+"Discover Tsavo West's volcanic landscapes, wildlife and natural attractions including Mzima Springs.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Tsavo West",
+"Travel from Nairobi toward Tsavo West National Park. After lunch, enjoy an afternoon game drive through the park's volcanic landscapes."],
+
+["Day 2 — Full Day Tsavo West",
+"Enjoy an early morning game drive followed by breakfast. Visit Mzima Springs and continue exploring wildlife areas around the park. Finish with an afternoon game drive."],
+
+["Day 3 — Tsavo West to Nairobi",
+"Enjoy a final morning wildlife drive before breakfast. Depart Tsavo West and travel back to Nairobi."]
+],
+
+highlights:[
+"Mzima Springs",
+"Volcanic landscapes",
+"Elephants and buffalo",
+"Lions and giraffes",
+"Game drives",
+"Birdwatching"
+]
+
+},
+
+
+"tsavo-both": {
+
+title:"Tsavo East & West",
+days:"5 DAYS • WILDLIFE",
+price:"From USD 4,000 per person",
+
+image:"tsavo-both.jpg",
+
+intro:
+"Explore both Tsavo East and Tsavo West, experiencing two distinct landscapes and some of Kenya's most remarkable wildlife areas.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Tsavo East",
+"Depart Nairobi and travel to Tsavo East. After lunch, enjoy an afternoon game drive exploring the park."],
+
+["Day 2 — Tsavo East",
+"Enjoy morning and afternoon game drives around wildlife-rich areas including Aruba Dam and the Galana region."],
+
+["Day 3 — Tsavo East to Tsavo West",
+"Enjoy a morning game drive before transferring to Tsavo West. After lunch, explore the park on an afternoon game drive."],
+
+["Day 4 — Tsavo West",
+"Spend a full day exploring Tsavo West. Visit Mzima Springs and enjoy morning and afternoon wildlife drives."],
+
+["Day 5 — Tsavo West to Nairobi",
+"Enjoy a final morning game drive before breakfast, then depart for Nairobi."]
+],
+
+highlights:[
+"Both Tsavo ecosystems",
+"Mzima Springs",
+"Aruba Dam",
+"Red elephants",
+"Volcanic scenery",
+"Extensive wildlife viewing"
+]
+
+},
+
+
+"samburu-olpejeta": {
+
+title:"Samburu & Ol Pejeta",
+days:"5 DAYS • WILDLIFE & CONSERVATION",
+price:"From USD 4,000 per person",
+
+image:"samburu-olpejeta.jpg",
+
+intro:
+"Combine conservation and wildlife experiences at Ol Pejeta Conservancy with the unique northern landscapes and wildlife of Samburu National Reserve.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Ol Pejeta",
+"Depart Nairobi and travel to the Laikipia region. Arrive at Ol Pejeta Conservancy and enjoy an afternoon game drive."],
+
+["Day 2 — Ol Pejeta",
+"Enjoy a full day exploring Ol Pejeta with wildlife viewing and conservation experiences. Search for rhinos, elephants, lions and other wildlife."],
+
+["Day 3 — Ol Pejeta to Samburu",
+"Travel north toward Samburu National Reserve. Arrive and enjoy an afternoon game drive."],
+
+["Day 4 — Full Day Samburu",
+"Spend the day exploring Samburu's distinctive landscapes and searching for northern species including Grevy's zebra, reticulated giraffe and gerenuk."],
+
+["Day 5 — Samburu to Nairobi",
+"Enjoy a final morning game drive followed by breakfast before returning to Nairobi."]
+],
+
+highlights:[
+"Ol Pejeta Conservancy",
+"Rhino conservation",
+"Samburu National Reserve",
+"Unique northern species",
+"Scenic Laikipia landscapes",
+"Professional guiding"
+]
+
+},
+
+
+"northern": {
+
+title:"Northern Kenya",
+days:"6 DAYS • NORTHERN KENYA",
+price:"Price on request",
+
+image:"https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1400&q=85",
+
+intro:
+"Journey into northern Kenya for remote landscapes, Samburu culture, wildlife and the extraordinary Chalbi region.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Samburu",
+"Depart Nairobi and travel north toward Samburu. Arrive for lunch followed by an afternoon game drive."],
+
+["Day 2 — Samburu",
+"Full-day exploration of Samburu National Reserve with wildlife viewing and opportunities to encounter northern species."],
+
+["Day 3 — Samburu to Kalacha Region",
+"Continue north toward the remote Kalacha area, enjoying changing landscapes and communities along the route."],
+
+["Day 4 — Chalbi Desert Region",
+"Explore the dramatic Chalbi Desert landscape and surrounding settlements. Experience the unique environment and northern way of life."],
+
+["Day 5 — Northern Kenya Exploration",
+"Continue exploring remote northern landscapes, communities and wildlife areas according to the selected route."],
+
+["Day 6 — Return Journey",
+"Begin the return journey south, with scenic stops before continuing toward Nairobi."]
+],
+
+highlights:[
+"Remote northern Kenya",
+"Samburu wildlife",
+"Chalbi Desert",
+"Traditional communities",
+"Spectacular landscapes",
+"Adventure travel"
+]
+
+},
+
+
+"diani": {
+
+title:"Diani — Fly In",
+days:"4 DAYS • BEACH",
+price:"From USD 3,500 per person",
+
+image:"diani.jpg",
+
+intro:
+"Enjoy a relaxing coastal escape in Diani with convenient flight connections from Nairobi, beach time and optional marine excursions.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Diani",
+"Fly from Nairobi to the Kenyan coast. Transfer to your Diani accommodation and spend the afternoon relaxing on the beach."],
+
+["Day 2 — Diani Beach",
+"Enjoy a relaxed coastal day with beach activities, swimming and optional water sports."],
+
+["Day 3 — Marine Experience",
+"Take an optional boat or marine excursion depending on conditions and selected activities. Enjoy the rest of the day at leisure."],
+
+["Day 4 — Diani to Nairobi",
+"Enjoy breakfast and some final beach time before transferring to the airport for your return flight to Nairobi."]
+],
+
+highlights:[
+"Diani Beach",
+"Domestic flight connections",
+"Indian Ocean",
+"Beach relaxation",
+"Optional marine activities",
+"Coastal hospitality"
+]
+
+},
+
+
+"mombasa": {
+
+title:"Mombasa Kenya",
+days:"3 DAYS • COAST & CULTURE",
+price:"From USD 3,000 per person",
+
+image:"mombasa.jpg",
+
+intro:
+"Discover Mombasa's rich Swahili heritage, historic architecture, coastal cuisine and Indian Ocean atmosphere.",
+
+itinerary:[
+
+["Day 1 — Arrival & Mombasa Old Town",
+"Arrive in Mombasa and explore the historic Old Town with its narrow streets, Swahili architecture, markets and cultural heritage."],
+
+["Day 2 — Fort Jesus & Coast",
+"Visit Fort Jesus and learn about Mombasa's maritime history. Continue with coastal sightseeing and time to enjoy local cuisine."],
+
+["Day 3 — Mombasa Experience",
+"Enjoy a final coastal experience with shopping, cultural exploration or beach relaxation before departure."]
+],
+
+highlights:[
+"Mombasa Old Town",
+"Fort Jesus",
+"Swahili culture",
+"Indian Ocean coastline",
+"Local cuisine",
+"Historic architecture"
+]
+
+},
+
+
+"chalbi": {
+
+title:"Chalbi Desert & Maldives",
+days:"5 DAYS • KENYA & INTERNATIONAL",
+price:"From USD 4,000 per person",
+
+image:"chalbi-maldives.jpg",
+
+intro:
+"A distinctive journey combining the remote landscapes of Kenya's Chalbi Desert with a separate tropical Maldives beach escape.",
+
+itinerary:[
+
+["Day 1 — Northern Kenya",
+"Begin the northern Kenya adventure and travel toward the Chalbi region through dramatic landscapes and remote communities."],
+
+["Day 2 — Chalbi Desert",
+"Explore the spectacular Chalbi Desert and surrounding landscapes, experiencing one of Kenya's most remote environments."],
+
+["Day 3 — Northern Kenya to Transfer Point",
+"Complete the Kenya portion of the journey and prepare for onward international travel to the Maldives."],
+
+["Day 4 — Maldives",
+"Arrive in the Maldives and transfer to your selected island resort. Enjoy the afternoon relaxing beside the Indian Ocean."],
+
+["Day 5 — Maldives",
+"Enjoy a tropical island day with beach relaxation and optional marine activities before departure."]
+],
+
+highlights:[
+"Chalbi Desert",
+"Remote northern Kenya",
+"Maldives islands",
+"Indian Ocean beaches",
+"Adventure and relaxation",
+"International combination"
+]
+
+},
+
+
+"central": {
+
+title:"Central Kenya Circuit",
+days:"5 DAYS • CENTRAL KENYA",
+price:"From USD 4,000 per person",
+
+image:"https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1400&q=85",
+
+intro:
+"Explore Kenya's scenic central highlands, wildlife conservancies and beautiful Rift Valley landscapes.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Lake Naivasha",
+"Depart Nairobi and travel to Lake Naivasha. Enjoy a boat experience or lakeside activities before an overnight stay."],
+
+["Day 2 — Naivasha to Aberdare Region",
+"Continue toward the Aberdare highlands, enjoying scenic countryside and forest landscapes."],
+
+["Day 3 — Aberdare to Ol Pejeta",
+"Travel toward Laikipia and Ol Pejeta Conservancy. Enjoy an afternoon wildlife drive."],
+
+["Day 4 — Ol Pejeta",
+"Spend a full day exploring Ol Pejeta with wildlife viewing and conservation experiences."],
+
+["Day 5 — Ol Pejeta to Nairobi",
+"Enjoy a final morning experience before returning to Nairobi."]
+],
+
+highlights:[
+"Lake Naivasha",
+"Aberdare landscapes",
+"Ol Pejeta Conservancy",
+"Central Kenyan highlands",
+"Wildlife and conservation",
+"Scenic countryside"
+]
+
+},
+
+
+"nairobi": {
+
+title:"Nairobi",
+days:"3 DAYS • CITY & CULTURE",
+price:"From USD 3,000 per person",
+
+image:"nairobi.jpg",
+
+intro:
+"Discover Nairobi's unique combination of wildlife, modern city life, heritage and culture.",
+
+itinerary:[
+
+["Day 1 — Nairobi City & Culture",
+"Explore selected Nairobi attractions, local markets and cultural sites before enjoying the city's dining scene."],
+
+["Day 2 — Nairobi National Park",
+"Enjoy an early morning game drive in Nairobi National Park, searching for lions, rhinos, giraffes, zebras and buffalo."],
+
+["Day 3 — Giraffe Centre & Karen",
+"Visit the Giraffe Centre and explore the Karen area before concluding your Nairobi experience."]
+],
+
+highlights:[
+"Nairobi National Park",
+"Giraffe Centre",
+"Karen",
+"City culture",
+"Local cuisine",
+"Wildlife close to the city"
+]
+
+},
+
+
+"nairobi-park": {
+
+title:"Nairobi National Park",
+days:"2 DAYS • WILDLIFE",
+price:"Price on request",
+
+image:"nairobi-national-park.jpg",
+
+intro:
+"Enjoy a wildlife-focused escape in Nairobi National Park, one of the world's most unique wildlife destinations because of its proximity to the capital.",
+
+itinerary:[
+
+["Day 1 — Nairobi National Park",
+"Enjoy an afternoon or evening game drive in Nairobi National Park, searching for rhinos, lions, giraffes, zebras and buffalo."],
+
+["Day 2 — Morning Game Drive",
+"Begin with an early morning game drive when wildlife is active. Enjoy breakfast before concluding your Nairobi National Park experience."]
+],
+
+highlights:[
+"Lions",
+"Black rhinos",
+"Giraffes",
+"Zebras",
+"Buffalo",
+"Wildlife beside Nairobi"
+]
+
+},
+
+
+"western": {
+
+title:"Western Kenya Circuit",
+days:"4 DAYS • CULTURE & WILDLIFE",
+price:"From USD 3,500 per person",
+
+image:"western-kenya.jpg",
+
+intro:
+"Discover western Kenya through a combination of wildlife, lakes, cultural encounters and scenic countryside.",
+
+itinerary:[
+
+["Day 1 — Nairobi to Lake Naivasha",
+"Travel from Nairobi to Lake Naivasha and enjoy a scenic Rift Valley experience."],
+
+["Day 2 — Naivasha to Lake Nakuru",
+"Continue to Lake Nakuru National Park for wildlife viewing including rhinos, giraffes, buffalo and birdlife."],
+
+["Day 3 — Western Kenya",
+"Continue west through scenic countryside with cultural and community experiences depending on the selected route."],
+
+["Day 4 — Return Journey",
+"Enjoy a final morning experience before beginning the return journey."]
+],
+
+highlights:[
+"Lake Naivasha",
+"Lake Nakuru",
+"Rift Valley",
+"Wildlife",
+"Local culture",
+"Scenic countryside"
+]
+
+},
+
+
+"malindi": {
+
+title:"Malindi",
+days:"3 DAYS • COAST",
+price:"From USD 3,000 per person",
+
+image:"malindi.jpg",
+
+intro:
+"Enjoy Malindi's beautiful beaches, marine environment and centuries of Swahili coastal heritage.",
+
+itinerary:[
+
+["Day 1 — Arrival in Malindi",
+"Arrive in Malindi and settle into your accommodation. Spend the afternoon exploring the coastline and relaxing at the beach."],
+
+["Day 2 — Marine Experience",
+"Enjoy a marine excursion around Malindi Marine National Park, followed by time at leisure."],
+
+["Day 3 — Heritage & Departure",
+"Visit selected heritage attractions including the Vasco da Gama Pillar area before departure."]
+],
+
+highlights:[
+"Malindi Marine National Park",
+"Vasco da Gama Pillar",
+"Indian Ocean beaches",
+"Swahili heritage",
+"Marine activities",
+"Coastal relaxation"
+]
+
+},
+
+
+"watamu": {
+
+title:"Watamu, Kisite-Mpunguti & Marine Park",
+days:"4 DAYS • MARINE & COAST",
+price:"From USD 3,500 per person",
+
+image:"watamu-kisite.jpg",
+
+intro:
+"A coastal marine adventure combining Watamu's marine environment with a separate Kisite-Mpunguti experience.",
+
+itinerary:[
+
+["Day 1 — Watamu",
+"Arrive in Watamu and settle into your accommodation. Enjoy the beach and coastal atmosphere."],
+
+["Day 2 — Watamu Marine National Park",
+"Enjoy a marine excursion with opportunities for snorkeling, boating and exploring the coastal ecosystem."],
+
+["Day 3 — Kisite-Mpunguti Adventure",
+"Experience a marine excursion around the Kisite-Mpunguti area, subject to sea and weather conditions."],
+
+["Day 4 — Coast & Departure",
+"Enjoy breakfast and final beach time before departure."]
+],
+
+highlights:[
+"Watamu Marine National Park",
+"Kisite-Mpunguti",
+"Snorkeling",
+"Boat excursions",
+"Indian Ocean",
+"Coastal relaxation"
+]
+
+}
+
+};
+
+
+/* =========================================================
+   OPEN PACKAGE MODAL
+========================================================= */
+
+const packageModal =
+document.getElementById("packageModal");
+
+const modalImage =
+document.getElementById("packageModalImage");
+
+const modalDays =
+document.getElementById("packageModalDays");
+
+const modalTitle =
+document.getElementById("packageModalTitle");
+
+const modalPrice =
+document.getElementById("packageModalPrice");
+
+const modalIntro =
+document.getElementById("packageModalIntro");
+
+const modalItinerary =
+document.getElementById("packageModalItinerary");
+
+const modalHighlights =
+document.getElementById("packageModalHighlights");
+
+const modalBookButton =
+document.getElementById("packageBookButton");
+
+
+function openPackage(packageId) {
+
+const pkg = packages[packageId];
+
+if (!pkg) {
+
+console.error(
+"Package not found:",
+packageId
+);
+
+return;
+
+}
+
+
+/* Fill popup */
+
+modalDays.textContent =
+pkg.days;
+
+modalTitle.textContent =
+pkg.title;
+
+modalPrice.textContent =
+pkg.price;
+
+modalIntro.textContent =
+pkg.intro;
+
+
+/* Set popup image */
+
+modalImage.style.backgroundImage =
+`url("${pkg.image}")`;
+
+
+/* Build itinerary */
+
+modalItinerary.innerHTML = "";
+
+
+pkg.itinerary.forEach(day => {
+
+const dayBox =
+document.createElement("div");
+
+dayBox.className =
+"itinerary-day";
+
+
+const title =
+document.createElement("h4");
+
+title.textContent =
+day[0];
+
+
+const text =
+document.createElement("p");
+
+text.textContent =
+day[1];
+
+
+dayBox.appendChild(title);
+
+dayBox.appendChild(text);
+
+modalItinerary.appendChild(dayBox);
+
+});
+
+
+/* Build highlights */
+
+modalHighlights.innerHTML = "";
+
+
+pkg.highlights.forEach(item => {
+
+const li =
+document.createElement("li");
+
+li.textContent =
+item;
+
+modalHighlights.appendChild(li);
+
+});
+
+
+/* Booking link */
+
+modalBookButton.href =
+"#booking";
+
+
+/* Open modal */
+
+packageModal.classList.add("active");
+
+packageModal.setAttribute(
+"aria-hidden",
+"false"
+);
+
+document.body.classList.add(
+"modal-open"
+);
+
+
+/* Scroll popup to top */
+
+document.querySelector(
+".package-modal-content"
+).scrollTop = 0;
+
+}
+
+
+/* =========================================================
+   VIEW PACKAGE BUTTONS
+========================================================= */
+
+document.querySelectorAll(
+".view-package"
+).forEach(button => {
+
+button.addEventListener(
+"click",
+function(event) {
+
+event.preventDefault();
+
+const card =
+this.closest(".package-card");
+
+const packageId =
+card.dataset.package;
+
+openPackage(packageId);
+
+}
+);
+
+});
+
+
+/* =========================================================
+   CLOSE PACKAGE MODAL
+========================================================= */
+
+function closePackage() {
+
+packageModal.classList.remove(
+"active"
+);
+
+packageModal.setAttribute(
+"aria-hidden",
+"true"
+);
+
+document.body.classList.remove(
+"modal-open"
+);
+
+}
+
+
+document.getElementById(
+"packageClose"
+).addEventListener(
+"click",
+closePackage
+);
+
+
+document.getElementById(
+"packageBackdrop"
+).addEventListener(
+"click",
+closePackage
+);
+
+
+document.addEventListener(
+"keydown",
+event => {
+
+if (
+event.key === "Escape" &&
+packageModal.classList.contains("active")
+) {
+
+closePackage();
+
+}
+
+});
+
+
+/* =========================================================
+   BOOK THIS PACKAGE
+========================================================= */
+
+modalBookButton.addEventListener(
+"click",
+() => {
+
+closePackage();
+
+setTimeout(() => {
+
+document.getElementById(
+"booking"
+).scrollIntoView({
+behavior:"smooth"
+});
+
+},100);
+
+}
+);
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+const form =
+document.getElementById("form");
+
+const status =
+document.getElementById("status");
+
+
+form.addEventListener(
+"submit",
+function(event) {
+
+event.preventDefault();
+
+
+const formData =
+new FormData(form);
+
+const name =
+formData.get("name");
+
+const email =
+formData.get("email");
+
+const phone =
+formData.get("phone");
+
+const dates =
+formData.get("dates");
+
+const destination =
+formData.get("destination");
+
+const message =
+formData.get("message");
+
+
+const whatsappMessage =
+
+`Hello Elah Safaris,
+
+I would like to make a safari enquiry.
+
+Name: ${name}
+Email: ${email}
+Phone/WhatsApp: ${phone}
+Travel dates: ${dates}
+Destination: ${destination}
+
+Trip details:
+${message}`;
+
+
+/* Open WhatsApp */
+
+const whatsappURL =
+"https://wa.me/254710666222?text=" +
+encodeURIComponent(
+whatsappMessage
+);
+
+
+status.textContent =
+"Opening WhatsApp to send your safari enquiry...";
+
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+}
+);
+
+
+/* =========================================================
+   FOOTER YEAR
+========================================================= */
+
+document.getElementById(
+"year"
+).textContent =
+new Date().getFullYear();
+
+
+/* =========================================================
+   STOP VIDEO ON TAB HIDDEN
+========================================================= */
+
+document.addEventListener(
+"visibilitychange",
+() => {
+
+if (document.hidden) {
+
+videos.forEach(
+video => video.pause()
+);
+
+} else {
+
+videos[currentVideo]
+.play()
+.catch(() => {});
+
+}
+
+});
+
 
 </script>
 
