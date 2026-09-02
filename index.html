@@ -2836,10 +2836,14 @@ showVideo(0);
 
 /* =========================================================
    PACKAGE SLIDER
+   Automatically moves ONE package at a time every 5 seconds.
 ========================================================= */
 
 const packageSlider =
 document.getElementById("packageSlider");
+
+const packageCards =
+Array.from(document.querySelectorAll(".package-card"));
 
 const nextButton =
 document.querySelector(".package-arrow.next");
@@ -2847,33 +2851,143 @@ document.querySelector(".package-arrow.next");
 const prevButton =
 document.querySelector(".package-arrow.prev");
 
+let currentPackage = 0;
+let packageAutoTimer = null;
 
-nextButton.addEventListener("click", function() {
 
-    packageSlider.scrollBy({
+function getPackageStep() {
+
+    if (!packageCards.length) return 0;
+
+    const card = packageCards[0];
+
+    const styles =
+    window.getComputedStyle(packageSlider);
+
+    const gap =
+    parseFloat(styles.columnGap) ||
+    parseFloat(styles.gap) ||
+    0;
+
+    return card.getBoundingClientRect().width + gap;
+}
+
+
+function showPackage(index) {
+
+    if (!packageCards.length) return;
+
+    currentPackage =
+    (index + packageCards.length) %
+    packageCards.length;
+
+    packageSlider.scrollTo({
 
         left:
-        packageSlider.clientWidth * .85,
+        currentPackage * getPackageStep(),
 
         behavior: "smooth"
+
+    });
+}
+
+
+function nextPackage() {
+
+    showPackage(currentPackage + 1);
+
+}
+
+
+function previousPackage() {
+
+    showPackage(currentPackage - 1);
+
+}
+
+
+function startPackageAutoSlide() {
+
+    clearInterval(packageAutoTimer);
+
+    packageAutoTimer =
+    setInterval(function() {
+
+        nextPackage();
+
+    }, 5000);
+
+}
+
+
+if (nextButton) {
+
+    nextButton.addEventListener("click", function() {
+
+        nextPackage();
+        startPackageAutoSlide();
+
+    });
+
+}
+
+
+if (prevButton) {
+
+    prevButton.addEventListener("click", function() {
+
+        previousPackage();
+        startPackageAutoSlide();
+
+    });
+
+}
+
+
+packageSlider.addEventListener("mouseenter", function() {
+
+    clearInterval(packageAutoTimer);
+
+});
+
+
+packageSlider.addEventListener("mouseleave", function() {
+
+    startPackageAutoSlide();
+
+});
+
+
+packageSlider.addEventListener("touchstart", function() {
+
+    clearInterval(packageAutoTimer);
+
+}, { passive: true });
+
+
+packageSlider.addEventListener("touchend", function() {
+
+    startPackageAutoSlide();
+
+}, { passive: true });
+
+
+window.addEventListener("resize", function() {
+
+    packageSlider.scrollTo({
+
+        left:
+        currentPackage * getPackageStep(),
+
+        behavior: "auto"
 
     });
 
 });
 
 
-prevButton.addEventListener("click", function() {
-
-    packageSlider.scrollBy({
-
-        left:
-        -packageSlider.clientWidth * .85,
-
-        behavior: "smooth"
-
-    });
-
-});
+showPackage(0);
+startPackageAutoSlide();
 
 
 /* =========================================================
@@ -2899,17 +3013,17 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Maasai Mara",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi in the morning and travel through the Great Rift Valley.</span><span><strong>☀️ Afternoon:</strong> Stop at a scenic viewpoint before continuing through Narok towards the Maasai Mara. Arrive for lunch, check in and enjoy an afternoon game drive through the reserve.</span><span><strong>🌙 Evening:</strong> Look for elephants, buffaloes, giraffes, zebras, antelopes and predators before returning to camp for dinner and overnight.</span>"
+"Depart Nairobi in the morning and travel through the Great Rift Valley. Stop at a scenic viewpoint before continuing through Narok towards the Maasai Mara. Arrive for lunch, check in and enjoy an afternoon game drive through the reserve. Look for elephants, buffaloes, giraffes, zebras, antelopes and predators before returning to camp for dinner and overnight."
 ],
 
 [
 "Day 2 — Full-Day Maasai Mara Safari",
-"<span><strong>🌅 Morning:</strong> Begin with an early morning game drive when wildlife is particularly active. Return for breakfast before continuing with a full-day exploration of the reserve.</span><span><strong>☀️ Afternoon:</strong> Search for lions, leopards, cheetahs, elephants, buffaloes, giraffes and other wildlife.</span><span><strong>🌙 Evening:</strong> Enjoy a picnic lunch in the reserve before an afternoon game drive and return to your accommodation in the evening.</span>"
+"Begin with an early morning game drive when wildlife is particularly active. Return for breakfast before continuing with a full-day exploration of the reserve. Search for lions, leopards, cheetahs, elephants, buffaloes, giraffes and other wildlife. Enjoy a picnic lunch in the reserve before an afternoon game drive and return to your accommodation in the evening."
 ],
 
 [
 "Day 3 — Sunrise Safari, Maasai Village & Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy a final early morning game drive across the Mara plains followed by breakfast.</span><span><strong>☀️ Afternoon:</strong> Visit a Maasai community for an introduction to traditional homes, crafts, cultural practices and daily life.</span><span><strong>🌙 Evening:</strong> After the visit, begin the journey back to Nairobi with lunch en route and arrive in the afternoon or evening.</span>"
+"Enjoy a final early morning game drive across the Mara plains followed by breakfast. Visit a Maasai community for an introduction to traditional homes, crafts, cultural practices and daily life. After the visit, begin the journey back to Nairobi with lunch en route and arrive in the afternoon or evening."
 ]
 
 ],
@@ -2944,17 +3058,17 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Amboseli",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi and travel south through the Kenyan countryside towards Amboseli.</span><span><strong>☀️ Afternoon:</strong> After arrival and lunch, enter the park for an afternoon game drive. Explore the plains and wetland areas while looking for elephants, zebras, wildebeest, giraffes, buffaloes and other wildlife.</span><span><strong>🌙 Evening:</strong> Return to your lodge or camp for dinner and overnight.</span>"
+"Depart Nairobi and travel south through the Kenyan countryside towards Amboseli. After arrival and lunch, enter the park for an afternoon game drive. Explore the plains and wetland areas while looking for elephants, zebras, wildebeest, giraffes, buffaloes and other wildlife. Return to your lodge or camp for dinner and overnight."
 ],
 
 [
 "Day 2 — Full-Day Amboseli National Park",
-"<span><strong>🌅 Morning:</strong> Start with an early morning game drive with opportunities for wildlife viewing and, when conditions allow, spectacular views of Mount Kilimanjaro. Return for breakfast before continuing the safari.</span><span><strong>☀️ Afternoon:</strong> Visit Observation Hill for panoramic views of the park and its surrounding landscape, followed by more game viewing around the swamps and open plains.</span><span><strong>🌙 Evening:</strong> Return for dinner and overnight.</span>"
+"Start with an early morning game drive with opportunities for wildlife viewing and, when conditions allow, spectacular views of Mount Kilimanjaro. Return for breakfast before continuing the safari. Visit Observation Hill for panoramic views of the park and its surrounding landscape, followed by more game viewing around the swamps and open plains. Return for dinner and overnight."
 ],
 
 [
 "Day 3 — Final Game Drive & Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive before breakfast, taking advantage of the cooler hours for wildlife viewing and photography.</span><span><strong>☀️ Afternoon:</strong> Check out and begin the journey back to Nairobi with lunch along the way.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy an early morning game drive before breakfast, taking advantage of the cooler hours for wildlife viewing and photography. Check out and begin the journey back to Nairobi with lunch along the way."
 ]
 
 ],
@@ -2988,17 +3102,17 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Tsavo East",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi and travel towards Tsavo East National Park.</span><span><strong>☀️ Afternoon:</strong> Enter the park and continue to your lodge or camp for lunch. Enjoy an afternoon game drive through the park, exploring open plains and wildlife areas while searching for elephants, lions, giraffes, zebras, buffaloes and other species.</span><span><strong>🌙 Evening:</strong> Dinner and overnight at your accommodation.</span>"
+"Depart Nairobi and travel towards Tsavo East National Park. Enter the park and continue to your lodge or camp for lunch. Enjoy an afternoon game drive through the park, exploring open plains and wildlife areas while searching for elephants, lions, giraffes, zebras, buffaloes and other species. Dinner and overnight at your accommodation."
 ],
 
 [
 "Day 2 — Full-Day Tsavo East",
-"<span><strong>🌅 Morning:</strong> Enjoy a full-day safari exploring different areas of Tsavo East.</span><span><strong>☀️ Afternoon:</strong> Visit the area around Aruba Dam, an important water source for wildlife, and explore routes towards the Galana River. Enjoy a picnic lunch or lodge lunch before continuing your game drive in search of elephants, predators, giraffes, zebras and other wildlife.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a full-day safari exploring different areas of Tsavo East. Visit the area around Aruba Dam, an important water source for wildlife, and explore routes towards the Galana River. Enjoy a picnic lunch or lodge lunch before continuing your game drive in search of elephants, predators, giraffes, zebras and other wildlife."
 ],
 
 [
 "Day 3 — Morning Game Drive & Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive for a final opportunity to see wildlife before breakfast.</span><span><strong>☀️ Afternoon:</strong> Check out and begin your journey to Nairobi, with lunch en route and arrival later in the day.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy an early morning game drive for a final opportunity to see wildlife before breakfast. Check out and begin your journey to Nairobi, with lunch en route and arrival later in the day."
 ]
 
 ],
@@ -3033,17 +3147,17 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Tsavo West",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi and travel south towards Tsavo West National Park.</span><span><strong>☀️ Afternoon:</strong> Enter the park and proceed to your lodge or camp for lunch. Enjoy an afternoon game drive through volcanic landscapes, lava fields and open plains while looking for elephants, buffaloes, giraffes, zebras and predators.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Depart Nairobi and travel south towards Tsavo West National Park. Enter the park and proceed to your lodge or camp for lunch. Enjoy an afternoon game drive through volcanic landscapes, lava fields and open plains while looking for elephants, buffaloes, giraffes, zebras and predators."
 ],
 
 [
 "Day 2 — Mzima Springs & Tsavo West",
-"<span><strong>🌅 Morning:</strong> After breakfast, explore Tsavo West on a morning game drive before visiting Mzima Springs, a natural oasis fed by underground water from the surrounding volcanic region.</span><span><strong>☀️ Afternoon:</strong> Continue exploring the park and, where suitable, visit areas such as the Shetani Lava Flow.</span><span><strong>🌙 Evening:</strong> Enjoy an afternoon game drive before returning for dinner and overnight.</span>"
+"After breakfast, explore Tsavo West on a morning game drive before visiting Mzima Springs, a natural oasis fed by underground water from the surrounding volcanic region. Continue exploring the park and, where suitable, visit areas such as the Shetani Lava Flow. Enjoy an afternoon game drive before returning for dinner and overnight."
 ],
 
 [
 "Day 3 — Morning Game Drive & Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive before breakfast and check-out.</span><span><strong>☀️ Afternoon:</strong> Begin your journey back to Nairobi with lunch en route.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy an early morning game drive before breakfast and check-out. Begin your journey back to Nairobi with lunch en route."
 ]
 
 ],
@@ -3077,27 +3191,27 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Tsavo East",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi and travel to Tsavo East National Park.</span><span><strong>☀️ Afternoon:</strong> After lunch, enter the park for an afternoon game drive exploring the savannah and wildlife-rich areas.</span><span><strong>🌙 Evening:</strong> Dinner and overnight in the Tsavo East area.</span>"
+"Depart Nairobi and travel to Tsavo East National Park. After lunch, enter the park for an afternoon game drive exploring the savannah and wildlife-rich areas. Dinner and overnight in the Tsavo East area."
 ],
 
 [
 "Day 2 — Full-Day Tsavo East",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive followed by breakfast.</span><span><strong>☀️ Afternoon:</strong> Continue exploring Tsavo East around Aruba Dam and the Galana River, with opportunities to see elephants, lions, giraffes, zebras, buffaloes and other wildlife. Continue with an afternoon game drive before returning to camp.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy an early morning game drive followed by breakfast. Continue exploring Tsavo East around Aruba Dam and the Galana River, with opportunities to see elephants, lions, giraffes, zebras, buffaloes and other wildlife. Continue with an afternoon game drive before returning to camp."
 ],
 
 [
 "Day 3 — Tsavo East to Tsavo West",
-"<span><strong>🌅 Morning:</strong> Enjoy a morning game drive before breakfast and check-out.</span><span><strong>☀️ Afternoon:</strong> Travel across the Tsavo ecosystem towards Tsavo West. Arrive for lunch followed by an afternoon game drive through volcanic landscapes.</span><span><strong>🌙 Evening:</strong> Dinner and overnight in Tsavo West.</span>"
+"Enjoy a morning game drive before breakfast and check-out. Travel across the Tsavo ecosystem towards Tsavo West. Arrive for lunch followed by an afternoon game drive through volcanic landscapes. Dinner and overnight in Tsavo West."
 ],
 
 [
 "Day 4 — Full-Day Tsavo West",
-"<span><strong>🌅 Morning:</strong> Explore Tsavo West with morning and afternoon game drives.</span><span><strong>☀️ Afternoon:</strong> Visit Mzima Springs and explore the park's volcanic scenery, including suitable viewpoints and lava landscapes.</span><span><strong>🌙 Evening:</strong> Return to your lodge or camp for dinner and overnight.</span>"
+"Explore Tsavo West with morning and afternoon game drives. Visit Mzima Springs and explore the park's volcanic scenery, including suitable viewpoints and lava landscapes. Return to your lodge or camp for dinner and overnight."
 ],
 
 [
 "Day 5 — Final Safari & Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive before breakfast.</span><span><strong>☀️ Afternoon:</strong> Check out and begin the return journey to Nairobi with lunch en route.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy an early morning game drive before breakfast. Check out and begin the return journey to Nairobi with lunch en route."
 ]
 
 ],
@@ -3133,27 +3247,27 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Ol Pejeta",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi and travel through Kenya's central highlands towards Nanyuki and Ol Pejeta Conservancy.</span><span><strong>☀️ Afternoon:</strong> After lunch, enjoy an afternoon game drive with opportunities to see rhinos, elephants, buffaloes, lions, zebras and other wildlife.</span><span><strong>🌙 Evening:</strong> Dinner and overnight in the Ol Pejeta area.</span>"
+"Depart Nairobi and travel through Kenya's central highlands towards Nanyuki and Ol Pejeta Conservancy. After lunch, enjoy an afternoon game drive with opportunities to see rhinos, elephants, buffaloes, lions, zebras and other wildlife. Dinner and overnight in the Ol Pejeta area."
 ],
 
 [
 "Day 2 — Full-Day Ol Pejeta Conservation Safari",
-"<span><strong>🌅 Morning:</strong> Enjoy a full day exploring Ol Pejeta Conservancy.</span><span><strong>☀️ Afternoon:</strong> Take part in wildlife viewing and conservation-focused experiences, with opportunities to learn about rhino conservation and the protection of endangered species.</span><span><strong>🌙 Evening:</strong> Continue with game drives across the conservancy before returning for dinner and overnight.</span>"
+"Enjoy a full day exploring Ol Pejeta Conservancy. Take part in wildlife viewing and conservation-focused experiences, with opportunities to learn about rhino conservation and the protection of endangered species. Continue with game drives across the conservancy before returning for dinner and overnight."
 ],
 
 [
 "Day 3 — Ol Pejeta to Samburu",
-"<span><strong>🌅 Morning:</strong> Enjoy a morning experience before departing north towards Samburu National Reserve.</span><span><strong>☀️ Afternoon:</strong> Travel through the dramatic landscapes of northern Kenya and arrive for lunch. Enjoy an afternoon game drive along the Ewaso Ng'iro River and surrounding wildlife areas.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a morning experience before departing north towards Samburu National Reserve. Travel through the dramatic landscapes of northern Kenya and arrive for lunch. Enjoy an afternoon game drive along the Ewaso Ng'iro River and surrounding wildlife areas."
 ],
 
 [
 "Day 4 — Full-Day Samburu National Reserve",
-"<span><strong>🌅 Morning:</strong> Spend the day exploring Samburu National Reserve.</span><span><strong>☀️ Afternoon:</strong> Search for elephants, lions, leopards, giraffes and northern species such as Grevy's zebra, reticulated giraffe, Beisa oryx and gerenuk. Enjoy a picnic or lodge lunch followed by an afternoon game drive.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Spend the day exploring Samburu National Reserve. Search for elephants, lions, leopards, giraffes and northern species such as Grevy's zebra, reticulated giraffe, Beisa oryx and gerenuk. Enjoy a picnic or lodge lunch followed by an afternoon game drive."
 ],
 
 [
 "Day 5 — Samburu to Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy a final early morning game drive followed by breakfast.</span><span><strong>☀️ Afternoon:</strong> Check out and begin the return journey to Nairobi, with lunch en route.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a final early morning game drive followed by breakfast. Check out and begin the return journey to Nairobi, with lunch en route."
 ]
 
 ],
@@ -3189,32 +3303,32 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Samburu",
-"<span><strong>🌅 Morning:</strong> Travel north from Nairobi towards Samburu National Reserve.</span><span><strong>☀️ Afternoon:</strong> Arrive for lunch and enjoy an afternoon game drive through the reserve.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Travel north from Nairobi towards Samburu National Reserve. Arrive for lunch and enjoy an afternoon game drive through the reserve."
 ],
 
 [
 "Day 2 — Full-Day Samburu",
-"<span><strong>🌅 Morning:</strong> Enjoy a full day exploring Samburu National Reserve.</span><span><strong>☀️ Afternoon:</strong> Search for northern species and other wildlife while exploring the Ewaso Ng'iro River area. An optional cultural visit to a Samburu community can be arranged.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a full day exploring Samburu National Reserve. Search for northern species and other wildlife while exploring the Ewaso Ng'iro River area. An optional cultural visit to a Samburu community can be arranged."
 ],
 
 [
 "Day 3 — Samburu to Marsabit Region",
-"<span><strong>🌅 Morning:</strong> Depart Samburu and continue north through increasingly arid landscapes.</span><span><strong>☀️ Afternoon:</strong> Stop at suitable viewpoints and communities along the way before arriving in the Marsabit region.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Depart Samburu and continue north through increasingly arid landscapes. Stop at suitable viewpoints and communities along the way before arriving in the Marsabit region."
 ],
 
 [
 "Day 4 — Marsabit Exploration",
-"<span><strong>🌅 Morning:</strong> Explore the unique Marsabit landscape, including the forested highlands and surrounding arid country.</span><span><strong>☀️ Afternoon:</strong> Enjoy wildlife viewing and scenic exploration before returning to your accommodation.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Explore the unique Marsabit landscape, including the forested highlands and surrounding arid country. Enjoy wildlife viewing and scenic exploration before returning to your accommodation."
 ],
 
 [
 "Day 5 — Marsabit to Chalbi Region",
-"<span><strong>🌅 Morning:</strong> Continue towards the Chalbi Desert region.</span><span><strong>☀️ Afternoon:</strong> Experience the dramatic transition into one of Kenya's most distinctive desert landscapes and visit local communities where appropriate.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Continue towards the Chalbi Desert region. Experience the dramatic transition into one of Kenya's most distinctive desert landscapes and visit local communities where appropriate."
 ],
 
 [
 "Day 6 — Northern Kenya Return Journey",
-"<span><strong>🌅 Morning:</strong> Enjoy a final northern Kenya experience before beginning the return journey.</span><span><strong>☀️ Afternoon:</strong> Travel south through the changing landscapes of northern Kenya towards your onward destination.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a final northern Kenya experience before beginning the return journey. Travel south through the changing landscapes of northern Kenya towards your onward destination."
 ]
 
 ],
@@ -3249,22 +3363,22 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Diani",
-"<span><strong>🌅 Morning:</strong> Take a scheduled flight from Nairobi to the Kenyan coast and transfer to your Diani accommodation.</span><span><strong>☀️ Afternoon:</strong> Check in, have lunch and spend the afternoon relaxing on the beach or enjoying the resort facilities.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Take a scheduled flight from Nairobi to the Kenyan coast and transfer to your Diani accommodation. Check in, have lunch and spend the afternoon relaxing on the beach or enjoying the resort facilities."
 ],
 
 [
 "Day 2 — Diani Beach Experience",
-"<span><strong>🌅 Morning:</strong> Enjoy a full coastal day at Diani Beach.</span><span><strong>☀️ Afternoon:</strong> Relax beside the Indian Ocean or choose optional activities such as kayaking, paddleboarding, boat excursions or other available water sports.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a full coastal day at Diani Beach. Relax beside the Indian Ocean or choose optional activities such as kayaking, paddleboarding, boat excursions or other available water sports."
 ],
 
 [
 "Day 3 — Marine Excursion",
-"<span><strong>🌅 Morning:</strong> Enjoy an optional marine excursion depending on your selected experience.</span><span><strong>☀️ Afternoon:</strong> Activities may include snorkeling, boat exploration or an excursion towards Wasini Island.</span><span><strong>🌙 Evening:</strong> Return to Diani for an evening by the ocean.</span>"
+"Enjoy an optional marine excursion depending on your selected experience. Activities may include snorkeling, boat exploration or an excursion towards Wasini Island. Return to Diani for an evening by the ocean."
 ],
 
 [
 "Day 4 — Diani & Departure",
-"<span><strong>🌅 Morning:</strong> Enjoy a relaxed breakfast and final beach time before transferring to the airport for your return flight.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a relaxed breakfast and final beach time before transferring to the airport for your return flight."
 ]
 
 ],
@@ -3298,17 +3412,17 @@ itinerary: [
 
 [
 "Day 1 — Mombasa Old Town & Fort Jesus",
-"<span><strong>🌅 Morning:</strong> Begin your Mombasa experience with a guided exploration of historic Old Town.</span><span><strong>☀️ Afternoon:</strong> Walk through its narrow streets and admire Swahili architecture before visiting Fort Jesus and learning about the city's maritime history.</span><span><strong>🌙 Evening:</strong> Enjoy a coastal dinner and overnight.</span>"
+"Begin your Mombasa experience with a guided exploration of historic Old Town. Walk through its narrow streets and admire Swahili architecture before visiting Fort Jesus and learning about the city's maritime history. Enjoy a coastal dinner and overnight."
 ],
 
 [
 "Day 2 — Swahili Culture & Coastal Life",
-"<span><strong>🌅 Morning:</strong> Enjoy a cultural day exploring local markets, Swahili traditions, coastal cuisine and selected attractions.</span><span><strong>☀️ Afternoon:</strong> Experience the atmosphere of Mombasa's historic trading areas before relaxing by the Indian Ocean.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a cultural day exploring local markets, Swahili traditions, coastal cuisine and selected attractions. Experience the atmosphere of Mombasa's historic trading areas before relaxing by the Indian Ocean."
 ],
 
 [
 "Day 3 — Beach & Departure",
-"<span><strong>🌅 Morning:</strong> Enjoy breakfast and relaxed beach time before your departure or onward transfer.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy breakfast and relaxed beach time before your departure or onward transfer."
 ]
 
 ],
@@ -3342,17 +3456,17 @@ itinerary: [
 
 [
 "Day 1 — Nairobi → Great Rift Valley → Lake Nakuru",
-"<span><strong>🌅 Morning:</strong> Depart Nairobi in the morning and travel towards the Great Rift Valley.</span><span><strong>☀️ Afternoon:</strong> Stop at a scenic viewpoint for panoramic views and photography before continuing towards Nakuru. Arrive at your lodge or camp for check-in and lunch. In the afternoon, enter Lake Nakuru National Park for a game drive. Explore the park's woodland, grassland and lakeshore habitats while looking for white and black rhinos, lions, buffaloes, giraffes, zebras, baboons and other wildlife.</span><span><strong>🌙 Evening:</strong> Return to your accommodation for dinner and overnight.</span>"
+"Depart Nairobi in the morning and travel towards the Great Rift Valley. Stop at a scenic viewpoint for panoramic views and photography before continuing towards Nakuru. Arrive at your lodge or camp for check-in and lunch. In the afternoon, enter Lake Nakuru National Park for a game drive. Explore the park's woodland, grassland and lakeshore habitats while looking for white and black rhinos, lions, buffaloes, giraffes, zebras, baboons and other wildlife. Return to your accommodation for dinner and overnight."
 ],
 
 [
 "Day 2 — Full-Day Lake Nakuru Safari → Lake Naivasha",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive when wildlife is active and the light is ideal for photography. Return to the lodge for breakfast and check-out.</span><span><strong>☀️ Afternoon:</strong> Continue exploring Lake Nakuru National Park, searching for rhinos, giraffes, buffaloes, zebras, lions and the park's diverse birdlife. Travel towards Lake Naivasha and enjoy lunch in the Naivasha area. In the afternoon, take an optional boat excursion on Lake Naivasha for opportunities to see hippos and water birds.</span><span><strong>🌙 Evening:</strong> Continue to the Hell's Gate area for dinner and overnight.</span>"
+"Enjoy an early morning game drive when wildlife is active and the light is ideal for photography. Continue exploring Lake Nakuru National Park, searching for rhinos, giraffes, buffaloes, zebras, lions and the park's diverse birdlife. Return to the lodge for breakfast and check-out. Travel towards Lake Naivasha and enjoy lunch in the Naivasha area. In the afternoon, take an optional boat excursion on Lake Naivasha for opportunities to see hippos and water birds. Continue to the Hell's Gate area for dinner and overnight."
 ],
 
 [
 "Day 3 — Hell's Gate National Park Adventure → Nairobi",
-"<span><strong>🌅 Morning:</strong> After breakfast, enter Hell's Gate National Park and explore its dramatic volcanic landscape.</span><span><strong>☀️ Afternoon:</strong> Enjoy a guided walking or cycling experience where available and permitted. Explore the spectacular cliffs, rock formations and gorge area while looking for wildlife such as zebras, giraffes, buffaloes, elands and baboons. Learn about the area's volcanic and geothermal features before departing for lunch in the Naivasha area.</span><span><strong>🌙 Evening:</strong> Begin the return journey to Nairobi and arrive in the afternoon or evening.</span>"
+"After breakfast, enter Hell's Gate National Park and explore its dramatic volcanic landscape. Enjoy a guided walking or cycling experience where available and permitted. Explore the spectacular cliffs, rock formations and gorge area while looking for wildlife such as zebras, giraffes, buffaloes, elands and baboons. Learn about the area's volcanic and geothermal features before departing for lunch in the Naivasha area. Begin the return journey to Nairobi and arrive in the afternoon or evening."
 ]
 
 ],
@@ -3392,27 +3506,27 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Lake Naivasha",
-"<span><strong>🌅 Morning:</strong> Travel from Nairobi to Lake Naivasha.</span><span><strong>☀️ Afternoon:</strong> After arrival, enjoy lunch followed by an optional boat excursion on the lake to view hippos and water birds.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Travel from Nairobi to Lake Naivasha. After arrival, enjoy lunch followed by an optional boat excursion on the lake to view hippos and water birds."
 ],
 
 [
 "Day 2 — Naivasha to Aberdare",
-"<span><strong>🌅 Morning:</strong> Enjoy breakfast before travelling towards the Aberdare region.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Explore the scenic central highlands and surrounding countryside before dinner and overnight.</span>"
+"Enjoy breakfast before travelling towards the Aberdare region. Explore the scenic central highlands and surrounding countryside before dinner and overnight."
 ],
 
 [
 "Day 3 — Aberdare to Ol Pejeta",
-"<span><strong>🌅 Morning:</strong> Continue towards Nanyuki and Ol Pejeta Conservancy.</span><span><strong>☀️ Afternoon:</strong> Arrive for lunch followed by an afternoon game drive.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Continue towards Nanyuki and Ol Pejeta Conservancy. Arrive for lunch followed by an afternoon game drive."
 ],
 
 [
 "Day 4 — Full-Day Ol Pejeta",
-"<span><strong>🌅 Morning:</strong> Spend a full day exploring Ol Pejeta Conservancy with game drives and conservation experiences.</span><span><strong>☀️ Afternoon:</strong> Look for rhinos, elephants, buffaloes, lions and other wildlife.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Spend a full day exploring Ol Pejeta Conservancy with game drives and conservation experiences. Look for rhinos, elephants, buffaloes, lions and other wildlife."
 ],
 
 [
 "Day 5 — Ol Pejeta to Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy a final morning experience before checking out and returning to Nairobi.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a final morning experience before checking out and returning to Nairobi."
 ]
 
 ],
@@ -3446,17 +3560,17 @@ itinerary: [
 
 [
 "Day 1 — Nairobi National Park",
-"<span><strong>🌅 Morning:</strong> Enjoy a game drive in Nairobi National Park, one of the world's few wildlife parks located beside a capital city.</span><span><strong>☀️ Afternoon:</strong> Explore the park's plains and wetlands while looking for lions, rhinos, giraffes, zebras, buffaloes and other wildlife.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a game drive in Nairobi National Park, one of the world's few wildlife parks located beside a capital city. Explore the park's plains and wetlands while looking for lions, rhinos, giraffes, zebras, buffaloes and other wildlife."
 ],
 
 [
 "Day 2 — Giraffe Centre & Karen",
-"<span><strong>🌅 Morning:</strong> Visit the Giraffe Centre and learn about conservation efforts involving the Rothschild's giraffe.</span><span><strong>☀️ Afternoon:</strong> Continue into Karen and explore selected heritage and cultural attractions before enjoying lunch and an afternoon at leisure.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Visit the Giraffe Centre and learn about conservation efforts involving the Rothschild's giraffe. Continue into Karen and explore selected heritage and cultural attractions before enjoying lunch and an afternoon at leisure."
 ],
 
 [
 "Day 3 — Culture & Departure",
-"<span><strong>🌅 Morning:</strong> Explore selected cultural attractions or local experiences according to your interests.</span><span><strong>☀️ Afternoon:</strong> Enjoy lunch before transferring to the airport or continuing with your onward journey.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Explore selected cultural attractions or local experiences according to your interests. Enjoy lunch before transferring to the airport or continuing with your onward journey."
 ]
 
 ],
@@ -3490,12 +3604,12 @@ itinerary: [
 
 [
 "Day 1 — Nairobi National Park",
-"<span><strong>🌅 Morning:</strong> Enjoy an afternoon game drive inside Nairobi National Park.</span><span><strong>☀️ Afternoon:</strong> Explore the park's open plains and wetland areas while looking for lions, black rhinos, giraffes, zebras, buffaloes and other wildlife.</span><span><strong>🌙 Evening:</strong> Return to your accommodation in the evening.</span>"
+"Enjoy an afternoon game drive inside Nairobi National Park. Explore the park's open plains and wetland areas while looking for lions, black rhinos, giraffes, zebras, buffaloes and other wildlife. Return to your accommodation in the evening."
 ],
 
 [
 "Day 2 — Morning Safari",
-"<span><strong>🌅 Morning:</strong> Enjoy an early morning game drive before breakfast when wildlife is often active.</span><span><strong>☀️ Afternoon:</strong> Continue your safari before returning to Nairobi for your onward journey.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy an early morning game drive before breakfast when wildlife is often active. Continue your safari before returning to Nairobi for your onward journey."
 ]
 
 ],
@@ -3530,22 +3644,22 @@ itinerary: [
 
 [
 "Day 1 — Nairobi to Lake Nakuru",
-"<span><strong>🌅 Morning:</strong> Travel from Nairobi through the Great Rift Valley towards Lake Nakuru.</span><span><strong>☀️ Afternoon:</strong> Enjoy lunch before an afternoon game drive in Lake Nakuru National Park and surrounding wildlife areas.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Travel from Nairobi through the Great Rift Valley towards Lake Nakuru. Enjoy lunch before an afternoon game drive in Lake Nakuru National Park and surrounding wildlife areas."
 ],
 
 [
 "Day 2 — Lake Nakuru to Lake Naivasha",
-"<span><strong>🌅 Morning:</strong> Enjoy a morning game drive before breakfast and check-out.</span><span><strong>☀️ Afternoon:</strong> Continue to Lake Naivasha for lunch and an optional lakeside or boat experience.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a morning game drive before breakfast and check-out. Continue to Lake Naivasha for lunch and an optional lakeside or boat experience."
 ],
 
 [
 "Day 3 — Western Kenya",
-"<span><strong>🌅 Morning:</strong> Continue west through scenic countryside.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Experience local communities, cultural traditions and the landscapes of western Kenya before dinner and overnight.</span>"
+"Continue west through scenic countryside. Experience local communities, cultural traditions and the landscapes of western Kenya before dinner and overnight."
 ],
 
 [
 "Day 4 — Western Kenya to Nairobi",
-"<span><strong>🌅 Morning:</strong> Enjoy a final local experience or scenic stop before beginning the return journey to Nairobi.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a final local experience or scenic stop before beginning the return journey to Nairobi."
 ]
 
 ],
@@ -3579,17 +3693,17 @@ itinerary: [
 
 [
 "Day 1 — Arrival in Malindi",
-"<span><strong>🌅 Morning:</strong> Arrive in Malindi and transfer to your coastal accommodation.</span><span><strong>☀️ Afternoon:</strong> Enjoy lunch followed by a relaxed afternoon exploring the beach and coastal surroundings.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Arrive in Malindi and transfer to your coastal accommodation. Enjoy lunch followed by a relaxed afternoon exploring the beach and coastal surroundings."
 ],
 
 [
 "Day 2 — Marine & Historic Malindi",
-"<span><strong>🌅 Morning:</strong> Enjoy a marine experience in the Malindi area followed by a visit to selected historic attractions, including the Vasco da Gama Pillar.</span><span><strong>☀️ Afternoon:</strong> Continue exploring the town and its Swahili coastal heritage.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a marine experience in the Malindi area followed by a visit to selected historic attractions, including the Vasco da Gama Pillar. Continue exploring the town and its Swahili coastal heritage."
 ],
 
 [
 "Day 3 — Beach & Departure",
-"<span><strong>🌅 Morning:</strong> Enjoy breakfast and a relaxed morning on the coast before your departure or onward transfer.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy breakfast and a relaxed morning on the coast before your departure or onward transfer."
 ]
 
 ],
@@ -3623,22 +3737,22 @@ itinerary: [
 
 [
 "Day 1 — Arrival in Watamu",
-"<span><strong>🌅 Morning:</strong> Arrive in Watamu and transfer to your coastal accommodation.</span><span><strong>☀️ Afternoon:</strong> Check in and enjoy lunch before spending a relaxed afternoon by the Indian Ocean.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Arrive in Watamu and transfer to your coastal accommodation. Check in and enjoy lunch before spending a relaxed afternoon by the Indian Ocean."
 ],
 
 [
 "Day 2 — Watamu Marine Experience",
-"<span><strong>🌅 Morning:</strong> Enjoy a marine excursion in the Watamu area.</span><span><strong>☀️ Afternoon:</strong> Depending on conditions and the selected activity, enjoy snorkeling, boat exploration and time around the marine environment before returning to your accommodation.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a marine excursion in the Watamu area. Depending on conditions and the selected activity, enjoy snorkeling, boat exploration and time around the marine environment before returning to your accommodation."
 ],
 
 [
 "Day 3 — Kisite-Mpunguti Marine Adventure",
-"<span><strong>🌅 Morning:</strong> Enjoy a separate marine excursion around Kisite-Mpunguti.</span><span><strong>☀️ Afternoon:</strong> Spend time on the water with opportunities for snorkeling and marine wildlife viewing before returning to the coast.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy a separate marine excursion around Kisite-Mpunguti. Spend time on the water with opportunities for snorkeling and marine wildlife viewing before returning to the coast."
 ],
 
 [
 "Day 4 — Beach & Departure",
-"<span><strong>🌅 Morning:</strong> Enjoy breakfast and final beach time before your departure or onward transfer.</span><span><strong>☀️ Afternoon:</strong> Continue with the planned activities and enjoy lunch before the afternoon programme.</span><span><strong>🌙 Evening:</strong> Return to your accommodation, relax, enjoy dinner and overnight.</span>"
+"Enjoy breakfast and final beach time before your departure or onward transfer."
 ]
 
 ],
@@ -3739,7 +3853,7 @@ function openPackage(packageId) {
         const paragraph =
             document.createElement("p");
 
-        paragraph.innerHTML =
+        paragraph.textContent =
             day[1];
 
         dayElement.appendChild(heading);
