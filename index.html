@@ -3039,18 +3039,7 @@ Nairobi, Kenya
 
 <form
 id="form"
-action="https://formsubmit.co/elah.safaris@gmail.com"
-method="POST">
-
-<input
-type="hidden"
-name="_subject"
-value="New Safari Enquiry - Elah Safaris">
-
-<input
-type="hidden"
-name="_captcha"
-value="false">
+onsubmit="sendInquiryToWhatsApp(event)">
 
 <div class="row">
 
@@ -4503,7 +4492,7 @@ const internationalPackages = {
     "dubai": {
         days: "5 DAYS / 4 NIGHTS • CITY & LUXURY",
         title: "🇦🇪 Dubai",
-        price: "From USD 1,650 / person",
+        price: "From USD 3,650 / person",
         intro: "A stylish Dubai escape combining iconic landmarks, desert adventure, shopping and Arabian hospitality.",
         image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4518,7 +4507,7 @@ const internationalPackages = {
     "south-africa": {
         days: "7 DAYS / 6 NIGHTS • WILDLIFE & CITY",
         title: "🇿🇦 South Africa",
-        price: "From USD 2,450 / person",
+        price: "From USD 4,450 / person",
         intro: "A balanced South African journey combining Cape Town's scenery and culture with a memorable safari experience.",
         image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4535,7 +4524,7 @@ const internationalPackages = {
     "zanzibar": {
         days: "5 DAYS / 4 NIGHTS • BEACH & CULTURE",
         title: "🇹🇿 Zanzibar",
-        price: "From USD 1,350 / person",
+        price: "From USD 3,350 / person",
         intro: "A tropical Zanzibar holiday blending beach relaxation, Stone Town heritage, spice culture and Indian Ocean experiences.",
         image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4550,7 +4539,7 @@ const internationalPackages = {
     "seychelles": {
         days: "6 DAYS / 5 NIGHTS • ISLAND ESCAPE",
         title: "🇸🇨 Seychelles",
-        price: "From USD 2,650 / person",
+        price: "From USD 4,650 / person",
         intro: "An elegant island escape focused on pristine beaches, tropical scenery, marine experiences and relaxed Seychelles hospitality.",
         image: "https://images.unsplash.com/photo-1589979481223-deb893043163?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4566,7 +4555,7 @@ const internationalPackages = {
     "mauritius": {
         days: "7 DAYS / 6 NIGHTS • BEACH & LEISURE",
         title: "🇲🇺 Mauritius",
-        price: "From USD 2,750 / person",
+        price: "From USD 4,750 / person",
         intro: "Discover Mauritius through its lagoons, beaches, volcanic landscapes, cultural heritage and relaxed island lifestyle.",
         image: "https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4583,7 +4572,7 @@ const internationalPackages = {
     "maldives": {
         days: "6 DAYS / 5 NIGHTS • LUXURY BEACH",
         title: "🇲🇻 Maldives",
-        price: "From USD 2,950 / person",
+        price: "From USD 4,950 / person",
         intro: "A serene Maldives escape built around turquoise lagoons, white-sand beaches, snorkeling and effortless relaxation.",
         image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4599,7 +4588,7 @@ const internationalPackages = {
     "morocco": {
         days: "8 DAYS / 7 NIGHTS • CULTURE & CITY",
         title: "🇲🇦 Morocco",
-        price: "From USD 2,850 / person",
+        price: "From USD 4,850 / person",
         intro: "A colourful Moroccan journey through Marrakech, historic medinas, traditional cuisine and dramatic landscapes.",
         image: "https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4617,7 +4606,7 @@ const internationalPackages = {
     "egypt": {
         days: "7 DAYS / 6 NIGHTS • HISTORY & CULTURE",
         title: "🇪🇬 Egypt",
-        price: "From USD 2,350 / person",
+        price: "From USD 4,350 / person",
         intro: "Journey through ancient Egypt with the Pyramids, Cairo treasures and a relaxing Nile experience.",
         image: "https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4634,7 +4623,7 @@ const internationalPackages = {
     "turkiye": {
         days: "8 DAYS / 7 NIGHTS • CULTURE & CITY",
         title: "🇹🇷 Türkiye",
-        price: "From USD 2,650 / person",
+        price: "From USD 4,650 / person",
         intro: "A captivating Türkiye journey combining Istanbul's heritage with the extraordinary landscapes of Cappadocia.",
         image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4652,7 +4641,7 @@ const internationalPackages = {
     "uk": {
         days: "8 DAYS / 7 NIGHTS • CITY & HERITAGE",
         title: "🇬🇧 United Kingdom",
-        price: "From USD 3,400 / person",
+        price: "From USD 5,400 / person",
         intro: "A classic United Kingdom escape centred on London's landmarks, royal heritage, museums and a scenic excursion beyond the capital.",
         image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4670,7 +4659,7 @@ const internationalPackages = {
     "france": {
         days: "7 DAYS / 6 NIGHTS • ART & ROMANCE",
         title: "🇫🇷 France",
-        price: "From USD 3,250 / person",
+        price: "From USD 5,250 / person",
         intro: "Experience Paris through its iconic landmarks, art, cuisine, elegant neighbourhoods and a scenic day beyond the capital.",
         image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4687,7 +4676,7 @@ const internationalPackages = {
     "italy": {
         days: "8 DAYS / 7 NIGHTS • HISTORY & CUISINE",
         title: "🇮🇹 Italy",
-        price: "From USD 3,450 / person",
+        price: "From USD 5,450 / person",
         intro: "A timeless Italian journey through Rome, Florence and Venice, combining art, history, cuisine and iconic scenery.",
         image: "https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4705,7 +4694,7 @@ const internationalPackages = {
     "switzerland": {
         days: "8 DAYS / 7 NIGHTS • ALPINE ESCAPE",
         title: "🇨🇭 Switzerland",
-        price: "From USD 3,950 / person",
+        price: "From USD 5,950 / person",
         intro: "An alpine journey featuring Swiss cities, mountain scenery, beautiful lakes and memorable scenic rail experiences.",
         image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4723,7 +4712,7 @@ const internationalPackages = {
     "spain": {
         days: "8 DAYS / 7 NIGHTS • CULTURE & LEISURE",
         title: "🇪🇸 Spain",
-        price: "From USD 3,350 / person",
+        price: "From USD 5,350 / person",
         intro: "Explore Spain through Barcelona's architecture and Mediterranean character, followed by Madrid's grand culture and city life.",
         image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4741,7 +4730,7 @@ const internationalPackages = {
     "greece": {
         days: "7 DAYS / 6 NIGHTS • ISLANDS & HISTORY",
         title: "🇬🇷 Greece",
-        price: "From USD 3,150 / person",
+        price: "From USD 5,150 / person",
         intro: "A Mediterranean Greek escape combining Athens' ancient heritage with island relaxation and local cuisine.",
         image: "https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4758,7 +4747,7 @@ const internationalPackages = {
     "thailand": {
         days: "8 DAYS / 7 NIGHTS • BEACH & CULTURE",
         title: "🇹🇭 Thailand",
-        price: "From USD 2,650 / person",
+        price: "From USD 4,650 / person",
         intro: "A vibrant Thailand holiday blending Bangkok's energy, cultural heritage, tropical beaches and excellent cuisine.",
         image: "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4776,7 +4765,7 @@ const internationalPackages = {
     "singapore": {
         days: "6 DAYS / 5 NIGHTS • CITY ESCAPE",
         title: "🇸🇬 Singapore",
-        price: "From USD 2,350 / person",
+        price: "From USD 4,350 / person",
         intro: "A refined Singapore city break featuring modern landmarks, gardens, multicultural neighbourhoods and exceptional cuisine.",
         image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4792,7 +4781,7 @@ const internationalPackages = {
     "malaysia": {
         days: "7 DAYS / 6 NIGHTS • CITY & CULTURE",
         title: "🇲🇾 Malaysia",
-        price: "From USD 2,450 / person",
+        price: "From USD 4,450 / person",
         intro: "Discover Malaysia through Kuala Lumpur's skyline, heritage districts, local food and a relaxing tropical escape.",
         image: "https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4809,7 +4798,7 @@ const internationalPackages = {
     "india": {
         days: "8 DAYS / 7 NIGHTS • HERITAGE & CULTURE",
         title: "🇮🇳 India",
-        price: "From USD 2,300 / person",
+        price: "From USD 4,300 / person",
         intro: "Discover India's Golden Triangle through Delhi, Agra and Jaipur, with grand monuments, markets and cultural encounters.",
         image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -4827,7 +4816,7 @@ const internationalPackages = {
     "australia": {
         days: "10 DAYS / 9 NIGHTS • CITY & NATURE",
         title: "🇦🇺 Australia",
-        price: "From USD 4,800 / person",
+        price: "From USD 6,800 / person",
         intro: "A first-class Australian introduction combining Sydney's harbour, coastal scenery, wildlife and memorable city experiences.",
         image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=1200&q=85",
         itinerary: [
@@ -5157,6 +5146,32 @@ top:-9999px;
 
 <script
 src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+<script>
+function sendInquiryToWhatsApp(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("form");
+    const name = form.querySelector('[name="name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    const dates = form.querySelector('[name="dates"]').value.trim();
+    const destination = form.querySelector('[name="destination"]').value;
+    const message = form.querySelector('[name="message"]').value.trim();
+
+    const whatsappText =
+        `Hello Elah Safaris, I would like to make a safari/travel enquiry.\n\n` +
+        `Full Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Phone / WhatsApp: ${phone || "Not provided"}\n` +
+        `Travel Dates: ${dates || "Not specified"}\n` +
+        `Destination: ${destination}\n` +
+        `Trip Details: ${message || "Not provided"}`;
+
+    const whatsappURL = `https://wa.me/254710666222?text=${encodeURIComponent(whatsappText)}`;
+    window.location.href = whatsappURL;
+}
 </script>
 
 </body>
