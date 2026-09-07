@@ -863,6 +863,10 @@ nav > a:hover {
     background-image: url("nairobi.jpg");
 }
 
+.g7 {
+    background-image: url("https://images.unsplash.com/photo-1610982330184-b26f7ea46541?auto=format&fit=crop&w=1400&q=85");
+}
+
 /* =========================================================
    FORM
 ========================================================= */
@@ -941,8 +945,43 @@ textarea:focus {
     margin-top: 15px;
 }
 
-.socials a {
+ .socials a {
     color: #9a6a2f;
+}
+
+.social-name {
+    color: #9a6a2f;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icons a {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(154,106,47,.35);
+    border-radius: 50%;
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    background: #9a6a2f;
+    color: #fff;
+}
+
+.social-icons svg {
+    width: 19px;
+    height: 19px;
 }
 
 /* =========================================================
@@ -1390,6 +1429,14 @@ footer {
 }
 
 .international-destination h3 {
+    font-size: 2rem;
+}
+
+.culture-heritage {
+    background-image: url("https://images.unsplash.com/photo-1640119259111-acc19f7c38f2?auto=format&fit=crop&w=1400&q=85");
+}
+
+.culture-heritage h3 {
     font-size: 2rem;
 }
 
@@ -1881,6 +1928,29 @@ and unforgettable journeys around the world.
 </p>
 
 <a href="#international-packages">
+Explore →
+</a>
+
+</div>
+
+</article>
+
+<article class="destination culture-heritage">
+
+<div>
+
+<b>08</b>
+
+<h3>
+Culture &amp; Heritage
+</h3>
+
+<p>
+Meet local communities, discover living traditions,
+and experience the rich cultures and heritage of Kenya.
+</p>
+
+<a href="#safaris">
 Explore →
 </a>
 
@@ -2988,6 +3058,7 @@ Wild places.
 <div class="g g4"></div>
 <div class="g g5"></div>
 <div class="g g6"></div>
+<div class="g g7"></div>
 
 </div>
 
@@ -3199,17 +3270,23 @@ Let's make Africa
 
 <div class="socials">
 
-<a href="#" target="_blank">
-Instagram — Elah Safaris
+<strong class="social-name">Elah Safaris</strong>
+
+<div class="social-icons" aria-label="Elah Safaris social media">
+
+<a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
 </a>
 
-<a href="#" target="_blank">
-Facebook — Elah Safaris
+<a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v8h4v-8h3.5l.5-4H13V9c0-.67.33-1 1-1Z"/></svg>
 </a>
 
-<a href="#" target="_blank">
-TikTok — Elah Safaris
+<a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15 3h3c.3 1.7 1.2 3 3 3v3c-1.5 0-2.9-.5-4-1.4V15a6 6 0 1 1-6-6c.35 0 .68.03 1 .09v3.1a3 3 0 1 0 2 2.81V3Z"/></svg>
 </a>
+
+</div>
 
 </div>
 
