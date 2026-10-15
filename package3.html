@@ -1,0 +1,926 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enjoy a 10-night Kenya honeymoon combining Nairobi's elegance, a romantic Maasai Mara safari, and the beautiful beaches of Watamu with Elah Safaris.">
+  <title>10 Nights Honeymoon: Wilderness & Sea | Elah Safaris</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f4ec;
+      --cream-dark: #eee5d6;
+      --gold: #b8860b;
+      --gold-dark: #8f671e;
+      --green: #294936;
+      --green-dark: #1b3325;
+      --text: #34352e;
+      --muted: #77766d;
+      --white: #ffffff;
+      --shadow: 0 12px 35px rgba(43, 48, 35, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    em, i {
+      font-style: normal;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .topbar {
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 9px 5%;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background: rgba(248, 244, 236, 0.97);
+      border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+      padding: 17px 6%;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--green);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 6px;
+      color: var(--gold-dark);
+      font-family: "DM Sans", sans-serif;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: var(--white);
+      padding: 11px 17px;
+      border-radius: 2px;
+    }
+
+    .hero {
+      min-height: 590px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(19, 34, 24, 0.76), rgba(19, 34, 24, 0.18)),
+        url("https://www.hemingways-collection.com/wp-content/uploads/2025/06/Main-house-Verandah-9-March-2025-TC-1-scaled.jpg")
+        center 55% / cover no-repeat;
+    }
+
+    .hero-content {
+      width: min(780px, 88%);
+      margin: 0 auto;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      color: #e4c783;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 7vw, 78px);
+      margin: 20px 0;
+      max-width: 750px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 16px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 21px;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-dark);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.75);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--green);
+    }
+
+    .intro {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 75px 6% 55px;
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--gold-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .intro h2,
+    .section-heading h2 {
+      color: var(--green);
+      font-size: clamp(34px, 4.5vw, 48px);
+      margin: 12px 0 18px;
+    }
+
+    .intro p {
+      max-width: 760px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .trip-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 850px;
+      margin: 35px auto 0;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .fact {
+      padding: 22px 12px;
+      border-right: 1px solid var(--cream-dark);
+    }
+
+    .fact:last-child {
+      border-right: none;
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--green);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 25px;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .itinerary {
+      padding: 55px 6% 85px;
+      background: #f1eadf;
+    }
+
+    .section-heading {
+      max-width: 850px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .days {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    .day-card {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      background: var(--white);
+      box-shadow: 0 7px 24px rgba(40, 44, 32, 0.06);
+      overflow: hidden;
+    }
+
+    .day-card img {
+      height: 100%;
+      min-height: 245px;
+    }
+
+    .day-content {
+      padding: 28px 32px;
+    }
+
+    .day-number {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--gold-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .day-content h3 {
+      color: var(--green);
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .day-content p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .day-content ul {
+      margin: 13px 0 0 19px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .day-content li {
+      margin-bottom: 4px;
+    }
+
+    .gallery {
+      padding: 80px 6%;
+    }
+
+    .gallery-grid {
+      max-width: 1100px;
+      margin: 35px auto 0;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .gallery-grid img {
+      height: 280px;
+      border-radius: 0;
+    }
+
+    .gallery-grid img:first-child {
+      height: 100%;
+      min-height: 280px;
+      grid-row: span 2;
+    }
+
+    .note {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 28px 30px;
+      border-left: 4px solid var(--gold);
+      background: var(--white);
+    }
+
+    .note h3 {
+      color: var(--green);
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .note p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      padding: 75px 6%;
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta .section-label {
+      color: #e4c783;
+    }
+
+    .cta h2 {
+      max-width: 760px;
+      margin: 14px auto;
+      font-size: clamp(35px, 5vw, 52px);
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto 25px;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-buttons .btn {
+      width: min(290px, 100%);
+    }
+
+    .email-btn {
+      border-color: rgba(255,255,255,0.6);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .email-btn:hover {
+      color: var(--green);
+      background: var(--white);
+    }
+
+    footer {
+      padding: 23px 6%;
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    footer a {
+      color: #e4c783;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+
+      .hero {
+        min-height: 530px;
+      }
+
+      .hero-content {
+        padding: 70px 0;
+      }
+
+      .trip-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .fact {
+        border-right: none;
+        border-bottom: 1px solid var(--cream-dark);
+      }
+
+      .fact:last-child {
+        border-bottom: none;
+      }
+
+      .day-card {
+        grid-template-columns: 1fr;
+      }
+
+      .day-card img {
+        height: 240px;
+        min-height: 0;
+      }
+
+      .day-content {
+        padding: 24px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid img,
+      .gallery-grid img:first-child {
+        height: 210px;
+        min-height: 0;
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .brand {
+        font-size: 27px;
+      }
+
+      .nav-links {
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid img,
+      .gallery-grid img:first-child {
+        height: 235px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    PRIVATE JOURNEYS • WILDERNESS • COASTAL ESCAPES
+  </div>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        Elah Safaris
+        <small>Bespoke African Journeys</small>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#itinerary">Itinerary</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="nav-cta">Plan Your Journey</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">A romantic Kenyan escape</div>
+        <h1>10 Nights of Wilderness &amp; Sea</h1>
+        <p>
+          Celebrate your honeymoon with a thoughtfully planned journey through
+          Nairobi, the wildlife-rich Maasai Mara, and the tranquil shores of Watamu.
+          Discover intimate moments, unforgettable landscapes, and time to relax together.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-gold" href="#itinerary">Explore the Itinerary</a>
+          <a class="btn btn-outline" href="#contact">Enquire About This Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="section-label">Your journey together</div>
+      <h2>From African wilderness to the Indian Ocean</h2>
+      <p>
+        Begin with Nairobi's gardens and refined atmosphere, continue into the
+        Maasai Mara for wildlife encounters and evenings beneath the stars, then
+        unwind beside the ocean in Watamu. Elah Safaris can tailor the route,
+        accommodation and experiences to your travel dates and preferences.
+      </p>
+
+      <div class="trip-facts">
+        <div class="fact">
+          <strong>10 Nights</strong>
+          <span>Accommodation plan</span>
+        </div>
+        <div class="fact">
+          <strong>11 Days</strong>
+          <span>Suggested itinerary</span>
+        </div>
+        <div class="fact">
+          <strong>3 Destinations</strong>
+          <span>City, safari and coast</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="itinerary" id="itinerary">
+      <div class="section-heading">
+        <div class="section-label">Day by day</div>
+        <h2>Your Honeymoon Itinerary</h2>
+        <p>
+          A suggested itinerary designed to balance discovery, romance and relaxation.
+          Activities and accommodation can be adjusted to your preferences.
+        </p>
+      </div>
+
+      <div class="days">
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Main-house-Verandah-9-March-2025-TC-1-scaled.jpg"
+            alt="Elegant veranda and gardens in Nairobi"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 1</span>
+            <h3>Arrival in Nairobi</h3>
+            <p>
+              Arrive in Kenya and transfer to your selected accommodation in Nairobi.
+              Settle in, enjoy a relaxed evening, and begin your honeymoon at your own pace.
+            </p>
+            <ul>
+              <li>Airport transfer arrangements on request</li>
+              <li>Time to relax after your journey</li>
+              <li>Optional private dinner, subject to availability</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/07/Swimming-pool-aerial-3-1-scaled.jpg"
+            alt="Swimming pool and landscaped grounds"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 2</span>
+            <h3>Nairobi at Leisure</h3>
+            <p>
+              Enjoy a leisurely day exploring Nairobi or simply relaxing together.
+              Depending on your interests, we can arrange a garden visit, art experience,
+              private dining, or a city excursion.
+            </p>
+            <ul>
+              <li>Optional cultural or city experiences</li>
+              <li>Relaxation time at your accommodation</li>
+              <li>Optional spa or wellness experience, subject to availability</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/3_Activties_008_OlSekiJune23-1-scaled.jpg"
+            alt="Safari camp in the Maasai Mara landscape"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 3</span>
+            <h3>Journey to the Maasai Mara</h3>
+            <p>
+              Travel to the Maasai Mara region and settle into your selected safari camp.
+              Take in the open landscapes and enjoy your first taste of the wilderness.
+            </p>
+            <ul>
+              <li>Transfer or flight arrangements can be discussed</li>
+              <li>Camp orientation and time to unwind</li>
+              <li>Afternoon activity where available and included in your booking</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/conservation-img.webp"
+            alt="Wildlife conservation landscape in Kenya"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 4</span>
+            <h3>Wildlife Encounters</h3>
+            <p>
+              Spend time discovering the Mara's remarkable wildlife with a guided safari.
+              Watch the landscape come alive and enjoy opportunities for photography
+              and quiet moments together.
+            </p>
+            <ul>
+              <li>Game drives according to your camp's schedule</li>
+              <li>Wildlife viewing and photography</li>
+              <li>Evening at camp</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Conservation-full-img-scaled.webp"
+            alt="Open wilderness and wildlife habitat"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 5</span>
+            <h3>A Full Day in the Mara</h3>
+            <p>
+              Enjoy another day in the conservancy with opportunities to explore
+              different areas and learn about the region's wildlife and conservation.
+              End the day with a peaceful evening beneath the African sky.
+            </p>
+            <ul>
+              <li>Safari activities based on the selected camp</li>
+              <li>Optional conservation or cultural experience</li>
+              <li>Campfire or special dining where offered</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Activities_Sea_012_Watamu_TCunniffe1024-1-scaled.jpg"
+            alt="Ocean activities along the Watamu coast"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 6</span>
+            <h3>From Safari to Watamu</h3>
+            <p>
+              Leave the wilderness behind and travel towards Watamu on Kenya's
+              Indian Ocean coast. Check in at your selected beach accommodation
+              and enjoy a relaxed evening by the sea.
+            </p>
+            <ul>
+              <li>Transfer arrangements according to your route</li>
+              <li>Beachside relaxation</li>
+              <li>Optional sunset dinner</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=85"
+            alt="Tropical beach and ocean"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 7</span>
+            <h3>Beachside Bliss</h3>
+            <p>
+              Enjoy a relaxed day on Watamu's beautiful coast. Spend time on the beach,
+              enjoy the ocean views, or choose an optional wellness experience.
+            </p>
+            <ul>
+              <li>Leisure time at the beach</li>
+              <li>Optional spa treatment, subject to availability</li>
+              <li>Private dinner arrangements on request</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85"
+            alt="Sunlight reflecting across the sea"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 8</span>
+            <h3>Discover the Indian Ocean</h3>
+            <p>
+              Explore the coast at your own pace. Depending on the season and local
+              conditions, optional marine activities may include a boat excursion,
+              snorkeling, or a visit to the Watamu marine area.
+            </p>
+            <ul>
+              <li>Optional marine excursion</li>
+              <li>Snorkeling subject to weather and sea conditions</li>
+              <li>Relaxed evening together</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=85"
+            alt="Palm trees beside a tropical beach"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 9</span>
+            <h3>Coastal Experiences</h3>
+            <p>
+              Take the day slowly or choose an optional local excursion. A sunset
+              dhow sail or a visit around Mida Creek may be arranged, subject to
+              weather, availability and your chosen operator.
+            </p>
+            <ul>
+              <li>Optional dhow excursion</li>
+              <li>Optional local cultural experience</li>
+              <li>Time for photographs and relaxation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/08/Cave-dining-experience-1-scaled.jpg"
+            alt="Romantic dining setting"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 10</span>
+            <h3>Your Final Full Day by the Sea</h3>
+            <p>
+              Enjoy a final day of beachside relaxation before departure. We can
+              discuss a special dinner or another personal touch to mark your
+              honeymoon, subject to the selected venue's availability.
+            </p>
+            <ul>
+              <li>Leisure time and optional activities</li>
+              <li>Special dining arrangements on request</li>
+              <li>Prepare for your onward journey</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <img
+            src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Activities_Sea_012_Watamu_TCunniffe1024-1-scaled.jpg"
+            alt="Watamu coastline"
+            loading="lazy"
+          >
+          <div class="day-content">
+            <span class="day-number">Day 11</span>
+            <h3>Departure</h3>
+            <p>
+              Enjoy breakfast and your final moments on the coast before your
+              arranged transfer. Elah Safaris can help coordinate onward travel
+              based on your flight schedule.
+            </p>
+            <ul>
+              <li>Check-out and departure transfer arrangements</li>
+              <li>Optional extension available on request</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="section-heading">
+        <div class="section-label">Moments to remember</div>
+        <h2>Wilderness, Romance &amp; the Coast</h2>
+        <p>
+          From the quiet of the savannah to the rhythm of the ocean,
+          every part of the journey offers a different way to experience Kenya together.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Main-house-Verandah-9-March-2025-TC-1-scaled.jpg"
+          alt="Elegant Nairobi retreat"
+          loading="lazy"
+        >
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/3_Activties_008_OlSekiJune23-1-scaled.jpg"
+          alt="Maasai Mara safari camp"
+          loading="lazy"
+        >
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Activities_Sea_012_Watamu_TCunniffe1024-1-scaled.jpg"
+          alt="Watamu ocean experience"
+          loading="lazy"
+        >
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/07/Swimming-pool-aerial-3-1-scaled.jpg"
+          alt="Pool and landscaped gardens"
+          loading="lazy"
+        >
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/08/Cave-dining-experience-1-scaled.jpg"
+          alt="Special dining experience"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section class="note">
+      <h3>A journey designed around you</h3>
+      <p>
+        This itinerary is a proposal, not a confirmed reservation. Accommodation,
+        transfers, activities, meal plans and special experiences depend on your
+        selected providers, travel dates, availability and final booking arrangements.
+        Contact Elah Safaris for a tailored proposal. No package price is displayed
+        on this page.
+      </p>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="section-label">Start planning</div>
+      <h2>Let us plan your honeymoon in Kenya</h2>
+      <p>
+        Tell us your preferred travel dates, accommodation style and the experiences
+        you would love to share. We will help you shape a journey around your plans.
+      </p>
+
+      <div class="contact-buttons">
+        <a
+          class="btn btn-gold"
+          href="https://wa.me/254710666222?text=Hello%20Elah%20Safaris%2C%20I%20am%20interested%20in%20the%2010%20Nights%20Honeymoon%3A%20Wilderness%20%26%20Sea%20package.%20Please%20share%20more%20information."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ☎ WhatsApp Us
+        </a>
+
+        <a
+          class="btn email-btn"
+          href="mailto:info@elahsafaris.com?subject=10%20Nights%20Honeymoon%3A%20Wilderness%20%26%20Sea&body=Hello%20Elah%20Safaris%2C%0A%0AI%20am%20interested%20in%20the%2010%20Nights%20Honeymoon%3A%20Wilderness%20%26%20Sea%20package.%20Please%20contact%20me%20with%20more%20information.%0A%0APreferred%20travel%20dates%3A%0ANumber%20of%20travellers%3A%0A%0AThank%20you."
+        >
+          ✉ Email Us
+        </a>
+
+        <a class="btn email-btn" href="index.html">
+          Back to Elah Safaris Home
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Elah Safaris. Bespoke African Journeys.</p>
+    <p><a href="index.html">Return to homepage</a></p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```
