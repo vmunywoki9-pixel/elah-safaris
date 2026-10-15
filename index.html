@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+html lang="en">
 <head>
 
 <meta charset="UTF-8">
@@ -655,6 +657,101 @@ nav > a:hover {
 .intl-australia{background-image:url("https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=1200&q=85");}
 
 
+
+/* =========================================================
+   CULTURAL EXPEDITION SLIDER & MODAL
+========================================================= */
+
+const culturalSlider = document.getElementById("culturalSlider");
+const culturalPrev = document.querySelector(".cultural-arrow.prev");
+const culturalNext = document.querySelector(".cultural-arrow.next");
+const culturalModal = document.getElementById("culturalModal");
+const culturalModalImage = document.getElementById("culturalModalImage");
+const culturalModalDays = document.getElementById("culturalModalDays");
+const culturalModalTitle = document.getElementById("culturalModalTitle");
+const culturalModalPrice = document.getElementById("culturalModalPrice");
+const culturalModalIntro = document.getElementById("culturalModalIntro");
+const culturalModalItinerary = document.getElementById("culturalModalItinerary");
+const culturalModalHighlights = document.getElementById("culturalModalHighlights");
+const culturalBookButton = document.getElementById("culturalBookButton");
+let culturalTimer;
+
+function getCulturalStep(){
+    if(!culturalSlider || !culturalSlider.firstElementChild) return 0;
+    return culturalSlider.firstElementChild.getBoundingClientRect().width + 22;
+}
+
+function scrollCultural(direction){
+    if(!culturalSlider) return;
+    culturalSlider.scrollBy({left: direction * getCulturalStep(), behavior:"smooth"});
+}
+
+function startCulturalAutoSlide(){
+    clearInterval(culturalTimer);
+    culturalTimer=setInterval(function(){ scrollCultural(1); }, 5200);
+}
+
+if(culturalPrev) culturalPrev.addEventListener("click", function(){ scrollCultural(-1); startCulturalAutoSlide(); });
+if(culturalNext) culturalNext.addEventListener("click", function(){ scrollCultural(1); startCulturalAutoSlide(); });
+if(culturalSlider){
+    culturalSlider.addEventListener("mouseenter", function(){ clearInterval(culturalTimer); });
+    culturalSlider.addEventListener("mouseleave", startCulturalAutoSlide);
+    culturalSlider.addEventListener("touchstart", function(){ clearInterval(culturalTimer); }, {passive:true});
+    culturalSlider.addEventListener("touchend", startCulturalAutoSlide, {passive:true});
+    startCulturalAutoSlide();
+}
+
+function openCulturalPackage(packageId){
+    const data=culturalPackages[packageId];
+    if(!data) return;
+    culturalModalDays.textContent=data.days;
+    culturalModalTitle.textContent=data.title;
+    culturalModalPrice.textContent=data.price;
+    culturalModalIntro.textContent=data.intro;
+    culturalModalImage.style.backgroundImage=`url("${data.image}")`;
+    culturalModalItinerary.innerHTML="";
+    data.itinerary.forEach(function(day){
+        const box=document.createElement("div");
+        box.className="cultural-itinerary-day";
+        const h=document.createElement("h4"); h.textContent=day[0];
+        const p=document.createElement("p"); p.textContent=day[1];
+        box.appendChild(h); box.appendChild(p); culturalModalItinerary.appendChild(box);
+    });
+    culturalModalHighlights.innerHTML="";
+    data.highlights.forEach(function(item){
+        const li=document.createElement("li"); li.textContent=item; culturalModalHighlights.appendChild(li);
+    });
+    culturalBookButton.href="#booking";
+    culturalModal.classList.add("active");
+    culturalModal.setAttribute("aria-hidden","false");
+    document.body.classList.add("modal-open");
+}
+
+function closeCulturalPackage(){
+    culturalModal.classList.remove("active");
+    culturalModal.setAttribute("aria-hidden","true");
+    document.body.classList.remove("modal-open");
+}
+
+document.querySelectorAll(".cultural-card").forEach(function(card){
+    const button=card.querySelector(".cultural-view-package");
+    if(button) button.addEventListener("click", function(event){
+        event.preventDefault(); event.stopPropagation();
+        openCulturalPackage(card.getAttribute("data-cultural-package"));
+    });
+});
+
+document.querySelectorAll("[data-close-cultural]").forEach(function(element){
+    element.addEventListener("click", closeCulturalPackage);
+});
+
+document.addEventListener("keydown", function(event){
+    if(event.key==="Escape" && culturalModal.classList.contains("active")) closeCulturalPackage();
+});
+
+if(culturalBookButton) culturalBookButton.addEventListener("click", closeCulturalPackage);
+
+
 /* =========================================================
    PACKAGE MODAL
 ========================================================= */
@@ -824,18 +921,37 @@ nav > a:hover {
    GALLERY
 ========================================================= */
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
+.gallery-memory-slider {
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 54vw, 590px);
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #30291f;
+    isolation: isolate;
 }
 
-.g {
-    min-height: 250px;
-    border-radius: 16px;
-    background-size: cover;
-    background-position: center;
+.memory-slide.g {
+    position: absolute; inset: 0;
+    min-height: 0; width: 100%; height: 100%;
+    border-radius: 0; background-size: cover; background-position: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity .7s ease, visibility .7s ease;
 }
+.memory-slide.g.active { opacity: 1; visibility: visible; }
+.gallery-memory-slider::after {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(0deg, rgba(20,17,12,.78), rgba(20,17,12,.05) 65%, rgba(20,17,12,.12));
+}
+.memory-caption { position: absolute; z-index: 2; left: clamp(20px, 5vw, 58px); bottom: 64px; color: #fff; max-width: 80%; }
+.memory-kicker { display: block; font: 700 .72rem/1.4 "DM Sans",sans-serif; letter-spacing: .18em; color: #e8c58e; margin-bottom: 8px; }
+.memory-caption h3 { margin: 0; color: #fff; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; text-shadow: 0 2px 18px rgba(0,0,0,.3); }
+.memory-arrow { position: absolute; z-index: 3; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(25,22,18,.42); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+.memory-prev { left: 16px; } .memory-next { right: 16px; }
+.memory-dots { position: absolute; z-index: 3; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; gap: 9px; align-items: center; }
+.memory-dot { width: 9px; height: 9px; padding: 0; border: 1px solid white; border-radius: 50%; background: rgba(255,255,255,.55); cursor: pointer; }
+.memory-dot.active { background: #d1a15e; border-color: #d1a15e; transform: scale(1.2); }
 
 .g1 {
     background-image: url("mara.jpg");
@@ -868,6 +984,15 @@ nav > a:hover {
 .g8 {
     background-image: url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=85");
 }
+
+/* Booking contact actions sit directly below the enquiry form */
+.booking-contact-actions {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    margin: 28px auto 0;
+}
+.booking-contact-actions .btn { margin: 0; text-align: center; }
+.booking-email-btn { background: #fff; border-color: #9a6a2f; color: #805522; }
+.booking-email-btn:hover { background: #f7efe2; }
 
 /* =========================================================
    FORM
@@ -1705,6 +1830,13 @@ footer {
     .cultural-bottom { align-items: flex-start; flex-direction: column; }
 }
 
+/* Keep the site's original palette while rendering emphasis without italics. */
+em, i { font-style: normal; }
+
+
+/* Elah Safaris requested typography adjustment: remove italic styling, preserve palette */
+*, *::before, *::after { font-style: normal !important; }
+
 </style>
 
 </head>
@@ -1729,6 +1861,12 @@ footer {
     </svg>
 
 </a>
+
+<a class="email-float" href="mailto:elah.safaris@gmail.com" aria-label="Email Elah Safaris" title="Email Elah Safaris">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8L4 7v10h16V7l-8 6Zm0-2 7-5H5l7 5Z" fill="currentColor"/></svg>
+</a>
+<style>.email-float{position:fixed;right:22px;bottom:90px;width:58px;height:58px;border-radius:50%;background:#9a6a2f;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:9998;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .25s ease}.email-float:hover{transform:translateY(-4px) scale(1.04)}.email-float svg{width:28px;height:28px;fill:currentColor}@media(max-width:650px){.email-float{right:16px;bottom:84px;width:52px;height:52px}.whatsapp-float{right:16px;bottom:18px;width:52px;height:52px}}</style>
+
 
 
 <!-- =====================================================
@@ -2471,7 +2609,7 @@ northern Kenyan experiences.
 <div class="package-bottom">
 
 <strong>
-Price From USD 
+Price on request
 </strong>
 
 <button class="view-package" type="button">
@@ -3070,31 +3208,31 @@ architecture and wilderness. Select <strong>View Itinerary</strong> for the full
 <button class="cultural-arrow prev" type="button" aria-label="Previous cultural expeditions">‹</button>
 <div class="cultural-slider" id="culturalSlider">
 
-<article class="cultural-card" data-cultural-package="senegal"><div class="cultural-image" style="background-image:url('senegal.jpg')"></div><div class="cultural-body"><span class="package-days">16 DAYS • WEST AFRICA</span><h3>🇸🇳 Senegal — A Cultural Odyssey</h3><p>From Dakar and Lac Rose to Casamance, discover wrestling, fishing communities, Fulani, Bedik, Bassari and Diola traditions.</p><div class="cultural-bottom"><strong>Price From USD 9,270</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="senegal"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">16 DAYS • WEST AFRICA</span><h3>🇸🇳 Senegal — A Cultural Odyssey</h3><p>From Dakar and Lac Rose to Casamance, discover wrestling, fishing communities, Fulani, Bedik, Bassari and Diola traditions.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="chad"><div class="cultural-image" style="background-image:url('chad.jpg')"></div><div class="cultural-body"><span class="package-days">16 DAYS • SAHEL EXPEDITION</span><h3>🇹🇩 Chad — Gerewol, Lake Chad & More</h3><p>An expedition through Gaoui, Lake Chad, Buduma communities, Guera villages, Arab nomads and the Wodaabe Gerewol.</p><div class="cultural-bottom"><strong>Price From USD 9,300</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="chad"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">16 DAYS • SAHEL EXPEDITION</span><h3>🇹🇩 Chad — Gerewol, Lake Chad & More</h3><p>An expedition through Gaoui, Lake Chad, Buduma communities, Guera villages, Arab nomads and the Wodaabe Gerewol.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="angola-hidden"><div class="cultural-image" style="background-image:url('angola-hidden-tribes.jpg')"></div><div class="cultural-body"><span class="package-days">13 DAYS • SOUTHERN AFRICA</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>Travel through remote southern Angola, visiting Nguendelengo and Kwepe communities, Curoca landscapes and coastal fishing villages.</p><div class="cultural-bottom"><strong>Price From USD 10,400</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="angola-hidden"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">13 DAYS • SOUTHERN AFRICA</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>Travel through remote southern Angola, visiting Nguendelengo and Kwepe communities, Curoca landscapes and coastal fishing villages.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="ivory-coast"><div class="cultural-image" style="background-image:url('ivory-coast.jpg')"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇨🇮 Ivory Coast — Land of Masks & Dance</h3><p>Meet Agni, Baoulé, Senoufo, Fulani, Dozo, Yacouba, Guéré and Gouro communities through ceremonies and traditional arts.</p><div class="cultural-bottom"><strong>Price From USD 9,120</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="ivory-coast"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇨🇮 Ivory Coast — Land of Masks & Dance</h3><p>Meet Agni, Baoulé, Senoufo, Fulani, Dozo, Yacouba, Guéré and Gouro communities through ceremonies and traditional arts.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="benin"><div class="cultural-image" style="background-image:url('benin.jpg')"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇧🇯 Benin — Unseen West Africa</h3><p>Explore Voodoo traditions, Ganvie, Ouidah, Holi villages, Batonu horsemen, Otamari, Fulani and historic Abomey.</p><div class="cultural-bottom"><strong>Price From USD 10,290</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="benin"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇧🇯 Benin — Unseen West Africa</h3><p>Explore Voodoo traditions, Ganvie, Ouidah, Holi villages, Batonu horsemen, Otamari, Fulani and historic Abomey.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="south-sudan-tribal"><div class="cultural-image" style="background-image:url('south-sudan.jpg')"></div><div class="cultural-body"><span class="package-days">15 DAYS • EAST AFRICA EXPEDITION</span><h3>🇸🇸 South Sudan — Tribal Wonders of the White Nile</h3><p>Journey through Toposa, Jie, Laarim, Lopit and Mundari communities in one of Africa's most remote cultural frontiers.</p><div class="cultural-bottom"><strong>Price From USD 10,800</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="south-sudan-tribal"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">15 DAYS • EAST AFRICA EXPEDITION</span><h3>🇸🇸 South Sudan — Tribal Wonders of the White Nile</h3><p>Journey through Toposa, Jie, Laarim, Lopit and Mundari communities in one of Africa's most remote cultural frontiers.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="omo-valley"><div class="cultural-image" style="background-image:url('omo-valley.jpg')"></div><div class="cultural-body"><span class="package-days">14 DAYS • ETHIOPIA</span><h3>🇪🇹 Omo Valley — Extraordinary Tribal People</h3><p>Explore the Omo Valley and Central Rift Valley while meeting around 13 different tribal peoples and discovering extraordinary landscapes.</p><div class="cultural-bottom"><strong>Price From USD 10,900</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="omo-valley"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • ETHIOPIA</span><h3>🇪🇹 Omo Valley — Extraordinary Tribal People</h3><p>Explore the Omo Valley and Central Rift Valley while meeting around 13 different tribal peoples and discovering extraordinary landscapes.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="remote-kenya"><div class="cultural-image" style="background-image:url('remote-kenya.jpg')"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA</span><h3>🇰🇪 Remote Kenya</h3><p>Travel from Lake Baringo through the Ndoto Mountains and Lake Turkana to Sibiloi, Chalbi, Marsabit and Samburu.</p><div class="cultural-bottom"><strong>Price From USD 9,100</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="remote-kenya"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA</span><h3>🇰🇪 Remote Kenya</h3><p>Travel from Lake Baringo through the Ndoto Mountains and Lake Turkana to Sibiloi, Chalbi, Marsabit and Samburu.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="angola-hidden-2"><div class="cultural-image" style="background-image:url('angola.jpg')"></div><div class="cultural-body"><span class="package-days">13 DAYS • PHOTOGRAPHY EXPEDITION</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>A second listing for the southern Angola photography expedition supplied for the cultural collection.</p><div class="cultural-bottom"><strong>Price From USD 10,400</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="angola-hidden-2"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">13 DAYS • PHOTOGRAPHY EXPEDITION</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>A second listing for the southern Angola photography expedition supplied for the cultural collection.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="mundari"><div class="cultural-image" style="background-image:url('mundari.jpg')"></div><div class="cultural-body"><span class="package-days">8 DAYS • SOUTH SUDAN</span><h3>🇸🇸 South Sudan — Mundari Expedition</h3><p>Spend time in two Mundari cattle camps and a Mundari village area, immersed in cattle culture, fishing life and traditional celebrations.</p><div class="cultural-bottom"><strong>Price From USD 7,400</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="mundari"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">8 DAYS • SOUTH SUDAN</span><h3>🇸🇸 South Sudan — Mundari Expedition</h3><p>Spend time in two Mundari cattle camps and a Mundari village area, immersed in cattle culture, fishing life and traditional celebrations.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="northern-kenya"><div class="cultural-image" style="background-image:url('northern-kenya1.jpg')"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA CULTURE & WILDLIFE</span><h3>🇰🇪 Northern Kenya Cultural & Wildlife</h3><p>From Nairobi and the Mathews Range to Marsabit, Kalacha, Lake Turkana and Samburu, combine remote cultures with wildlife.</p><div class="cultural-bottom"><strong>Price From USD 7,490</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="northern-kenya"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA CULTURE & WILDLIFE</span><h3>🇰🇪 Northern Kenya Cultural & Wildlife</h3><p>From Nairobi and the Mathews Range to Marsabit, Kalacha, Lake Turkana and Samburu, combine remote cultures with wildlife.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="northern-kenya-2"><div class="cultural-image" style="background-image:url('northern-kenya2.jpg')"></div><div class="cultural-body"><span class="package-days">9 DAYS • LAKE TURKANA</span><h3>🇰🇪 Northern Kenya & Lake Turkana</h3><p>Combine Samburu, Loiyangalani, archaeological sites, El Molo culture, Mount Porr, Lake Bogoria and the Great Rift Valley.</p><div class="cultural-bottom"><strong>Price From USD 3,250</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="northern-kenya-2"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">9 DAYS • LAKE TURKANA</span><h3>🇰🇪 Northern Kenya & Lake Turkana</h3><p>Combine Samburu, Loiyangalani, archaeological sites, El Molo culture, Mount Porr, Lake Bogoria and the Great Rift Valley.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="algeria"><div class="cultural-image" style="background-image:url('algeria.jpg')"></div><div class="cultural-body"><span class="package-days">14 DAYS • SAHARA</span><h3>🇩🇿 Algeria — Tuaregs of the Algerian Sahara</h3><p>Explore Tadrart Rouge, Erg Admer, ancient rock art, Tuareg communities, oases, desert ceremonies and Sabiba.</p><div class="cultural-bottom"><strong>Price From USD 6,600</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="algeria"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • SAHARA</span><h3>🇩🇿 Algeria — Tuaregs of the Algerian Sahara</h3><p>Explore Tadrart Rouge, Erg Admer, ancient rock art, Tuareg communities, oases, desert ceremonies and Sabiba.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
 </div>
 <button class="cultural-arrow next" type="button" aria-label="Next cultural expeditions">›</button>
@@ -3102,6 +3240,45 @@ architecture and wilderness. Select <strong>View Itinerary</strong> for the full
 <div class="cultural-slider-hint">SWIPE TO EXPLORE • <strong>13 CULTURAL EXPEDITIONS</strong></div>
 </div>
 </section>
+
+<!-- UPCOMING SIGNATURE JOURNEYS -->
+<section class="elah-signature-journeys" id="signature-journeys">
+  <div class="container">
+    <div class="heading">
+      <p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p>
+      <h2>Journeys worth <em>remembering.</em></h2>
+      <p>Explore a few of our upcoming tailor-made journeys. Detailed itineraries and quotations will be shared after your travel preferences are confirmed.</p>
+    </div>
+    <div class="elah-journey-grid">
+      <article class="elah-journey-card journey-conservation"><div class="journey-photo" role="img" aria-label="Wildlife conservation landscape"></div><span class="journey-number">01</span><p class="eyebrow">CONSERVATION & COMMUNITY</p><h3>8 Nights Conservation &amp; Community Journey</h3><p>A thoughtfully planned journey celebrating wildlife conservation and meaningful community connections.</p><a class="btn" href="#booking" data-journey="8 Nights Conservation & Community Journey">Enquire about this journey →</a></article>
+      <article class="elah-journey-card journey-family"><div class="journey-photo" role="img" aria-label="Kenyan coast and beach"></div><span class="journey-number">02</span><p class="eyebrow">FAMILY COAST ESCAPE</p><h3>6 Days Family Beach Itinerary</h3><p>A family-focused coastal escape, with the itinerary tailored to your dates, interests and pace.</p><a class="btn" href="#booking" data-journey="6 Days Family Beach Itinerary">Enquire about this journey →</a></article>
+      <article class="elah-journey-card journey-honeymoon"><div class="journey-photo" role="img" aria-label="Wilderness and sea honeymoon"></div><span class="journey-number">03</span><p class="eyebrow">HONEYMOON COLLECTION</p><h3>10 Nights Honeymoon: Wilderness &amp; Sea</h3><p>A romantic combination of wilderness and coast, planned around your preferred experiences.</p><a class="btn" href="#booking" data-journey="10 Nights Honeymoon: Wilderness & Sea">Enquire about this journey →</a></article>
+    </div>
+  </div>
+</section>
+<style>
+.elah-signature-journeys .elah-journey-card{position:relative;overflow:hidden;padding:0 24px 26px;background:#fff;border:1px solid rgba(184,134,11,.22);border-radius:0;box-shadow:0 12px 30px rgba(40,30,15,.08)}
+.elah-signature-journeys .journey-photo{height:220px;margin:0 -24px 22px;background-position:center;background-size:cover;background-repeat:no-repeat;position:relative}
+.elah-signature-journeys .journey-photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(25,20,12,.45))}
+.elah-signature-journeys .journey-conservation .journey-photo{background-image:url("mara.jpg")}
+.elah-signature-journeys .journey-family .journey-photo{background-image:url("diani.jpg")}
+.elah-signature-journeys .journey-honeymoon .journey-photo{background-image:url("samburu-olpejeta.jpg")}
+.elah-signature-journeys .journey-number{position:absolute;top:185px;left:24px;z-index:2;color:#fff;font-weight:700;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+.elah-signature-journeys .elah-journey-card h3{margin-top:8px}
+.elah-signature-journeys .elah-journey-card .btn{display:inline-block;margin-top:12px}
+@media(max-width:850px){.elah-journey-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.elah-journey-grid{grid-template-columns:1fr}.elah-signature-journeys .journey-photo{height:205px}.elah-signature-journeys .journey-number{top:170px}}
+/* Contact actions are stacked immediately below the booking form. */
+.booking-contact-actions{display:flex;flex-direction:column;align-items:center;gap:10px;width:min(100%,420px);margin:24px auto 0}
+.booking-contact-actions .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:0;text-decoration:none}
+.booking-contact-actions .btn:first-child{background:#b8860b;border-color:#b8860b;color:#fff}
+.booking-email-btn{background:#fff;border:1px solid #9a6a2f;color:#805522}
+@media(max-width:580px){.booking-contact-actions{padding:0 12px}}
+</style>
+<style>
+.elah-signature-journeys{background:#fbf7f0;padding:90px 0}.elah-journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.elah-journey-card{position:relative;background:#fffdf8;border:1px solid rgba(154,106,47,.22);border-radius:18px;padding:30px;box-shadow:0 12px 35px rgba(48,41,31,.06)}.elah-journey-card h3{font-size:1.8rem;line-height:1.15;margin:12px 0}.elah-journey-card p:not(.eyebrow){color:#71685a;line-height:1.7}.journey-number{position:absolute;right:22px;top:18px;color:#b8860b;font-size:1.5rem;font-weight:700}.elah-journey-card .btn{background:#9a6a2f;color:#fff}.elah-journey-card .btn:hover{background:#785020}@media(max-width:850px){.elah-journey-grid{grid-template-columns:1fr}.elah-signature-journeys{padding:60px 0}}
+</style>
+
 
 <!-- =====================================================
      CULTURAL EXPEDITION MODAL
@@ -3320,22 +3497,49 @@ Wild places.
 
 </div>
 
-<div class="gallery">
-
-<div class="g g1"></div>
-<div class="g g2"></div>
-<div class="g g3"></div>
-<div class="g g4"></div>
-<div class="g g5"></div>
-<div class="g g6"></div>
-<div class="g g7"></div>
-<div class="g g8"></div>
-
+<div class="gallery-memory-slider" aria-label="Elah Memories destination slideshow">
+  <div class="memory-slide g g1 active" role="img" aria-label="Maasai Mara"></div>
+  <div class="memory-slide g g2" role="img" aria-label="Samburu and Ol Pejeta"></div>
+  <div class="memory-slide g g3" role="img" aria-label="Tsavo East"></div>
+  <div class="memory-slide g g4" role="img" aria-label="Diani Beach"></div>
+  <div class="memory-slide g g5" role="img" aria-label="Mombasa"></div>
+  <div class="memory-slide g g6" role="img" aria-label="Nairobi"></div>
+  <div class="memory-slide g g7" role="img" aria-label="International journeys"></div>
+  <div class="memory-slide g g8" role="img" aria-label="Dubai"></div>
+  <div class="memory-caption" aria-live="polite"><span class="memory-kicker">ELAH MEMORIES</span><h3 id="memoryDestination">Maasai Mara</h3></div>
+  <button class="memory-arrow memory-prev" type="button" aria-label="Previous destination">‹</button>
+  <button class="memory-arrow memory-next" type="button" aria-label="Next destination">›</button>
+  <div class="memory-dots" aria-label="Choose a destination">
+    <button type="button" class="memory-dot active" aria-label="Maasai Mara" aria-current="true"></button>
+    <button type="button" class="memory-dot" aria-label="Samburu and Ol Pejeta"></button>
+    <button type="button" class="memory-dot" aria-label="Tsavo East"></button>
+    <button type="button" class="memory-dot" aria-label="Diani Beach"></button>
+    <button type="button" class="memory-dot" aria-label="Mombasa"></button>
+    <button type="button" class="memory-dot" aria-label="Nairobi"></button>
+    <button type="button" class="memory-dot" aria-label="International journeys"></button>
+    <button type="button" class="memory-dot" aria-label="Dubai"></button>
+  </div>
 </div>
 
 </div>
 
 </section>
+
+<!-- ELAH STORIES: ORIGINAL DESTINATION IMAGERY REUSED FROM THE EXISTING GALLERY -->
+<section class="elah-stories" id="elah-stories">
+ <div class="container">
+  <div class="heading"><p class="eyebrow">NOT JUST PLACES • PEOPLE & MOMENTS</p><h2>Every journey has <em>a story.</em></h2><p>Small moments, lasting memories — a glimpse of what makes travelling across Africa so special.</p></div>
+  <div class="elah-story-grid">
+   <article class="elah-story-card story-mara"><div class="elah-story-copy"><p class="eyebrow">WILDERNESS</p><h3>Where the wild still wanders</h3><p>From quiet mornings to unforgettable wildlife encounters, the wilderness invites you to slow down and take it all in.</p></div></article>
+   <article class="elah-story-card story-coast"><div class="elah-story-copy"><p class="eyebrow">THE COAST</p><h3>Let the ocean set the pace</h3><p>Warm coastal breezes, open horizons and unhurried days create space to reconnect and simply enjoy the moment.</p></div></article>
+   <article class="elah-story-card story-culture"><div class="elah-story-copy"><p class="eyebrow">CULTURE</p><h3>Meet the stories behind the place</h3><p>Travel becomes richer through local knowledge, shared traditions and the people who make every destination unique.</p></div></article>
+  </div>
+ </div>
+</section>
+<style>
+.elah-stories{padding:90px 0;background:#f5eee3}.elah-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.elah-story-card{min-height:410px;position:relative;display:flex;align-items:flex-end;overflow:hidden;border-radius:18px;background-color:#30291f;background-size:cover;background-position:center}.elah-story-card:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(22,18,13,.88),rgba(22,18,13,.02) 78%)}.story-mara{background-image:url('mara.jpg')}.story-coast{background-image:url('diani.jpg')}.story-culture{background-image:url('samburu-olpejeta.jpg')}.elah-story-copy{position:relative;z-index:1;color:#fff;padding:26px}.elah-story-copy .eyebrow{color:#f1c878}.elah-story-copy h3{font-size:1.8rem;line-height:1.15;margin:8px 0 10px}.elah-story-copy p:last-child{line-height:1.65;margin-bottom:0}@media(max-width:850px){.elah-story-grid{grid-template-columns:1fr}.elah-story-card{min-height:340px}.elah-stories{padding:60px 0}}
+</style>
+
 
 <!-- =====================================================
      BOOKING
@@ -3500,6 +3704,11 @@ Send Safari Enquiry
 
 </form>
 
+</div>
+
+<div class="booking-contact-actions" aria-label="Contact Elah Safaris">
+  <a class="btn gold" href="https://wa.me/254710666222" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+  <a class="btn booking-email-btn" href="mailto:elah.safaris@gmail.com">Email Us</a>
 </div>
 
 </section>
@@ -5194,7 +5403,7 @@ const culturalPackages = {
 "senegal": {
  days:"16 DAYS • WEST AFRICA", title:"🇸🇳 Senegal — A Cultural Odyssey", price:"Price on request",
  intro:"A sixteen-day cultural journey through Dakar, Lac Rose, Senegal's fishing communities, south-eastern villages and the Casamance region, with a strong focus on living traditions, ceremonies, architecture and local life.",
- image: "senegal.jpg",
+ image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Arrival in Dakar","Arrive in Dakar and begin the tour with dinner at a restaurant on the coast."],
  ["Day 2 — Dakar & Senegal Wrestling","Explore Dakar's historical sites, museums, galleries and shops. In the afternoon, meet famous Senegalese wrestlers and go behind the scenes to watch them training."],
@@ -5219,7 +5428,7 @@ const culturalPackages = {
 "chad": {
  days:"16 DAYS • SAHEL EXPEDITION", title:"🇹🇩 Chad — The Gerewol, Lake Chad & More", price:"Price on request",
  intro:"A remote expedition through Chad combining ancient settlements, Lake Chad water nomads, Guera communities, Arab nomads and an immersive visit with the Wodaabe during the Gerewol season.",
- image:"chad.jpg",
+ image:"https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Arrival in N'Djamena","Begin at the hotel in N'Djamena with a welcome dinner and expedition briefing. Airport transfer provided."],
  ["Day 2 — Gaoui Village","Visit Gaoui, its ancient Palace and museum, then explore alleyways and Kotoko ceramic workshops and earth kilns. Spend the afternoon preparing permits, vehicles and equipment."],
@@ -5237,7 +5446,7 @@ const culturalPackages = {
 "angola-hidden": {
  days:"13 DAYS • SOUTHERN AFRICA", title:"🇦🇴 Angola — Hidden Tribes of the South", price:"Price on request",
  intro:"A thirteen-day journey through remote southern Angola, combining rare cultural encounters, dramatic desert landscapes, photography, colonial history and isolated coastal communities.",
- image:"angola-hidden-tribes.jpg",
+ image:"https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Arrival in Lubango","Begin late afternoon or evening at a comfortable lodge in Lubango. Airport transfers are provided for guests arriving today."],
  ["Day 2 — Leba Plateau, Nguendelengo & Curoca","Drive over the scenic Leba Plateau to the foothills inhabited by the Nguendelengo people. Visit a village, continue to Moçamedes for lunch and then travel to established camp in Curoca National Park for sunset photography."],
@@ -5251,7 +5460,7 @@ const culturalPackages = {
 "ivory-coast": {
  days:"14 DAYS • WEST AFRICA", title:"🇨🇮 Ivory Coast — Land of Masks & Dance", price:"Price on request",
  intro:"A fourteen-day cultural photography journey through Ivory Coast, focusing on royal traditions, traditional healers, ancient architecture, sacred sites, hunters, masks and extraordinary dances.",
- image:"ivory-coast.jpg",
+ image:"https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Arrival in Abidjan","Arrive in Abidjan, transfer to the hotel and enjoy dinner."],
  ["Day 2 — Abengouro & Aniassué","Drive north to Abengouro, visit the Palace of King Nana Boa Komasi, head of the Agni people, then continue to Aniassué to meet Komian traditional healers and watch traditional dance."],
@@ -5274,7 +5483,7 @@ const culturalPackages = {
 "benin": {
  days:"14 DAYS • WEST AFRICA", title:"🇧🇯 Benin — Unseen West Africa", price:"Price on request",
  intro:"A fourteen-day cultural exploration of Benin featuring Voodoo traditions, historic Ouidah, Ganvie, Holi villages, Batonu horsemen, northern communities and ceremonies across the country.",
- image:"benin.jpg",
+ image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Arrival in Cotonou","Settle into the city hotel and enjoy a sunset dinner at a beachside fish restaurant."],
  ["Day 2 — Grand Popo Ceremonies","Travel towards the Benin–Togo border region and attend private Shango and Gambada ceremonies in preparation for the annual Voodoo Festival."],
@@ -5297,7 +5506,7 @@ const culturalPackages = {
 "south-sudan-tribal": {
  days:"15 DAYS • EAST AFRICA EXPEDITION", title:"🇸🇸 South Sudan — Tribal Wonders of the White Nile", price:"Price on request",
  intro:"A fifteen-day expedition across Eastern Equatoria and the Mundari cattle country, meeting Toposa, Jie, Laarim, Lopit and Mundari communities in remote landscapes.",
- image:"south-sudan.jpg",
+ image:"https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Juba","Begin in Juba with dinner beside the White Nile."],
  ["Day 2 — Juba to Kapoeta & Toposa Country","Finalise permits and fly to Kapoeta in Eastern Equatoria. Meet drivers and travel into remote Toposa country."],
@@ -5318,7 +5527,7 @@ const culturalPackages = {
 "omo-valley": {
  days:"14 DAYS • ETHIOPIA", title:"🇪🇹 Omo Valley — Extraordinary Tribal People of Southern Ethiopia", price:"Price on request",
  intro:"A fourteen-day expedition from Addis Ababa into the Omo Valley and Central Rift Valley, visiting around thirteen different tribal peoples and combining remote camps with comfortable lodges.",
- image:"omo-valley.jpg",
+ image:"https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Addis Ababa","Begin the Omo Valley expedition in Addis Ababa this evening."],
  ["Day 2 — Addis Ababa to Jimma & Mizan Teferu","Fly from Addis Ababa to Jimma and drive to Mizan Teferu for an overnight stay before entering the Omo Valley."],
@@ -5333,7 +5542,7 @@ const culturalPackages = {
 "remote-kenya": {
  days:"14 DAYS • KENYA", title:"🇰🇪 Remote Kenya", price:"Price on request",
  intro:"A fourteen-day journey through some of Kenya's most remote cultural landscapes, from Lake Baringo and the Ndoto Mountains to Lake Turkana, Sibiloi, Chalbi, Marsabit and Samburu.",
- image:"remote-kenya.jpg",
+ image:"https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Nairobi","Arrive in Nairobi and overnight near Jomo Kenyatta International Airport."],
  ["Day 2 — Lake Baringo & Pokot","Drive to Lake Baringo and visit a Pokot community at their family boma in the afternoon. Overnight overlooking the lake."],
@@ -5355,7 +5564,7 @@ const culturalPackages = {
 "angola-hidden-2": {
  days:"13 DAYS • PHOTOGRAPHY EXPEDITION", title:"🇦🇴 Angola — Hidden Tribes of the South", price:"Price on request",
  intro:"This second listing uses the same thirteen-day Hidden Tribes of the South itinerary supplied for Angola, retained as a separate cultural expedition entry for the website collection.",
- image:"angola.jpg",
+ image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Lubango","Arrive in Lubango and transfer to the lodge."],
  ["Day 2 — Leba Plateau to Curoca","Visit Nguendelengo people, continue to Moçamedes and camp in Curoca National Park for sunset."],
@@ -5369,7 +5578,7 @@ const culturalPackages = {
 "mundari": {
  days:"8 DAYS • SOUTH SUDAN", title:"🇸🇸 South Sudan — Mundari Photography Expedition", price:"Price on request",
  intro:"An immersive eight-day expedition focused on Mundari cattle culture, spending time in two large cattle camps and a Mundari village area near a favourite fishing lake.",
- image:"mundari.jpg",
+ image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Juba","Begin in Juba with dinner beside the White Nile."],
  ["Days 2–6 — Mundari Cattle Camps & Village","Spend five expedition days camped in two separate large Mundari cattle camps and in a beautiful Mundari village area near a favourite fishing lake. Use the time for cultural immersion, photography and observation of daily cattle life and community traditions."],
@@ -5382,7 +5591,7 @@ const culturalPackages = {
 "northern-kenya": {
  days:"14 DAYS • KENYA CULTURE & WILDLIFE", title:"🇰🇪 Northern Kenya Cultural & Wildlife Tour", price:"Price on request",
  intro:"A fourteen-day Northern Kenya journey combining wildlife, remote landscapes and cultural encounters from the Mathews Range and Marsabit to Lake Turkana, South Horr and Samburu.",
- image:"northern-kenya1.jpg",
+ image:"https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Arrival in Nairobi","Airport transfer and overnight at a Nairobi airport hotel on bed and breakfast."],
  ["Day 2 — Nairobi to Mathews Range","Fly from Wilson Airport towards Samburu, transfer to Kitich Camp in the Mathews Range and enjoy an afternoon bush activity such as a guided walk or sundowner."],
@@ -5404,7 +5613,7 @@ const culturalPackages = {
 "northern-kenya-2": {
  days:"9 DAYS • LAKE TURKANA", title:"🇰🇪 Northern Kenya & Lake Turkana Expedition", price:"Price on request",
  intro:"A nine-day expedition linking Samburu with Loiyangalani, Lake Turkana, archaeological sites, El Molo culture, Mount Porr, Lake Bogoria and the Great Rift Valley.",
- image:"northern-kenya2.jpg",
+ image:"https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Nairobi to Samburu","Depart Nairobi at 0630hrs for Samburu National Reserve, arrive for lunch and enjoy an afternoon game drive."],
  ["Day 2 — Samburu National Reserve","Spend a full day with unlimited game drives, searching for Grevy's zebra, gerenuk, Somali ostrich, reticulated giraffe and Beisa oryx."],
@@ -5422,7 +5631,7 @@ const culturalPackages = {
 "algeria": {
  days:"14 DAYS • SAHARA", title:"🇩🇿 Algeria — Tuaregs of the Algerian Sahara", price:"Price on request",
  intro:"A fourteen-day Sahara expedition combining Tuareg culture, desert camping, rock art, ancient ksours, oases, semi-nomadic life and the annual Sabiba celebration.",
- image:"algeria.jpg",
+ image:"https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=85",
  itinerary:[
  ["Day 1 — Algiers to Djanet","Meet at Algiers airport for the domestic flight to Djanet. Meet the local Tuareg team, rest at the hotel and visit the Ksour of Taghorfit until sunset."],
  ["Days 2–6 — Tadrart Rouge","Travel by 4x4 into Tadrart Rouge and wild camp with Tuareg guides while exploring rock art, slot canyons, caves and dunes. Enjoy a night excursion searching for nocturnal desert wildlife."],
@@ -5774,102 +5983,39 @@ function sendInquiryToWhatsApp(event) {
     const whatsappURL = `https://wa.me/254710666222?text=${encodeURIComponent(whatsappText)}`;
     window.location.href = whatsappURL;
 }
-/* =========================================================
-   CULTURAL EXPEDITION SLIDER & MODAL
-========================================================= */
-
-const culturalSlider = document.getElementById("culturalSlider");
-const culturalPrev = document.querySelector(".cultural-arrow.prev");
-const culturalNext = document.querySelector(".cultural-arrow.next");
-const culturalModal = document.getElementById("culturalModal");
-const culturalModalImage = document.getElementById("culturalModalImage");
-const culturalModalDays = document.getElementById("culturalModalDays");
-const culturalModalTitle = document.getElementById("culturalModalTitle");
-const culturalModalPrice = document.getElementById("culturalModalPrice");
-const culturalModalIntro = document.getElementById("culturalModalIntro");
-const culturalModalItinerary = document.getElementById("culturalModalItinerary");
-const culturalModalHighlights = document.getElementById("culturalModalHighlights");
-const culturalBookButton = document.getElementById("culturalBookButton");
-let culturalTimer;
-
-function getCulturalStep(){
-    if(!culturalSlider || !culturalSlider.firstElementChild) return 0;
-    return culturalSlider.firstElementChild.getBoundingClientRect().width + 22;
-}
-
-function scrollCultural(direction){
-    if(!culturalSlider) return;
-    culturalSlider.scrollBy({left: direction * getCulturalStep(), behavior:"smooth"});
-}
-
-function startCulturalAutoSlide(){
-    clearInterval(culturalTimer);
-    culturalTimer=setInterval(function(){ scrollCultural(1); }, 5200);
-}
-
-if(culturalPrev) culturalPrev.addEventListener("click", function(){ scrollCultural(-1); startCulturalAutoSlide(); });
-if(culturalNext) culturalNext.addEventListener("click", function(){ scrollCultural(1); startCulturalAutoSlide(); });
-if(culturalSlider){
-    culturalSlider.addEventListener("mouseenter", function(){ clearInterval(culturalTimer); });
-    culturalSlider.addEventListener("mouseleave", startCulturalAutoSlide);
-    culturalSlider.addEventListener("touchstart", function(){ clearInterval(culturalTimer); }, {passive:true});
-    culturalSlider.addEventListener("touchend", startCulturalAutoSlide, {passive:true});
-    startCulturalAutoSlide();
-}
-
-function openCulturalPackage(packageId){
-    const data=culturalPackages[packageId];
-    if(!data) return;
-    culturalModalDays.textContent=data.days;
-    culturalModalTitle.textContent=data.title;
-    culturalModalPrice.textContent=data.price;
-    culturalModalIntro.textContent=data.intro;
-    culturalModalImage.style.backgroundImage=`url("${data.image}")`;
-    culturalModalItinerary.innerHTML="";
-    data.itinerary.forEach(function(day){
-        const box=document.createElement("div");
-        box.className="cultural-itinerary-day";
-        const h=document.createElement("h4"); h.textContent=day[0];
-        const p=document.createElement("p"); p.textContent=day[1];
-        box.appendChild(h); box.appendChild(p); culturalModalItinerary.appendChild(box);
-    });
-    culturalModalHighlights.innerHTML="";
-    data.highlights.forEach(function(item){
-        const li=document.createElement("li"); li.textContent=item; culturalModalHighlights.appendChild(li);
-    });
-    culturalBookButton.href="#booking";
-    culturalModal.classList.add("active");
-    culturalModal.setAttribute("aria-hidden","false");
-    document.body.classList.add("modal-open");
-}
-
-function closeCulturalPackage(){
-    culturalModal.classList.remove("active");
-    culturalModal.setAttribute("aria-hidden","true");
-    document.body.classList.remove("modal-open");
-}
-
-document.querySelectorAll(".cultural-card").forEach(function(card){
-    const button=card.querySelector(".cultural-view-package");
-    if(button) button.addEventListener("click", function(event){
-        event.preventDefault(); event.stopPropagation();
-        openCulturalPackage(card.getAttribute("data-cultural-package"));
-    });
-});
-
-document.querySelectorAll("[data-close-cultural]").forEach(function(element){
-    element.addEventListener("click", closeCulturalPackage);
-});
-
-document.addEventListener("keydown", function(event){
-    if(event.key==="Escape" && culturalModal.classList.contains("active")) closeCulturalPackage();
-});
-
-if(culturalBookButton) culturalBookButton.addEventListener("click", closeCulturalPackage);
-
-
 </script>
 
+
+<script>
+(function () {
+  const slider = document.querySelector('.gallery-memory-slider');
+  if (!slider) return;
+  const slides = Array.from(slider.querySelectorAll('.memory-slide'));
+  const dots = Array.from(slider.querySelectorAll('.memory-dot'));
+  const title = slider.querySelector('#memoryDestination');
+  const names = ['Maasai Mara', 'Samburu & Ol Pejeta', 'Tsavo East', 'Diani Beach', 'Mombasa', 'Nairobi', 'International Journeys', 'Dubai'];
+  let current = 0;
+  let timer;
+  function show(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => { slide.classList.toggle('active', i === current); });
+    dots.forEach((dot, i) => { dot.classList.toggle('active', i === current); if (i === current) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current'); });
+    title.textContent = names[current];
+  }
+  function restart() { window.clearInterval(timer); timer = window.setInterval(() => show(current + 1), 5000); }
+  slider.querySelector('.memory-prev').addEventListener('click', () => { show(current - 1); restart(); });
+  slider.querySelector('.memory-next').addEventListener('click', () => { show(current + 1); restart(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); restart(); }));
+  slider.addEventListener('mouseenter', () => window.clearInterval(timer));
+  slider.addEventListener('mouseleave', restart);
+  show(0); restart();
+})();
+</script>
+
+
+<script>
+document.querySelectorAll('[data-journey]').forEach(function(link){link.addEventListener('click',function(){var form=document.querySelector('#form');if(!form)return;var message=form.querySelector('textarea[name="message"],textarea');if(message&&!message.value)message.value='I would like more information about: '+link.getAttribute('data-journey');});});
+</script>
 </body>
 
 </html>
