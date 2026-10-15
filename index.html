@@ -921,10 +921,24 @@ if(culturalBookButton) culturalBookButton.addEventListener("click", closeCultura
 ========================================================= */
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
+    position: relative;
+    display: block;
+    width: 100%;
 }
+.gallery-slide { display:none; position:relative; min-height: min(62vh, 560px); height: 440px; overflow:hidden; border-radius:16px; background-size:cover; background-position:center; }
+.gallery-slide.active { display:flex; align-items:flex-end; }
+.gallery-slide::after { content:""; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.72)); }
+.gallery-caption { position:relative; z-index:1; color:#fff; padding:26px; font-size:clamp(1.4rem,3vw,2.3rem); font-weight:600; text-shadow:0 2px 12px rgba(0,0,0,.5); }
+.gallery-controls { display:flex; justify-content:center; align-items:center; gap:16px; margin-top:15px; }
+.gallery-controls button { border:1px solid #9a6a2f; background:#fffdf8; color:#9a6a2f; border-radius:30px; padding:9px 16px; cursor:pointer; }
+.gallery-counter { color:#9a6a2f; font-size:.9rem; }
+.story-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.story-card { position:relative; min-height:300px; border-radius:16px; overflow:hidden; background-size:cover; background-position:center; display:flex; align-items:flex-end; }
+.story-card::after { content:""; position:absolute; inset:20% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.78)); }
+.story-copy { position:relative; z-index:1; padding:22px; color:#fff; }
+.story-copy h3 { color:#fff; margin:0 0 8px; }
+.story-copy p { margin:0; line-height:1.6; color:#fff; }
+@media(max-width:700px){ .gallery-slide{height:340px;min-height:340px}.story-grid{grid-template-columns:1fr}.story-card{min-height:280px} }
 
 .g {
     min-height: 250px;
@@ -1810,6 +1824,13 @@ body.modal-open { overflow: hidden; }
 /* Preserve the original photo backgrounds and layout on mobile. */
 img, video { max-width: 100%; }
 
+/* Remove italic styling without changing text colours. */
+em, i, cite, dfn, var { font-style: normal !important; }
+
+/* Floating email shortcut sits directly below WhatsApp. */
+.email-float { position:fixed; right:23px; bottom:18px; z-index:9998; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#9a6a2f; color:#fff; text-decoration:none; box-shadow:0 8px 24px rgba(0,0,0,.2); font-size:25px; }
+.whatsapp-float { bottom:88px !important; }
+@media(max-width:650px){ .email-float{right:18px;bottom:16px;width:54px;height:54px}.whatsapp-float{right:18px !important;bottom:80px !important;} }
 </style>
 
 </head>
@@ -1834,7 +1855,7 @@ img, video { max-width: 100%; }
     </svg>
 
 </a>
-
+<a class="email-float" href="mailto:elah.safaris@gmail.com" aria-label="Email Elah Safaris" title="Email Elah Safaris">✉</a>
 
 <!-- =====================================================
      HEADER
@@ -3418,22 +3439,33 @@ Wild places.
 
 </div>
 
-<div class="gallery">
-
-<div class="g g1"></div>
-<div class="g g2"></div>
-<div class="g g3"></div>
-<div class="g g4"></div>
-<div class="g g5"></div>
-<div class="g g6"></div>
-<div class="g g7"></div>
-<div class="g g8"></div>
-
+<div class="gallery" id="elahMomentsSlider">
+<div class="gallery-slide g1 active" style="background-image:url('mara.jpg')"><div class="gallery-caption">Maasai Mara</div></div>
+<div class="gallery-slide g2" style="background-image:url('samburu-olpejeta.jpg')"><div class="gallery-caption">Samburu &amp; Ol Pejeta</div></div>
+<div class="gallery-slide g3" style="background-image:url('tsavo-east.jpg')"><div class="gallery-caption">Tsavo East</div></div>
+<div class="gallery-slide g4" style="background-image:url('diani.jpg')"><div class="gallery-caption">Diani Beach</div></div>
+<div class="gallery-slide g5" style="background-image:url('mombasa.jpg')"><div class="gallery-caption">Mombasa Coast</div></div>
+<div class="gallery-slide g6" style="background-image:url('nairobi.jpg')"><div class="gallery-caption">Nairobi</div></div>
+<div class="gallery-slide g7"><div class="gallery-caption">Discover More Destinations</div></div>
+<div class="gallery-slide g8"><div class="gallery-caption">International Journeys</div></div>
 </div>
+<div class="gallery-controls"><button type="button" id="galleryPrev">Previous</button><span class="gallery-counter" id="galleryCounter">1 / 8</span><button type="button" id="galleryNext">Next</button></div>
 
 </div>
 
 </section>
+
+<!-- =====================================================
+     ELAH STORIES — original website photos
+===================================================== -->
+<section id="elah-stories" class="elah-stories">
+<div class="container">
+<div class="heading"><p class="eyebrow">STORIES FROM THE JOURNEY</p><h2>Every journey has <em>a story.</em></h2><p>Moments and memories from the landscapes we love.</p></div>
+<div class="story-grid">
+<article class="story-card" style="background-image:url('mara.jpg')"><div class="story-copy"><h3>Where the wild roams</h3><p>Across the Maasai Mara, wide-open plains invite you to slow down and witness wildlife in its natural home.</p></div></article>
+<article class="story-card" style="background-image:url('samburu-olpejeta.jpg')"><div class="story-copy"><h3>Conservation with purpose</h3><p>In Kenya’s conservation landscapes, every visit can help support wildlife protection and local communities.</p></div></article>
+<article class="story-card" style="background-image:url('diani.jpg')"><div class="story-copy"><h3>Time beside the sea</h3><p>On the coast, warm ocean breezes and peaceful beaches create space to reconnect and make lasting memories.</p></div></article>
+</div></div></section>
 
 <!-- =====================================================
      BOOKING
@@ -3710,6 +3742,19 @@ Offering bespoke Sub-Saharan safari and cultural tours.
 
 document.getElementById("year").textContent =
 new Date().getFullYear();
+
+/* Elah Moments: one original photo at a time, with its own destination caption. */
+(function(){
+  const slides = Array.from(document.querySelectorAll('#elahMomentsSlider .gallery-slide'));
+  const counter = document.getElementById('galleryCounter');
+  if (!slides.length) return;
+  let current = 0;
+  function showSlide(index){ current = (index + slides.length) % slides.length; slides.forEach((slide,i)=>slide.classList.toggle('active',i===current)); if(counter) counter.textContent = (current+1)+' / '+slides.length; }
+  document.getElementById('galleryPrev')?.addEventListener('click',()=>showSlide(current-1));
+  document.getElementById('galleryNext')?.addEventListener('click',()=>showSlide(current+1));
+  showSlide(0);
+  window.setInterval(()=>showSlide(current+1),5000);
+})();
 
 
 /* =========================================================
