@@ -1833,12 +1833,1861 @@ footer {
 /* Keep the site's original palette while rendering emphasis without italics. */
 em, i { font-style: normal; }
 
+</style>
+
+
+<style id="elah-additions-styles">
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    background: #fffdf8;
+    color: #30291f;
+    line-height: 1.6;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
+}
+
+section {
+    padding: 95px 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Cormorant Garamond", serif;
+    line-height: 1.05;
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin: 12px 0 20px;
+}
+
+h2 em {
+    color: #9a6a2f;
+    font-style: italic;
+}
+
+.eyebrow {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    font-weight: 700;
+    color: #9a6a2f;
+}
+
+.heading {
+    max-width: 720px;
+    margin-bottom: 45px;
+}
+
+.heading p:last-child {
+    color: #71685a;
+    max-width: 650px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 23px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    font-weight: 700;
+    margin: 5px;
+    transition: .25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn.gold {
+    background: #9a6a2f;
+    color: white;
+}
+
+.btn.light {
+    background: rgba(255,255,255,.13);
+    color: white;
+    border-color: rgba(255,255,255,.6);
+}
+
+.link {
+    color: #9a6a2f;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 18px 0;
+}
+
+.header-inner {
+    width: min(1240px, calc(100% - 30px));
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
+}
+
+.brand-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+nav > a {
+    color: white;
+    text-decoration: none;
+    font-size: .86rem;
+    font-weight: 600;
+}
+
+nav > a:hover {
+    opacity: .75;
+}
+
+.pill {
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: 999px;
+}
+
+.menu {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.language-selector {
+    position: relative;
+}
+
+.language-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 999px;
+    background: rgba(0,0,0,.2);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.language-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 9px);
+    min-width: 160px;
+    padding: 7px;
+    background: #fffdf8;
+    border-radius: 13px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+.language-selector.open .language-menu {
+    display: block;
+}
+
+.language-menu button {
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #30291f;
+}
+
+.language-menu button:hover {
+    background: #f0e6d5;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-video {
+    position: relative;
+    height: 75svh;
+    min-height: 620px;
+    overflow: hidden;
+    background: #17150f;
+    color: white;
+}
+
+.hero-videos {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-video-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.hero-video-slide.active {
+    opacity: 1;
+}
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.3)),
+        linear-gradient(0deg, rgba(0,0,0,.5), transparent);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1180px;
+}
+
+.hero-content h1 {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    margin: 10px 0 20px;
+    max-width: 850px;
+}
+
+.hero-content h1 span {
+    color: #e0bb7c;
+}
+
+.hero-content > p:not(.eyebrow) {
+    max-width: 650px;
+    font-size: 1.05rem;
+}
+
+.hero-video-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 9px;
+}
+
+.hero-video-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background: transparent;
+    cursor: pointer;
+}
+
+.hero-video-dot.active {
+    width: 30px;
+    border-radius: 20px;
+    background: white;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.two p {
+    color: #675f52;
+}
+
+/* =========================================================
+   DESTINATIONS
+========================================================= */
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.destination {
+    min-height: 390px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+}
+
+.destination::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.78),
+            rgba(0,0,0,.05) 70%
+        );
+}
+
+.destination > div {
+    position: relative;
+    padding: 27px;
+    z-index: 2;
+}
+
+.destination b {
+    font-size: .72rem;
+    letter-spacing: .15em;
+    opacity: .8;
+}
+
+.destination h3 {
+    font-size: 2.4rem;
+    margin: 7px 0;
+}
+
+.destination p {
+    margin: 0 0 12px;
+    color: rgba(255,255,255,.85);
+}
+
+.destination a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mara {
+    background-image: url("mara.jpg");
+}
+
+.amboseli {
+    background-image: url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85");
+}
+
+.tsavo {
+    background-image: url("tsavo-east.jpg");
+}
+
+.olpejeta {
+    background-image: url("samburu-olpejeta.jpg");
+}
+
+.north {
+    background-image: url("https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85");
+}
+
+.coast {
+    background-image: url("mombasa.jpg");
+}
+
+/* =========================================================
+   PACKAGE SLIDER
+========================================================= */
+
+.safari-packages {
+    background: #f8f3e9;
+}
+
+.package-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.package-slider {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 8px 2px 25px;
+    flex: 1;
+}
+
+.package-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.package-card {
+    flex: 0 0 calc((100% - 44px) / 3);
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(30,25,15,.1);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.package-image {
+    height: 225px;
+    background-size: cover;
+    background-position: center;
+}
+
+.package-body {
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.package-days {
+    font-size: .7rem;
+    letter-spacing: .12em;
+    font-weight: 700;
+    opacity: .65;
+}
+
+.package-body h3 {
+    font-size: 2rem;
+    margin: 8px 0;
+}
+
+.package-body p {
+    color: #6d6559;
+    line-height: 1.65;
+    flex: 1;
+}
+
+.package-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.package-bottom small {
+    opacity: .65;
+}
+
+.view-package {
+    border: 0;
+    background: #9a6a2f;
+    color: white;
+    border-radius: 999px;
+    padding: 11px 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.package-arrow {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #d5c9b7;
+    background: white;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.package-slider-hint {
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    opacity: .55;
+    margin-top: 7px;
+}
+
+/* PACKAGE PHOTOS */
+
+.pkg-mara {
+    background-image: url("mara.jpg");
+}
+
+.pkg-amboseli {
+    background-image: url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-tsavo-east {
+    background-image: url("tsavo-east.jpg");
+}
+
+.pkg-tsavo-west {
+    background-image: url("https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-tsavo-both {
+    background-image: url("tsavo-both.jpg");
+}
+
+.pkg-samburu {
+    background-image: url("samburu-olpejeta.jpg");
+}
+
+.pkg-northern {
+    background-image: url("https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-diani {
+    background-image: url("diani.jpg");
+}
+
+.pkg-mombasa {
+    background-image: url("mombasa.jpg");
+}
+
+/* NEW LAKE NAKURU + HELL'S GATE PHOTO */
+
+.pkg-lake-nakuru-hells-gate {
+    background-image: url("lake-nakuru-hells-gate.jpg");
+}
+
+.pkg-central {
+    background-image: url("https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1200&q=85");
+}
+
+.pkg-nairobi {
+    background-image: url("nairobi.jpg");
+}
+
+.pkg-nairobi-park {
+    background-image: url("nairobi-national-park.jpg");
+}
+
+.pkg-western {
+    background-image: url("western-kenya.jpg");
+}
+
+.pkg-malindi {
+    background-image: url("malindi.jpg");
+}
+
+.pkg-watamu {
+    background-image: url("watamu-kisite.jpg");
+}
+
+
+
+.intl-dubai{background-image:url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85");}
+.intl-south-africa{background-image:url("https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1200&q=85");}
+.intl-zanzibar{background-image:url("https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=85");}
+.intl-seychelles{background-image:url("https://images.unsplash.com/photo-1589979481223-deb893043163?auto=format&fit=crop&w=1200&q=85");}
+.intl-mauritius{background-image:url("https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1200&q=85");}
+.intl-maldives{background-image:url("https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=85");}
+.intl-morocco{background-image:url("https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=1200&q=85");}
+.intl-egypt{background-image:url("https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1200&q=85");}
+.intl-turkiye{background-image:url("https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=85");}
+.intl-uk{background-image:url("https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=85");}
+.intl-france{background-image:url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=85");}
+.intl-italy{background-image:url("https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=85");}
+.intl-switzerland{background-image:url("https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=85");}
+.intl-spain{background-image:url("https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=85");}
+.intl-greece{background-image:url("https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1200&q=85");}
+.intl-thailand{background-image:url("https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=85");}
+.intl-singapore{background-image:url("https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=85");}
+.intl-malaysia{background-image:url("https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=1200&q=85");}
+.intl-india{background-image:url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=85");}
+.intl-australia{background-image:url("https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=1200&q=85");}
+
+
+
+/* =========================================================
+   CULTURAL EXPEDITION SLIDER & MODAL
+========================================================= */
+
+const culturalSlider = document.getElementById("culturalSlider");
+const culturalPrev = document.querySelector(".cultural-arrow.prev");
+const culturalNext = document.querySelector(".cultural-arrow.next");
+const culturalModal = document.getElementById("culturalModal");
+const culturalModalImage = document.getElementById("culturalModalImage");
+const culturalModalDays = document.getElementById("culturalModalDays");
+const culturalModalTitle = document.getElementById("culturalModalTitle");
+const culturalModalPrice = document.getElementById("culturalModalPrice");
+const culturalModalIntro = document.getElementById("culturalModalIntro");
+const culturalModalItinerary = document.getElementById("culturalModalItinerary");
+const culturalModalHighlights = document.getElementById("culturalModalHighlights");
+const culturalBookButton = document.getElementById("culturalBookButton");
+let culturalTimer;
+
+function getCulturalStep(){
+    if(!culturalSlider || !culturalSlider.firstElementChild) return 0;
+    return culturalSlider.firstElementChild.getBoundingClientRect().width + 22;
+}
+
+function scrollCultural(direction){
+    if(!culturalSlider) return;
+    culturalSlider.scrollBy({left: direction * getCulturalStep(), behavior:"smooth"});
+}
+
+function startCulturalAutoSlide(){
+    clearInterval(culturalTimer);
+    culturalTimer=setInterval(function(){ scrollCultural(1); }, 5200);
+}
+
+if(culturalPrev) culturalPrev.addEventListener("click", function(){ scrollCultural(-1); startCulturalAutoSlide(); });
+if(culturalNext) culturalNext.addEventListener("click", function(){ scrollCultural(1); startCulturalAutoSlide(); });
+if(culturalSlider){
+    culturalSlider.addEventListener("mouseenter", function(){ clearInterval(culturalTimer); });
+    culturalSlider.addEventListener("mouseleave", startCulturalAutoSlide);
+    culturalSlider.addEventListener("touchstart", function(){ clearInterval(culturalTimer); }, {passive:true});
+    culturalSlider.addEventListener("touchend", startCulturalAutoSlide, {passive:true});
+    startCulturalAutoSlide();
+}
+
+function openCulturalPackage(packageId){
+    const data=culturalPackages[packageId];
+    if(!data) return;
+    culturalModalDays.textContent=data.days;
+    culturalModalTitle.textContent=data.title;
+    culturalModalPrice.textContent=data.price;
+    culturalModalIntro.textContent=data.intro;
+    culturalModalImage.style.backgroundImage=`url("${data.image}")`;
+    culturalModalItinerary.innerHTML="";
+    data.itinerary.forEach(function(day){
+        const box=document.createElement("div");
+        box.className="cultural-itinerary-day";
+        const h=document.createElement("h4"); h.textContent=day[0];
+        const p=document.createElement("p"); p.textContent=day[1];
+        box.appendChild(h); box.appendChild(p); culturalModalItinerary.appendChild(box);
+    });
+    culturalModalHighlights.innerHTML="";
+    data.highlights.forEach(function(item){
+        const li=document.createElement("li"); li.textContent=item; culturalModalHighlights.appendChild(li);
+    });
+    culturalBookButton.href="#booking";
+    culturalModal.classList.add("active");
+    culturalModal.setAttribute("aria-hidden","false");
+    document.body.classList.add("modal-open");
+}
+
+function closeCulturalPackage(){
+    culturalModal.classList.remove("active");
+    culturalModal.setAttribute("aria-hidden","true");
+    document.body.classList.remove("modal-open");
+}
+
+document.querySelectorAll(".cultural-card").forEach(function(card){
+    const button=card.querySelector(".cultural-view-package");
+    if(button) button.addEventListener("click", function(event){
+        event.preventDefault(); event.stopPropagation();
+        openCulturalPackage(card.getAttribute("data-cultural-package"));
+    });
+});
+
+document.querySelectorAll("[data-close-cultural]").forEach(function(element){
+    element.addEventListener("click", closeCulturalPackage);
+});
+
+document.addEventListener("keydown", function(event){
+    if(event.key==="Escape" && culturalModal.classList.contains("active")) closeCulturalPackage();
+});
+
+if(culturalBookButton) culturalBookButton.addEventListener("click", closeCulturalPackage);
+
+
+/* =========================================================
+   PACKAGE MODAL
+========================================================= */
+
+.package-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.package-modal.active {
+    display: flex;
+}
+
+.package-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,8,5,.82);
+    backdrop-filter: blur(5px);
+}
+
+.package-modal-content {
+    position: relative;
+    z-index: 2;
+    width: min(920px,100%);
+    max-height: 94vh;
+    overflow-y: auto;
+    background: #fffdf8;
+    border-radius: 22px;
+    box-shadow: 0 30px 90px rgba(0,0,0,.4);
+    animation: modalIn .25s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.package-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 5;
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,.65);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.package-modal-image {
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.package-modal-body {
+    padding: 32px;
+}
+
+.package-modal-body h2 {
+    margin: 7px 0;
+    font-size: clamp(2.4rem,5vw,4rem);
+}
+
+.package-modal-price {
+    color: #9a6a2f;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+#packageModalIntro {
+    color: #635c51;
+    line-height: 1.8;
+}
+
+.itinerary {
+    margin-top: 28px;
+    display: grid;
+    gap: 12px;
+}
+
+.itinerary-day {
+    padding: 18px;
+    border-left: 3px solid #9a6a2f;
+    background: rgba(154,106,47,.07);
+    border-radius: 0 12px 12px 0;
+}
+
+.itinerary-day h4 {
+    margin: 0 0 7px;
+    font-size: 1.2rem;
+}
+
+.itinerary-day p {
+    margin: 0;
+    color: #625b50;
+}
+
+.package-includes {
+    margin-top: 30px;
+}
+
+.package-includes ul {
+    padding-left: 20px;
+}
+
+.package-book-btn {
+    margin-top: 20px;
+}
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.bigphoto {
+    min-height: 520px;
+    border-radius: 20px;
+    background:
+        linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.1)),
+        url("safari-video-1.mp4");
+    background-size: cover;
+    background-position: center;
+    background-color: #9a6a2f;
+}
+
+.experience ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.experience li {
+    display: flex;
+    gap: 18px;
+    margin: 18px 0;
+}
+
+.experience li b {
+    color: #9a6a2f;
+}
+
+.experience li span {
+    display: flex;
+    flex-direction: column;
+}
+
+.experience li strong {
+    margin-bottom: 4px;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-memory-slider {
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 54vw, 590px);
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #30291f;
+    isolation: isolate;
+}
+
+.memory-slide.g {
+    position: absolute; inset: 0;
+    min-height: 0; width: 100%; height: 100%;
+    border-radius: 0; background-size: cover; background-position: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity .7s ease, visibility .7s ease;
+}
+.memory-slide.g.active { opacity: 1; visibility: visible; }
+.gallery-memory-slider::after {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(0deg, rgba(20,17,12,.78), rgba(20,17,12,.05) 65%, rgba(20,17,12,.12));
+}
+.memory-caption { position: absolute; z-index: 2; left: clamp(20px, 5vw, 58px); bottom: 64px; color: #fff; max-width: 80%; }
+.memory-kicker { display: block; font: 700 .72rem/1.4 "DM Sans",sans-serif; letter-spacing: .18em; color: #e8c58e; margin-bottom: 8px; }
+.memory-caption h3 { margin: 0; color: #fff; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; text-shadow: 0 2px 18px rgba(0,0,0,.3); }
+.memory-arrow { position: absolute; z-index: 3; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(25,22,18,.42); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+.memory-prev { left: 16px; } .memory-next { right: 16px; }
+.memory-dots { position: absolute; z-index: 3; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; gap: 9px; align-items: center; }
+.memory-dot { width: 9px; height: 9px; padding: 0; border: 1px solid white; border-radius: 50%; background: rgba(255,255,255,.55); cursor: pointer; }
+.memory-dot.active { background: #d1a15e; border-color: #d1a15e; transform: scale(1.2); }
+
+.g1 {
+    background-image: url("mara.jpg");
+}
+
+.g2 {
+    background-image: url("samburu-olpejeta.jpg");
+}
+
+.g3 {
+    background-image: url("tsavo-east.jpg");
+}
+
+.g4 {
+    background-image: url("diani.jpg");
+}
+
+.g5 {
+    background-image: url("mombasa.jpg");
+}
+
+.g6 {
+    background-image: url("nairobi.jpg");
+}
+
+.g7 {
+    background-image: url("https://images.unsplash.com/photo-1610982330184-b26f7ea46541?auto=format&fit=crop&w=1400&q=85");
+}
+
+.g8 {
+    background-image: url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=85");
+}
+
+/* Booking contact actions sit directly below the enquiry form */
+.booking-contact-actions {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    margin: 28px auto 0;
+}
+.booking-contact-actions .btn { margin: 0; text-align: center; }
+.booking-email-btn { background: #fff; border-color: #9a6a2f; color: #805522; }
+.booking-email-btn:hover { background: #f7efe2; }
+
+/* =========================================================
+   FORM
+========================================================= */
+
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(30,25,15,.08);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 17px;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+    padding: 13px 14px;
+    border: 1px solid #d9d0c1;
+    border-radius: 10px;
+    background: #fffdf8;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #9a6a2f;
+}
+
+.contact-mini {
+    display: grid;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.contact-mini a {
+    text-decoration: none;
+    color: #9a6a2f;
+    font-weight: 700;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.details {
+    display: grid;
+    gap: 13px;
+}
+
+.details a {
+    text-decoration: none;
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+ .socials a {
+    color: #9a6a2f;
+}
+
+.social-name {
+    color: #9a6a2f;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icons a {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(154,106,47,.35);
+    border-radius: 50%;
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    background: #9a6a2f;
+    color: #fff;
+}
+
+.social-icons svg {
+    width: 19px;
+    height: 19px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #211c15;
+    color: white;
+    padding: 30px 0;
+}
+
+.foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-brand img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px) {
+
+    nav {
+        gap: 10px;
+    }
+
+    .package-card {
+        flex-basis: calc((100% - 22px)/2);
+    }
+
+}
+
+@media(max-width:850px) {
+
+    .menu {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 82px;
+        left: 15px;
+        right: 15px;
+        padding: 20px;
+        background: rgba(25,22,17,.97);
+        border-radius: 15px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav > a {
+        padding: 8px;
+    }
+
+    .language-selector {
+        width: 100%;
+    }
+
+    .language-button {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .language-menu {
+        position: relative;
+        top: 5px;
+        width: 100%;
+    }
+
+    .two {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media(max-width:650px) {
+
+    section {
+        padding: 70px 0;
+    }
+
+    .container {
+        width: min(100% - 28px,1180px);
+    }
+
+    .brand img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand-name {
+        font-size: 24px;
+    }
+
+    .hero-video {
+        min-height: 680px;
+        height: 72svh;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(3.1rem,14vw,5rem);
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination {
+        min-height: 350px;
+    }
+
+    .package-card {
+        flex-basis: 88%;
+    }
+
+    .package-arrow {
+        display: none;
+    }
+
+    .package-modal {
+        padding: 7px;
+    }
+
+    .package-modal-content {
+        max-height: 96vh;
+        border-radius: 16px;
+    }
+
+    .package-modal-image {
+        height: 220px;
+    }
+
+    .package-modal-body {
+        padding: 23px 19px 28px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+
+/* =========================================================
+   INTERNATIONAL PACKAGES
+========================================================= */
+
+.international-packages {
+    background: #fffdf8;
+}
+
+.international-packages .heading h2 em {
+    color: #9a6a2f;
+}
+
+.international-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.international-slider {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 8px 2px 25px;
+    flex: 1;
+}
+
+.international-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.international-card {
+    flex: 0 0 calc((100% - 44px) / 3);
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(30,25,15,.08);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.international-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 45px rgba(30,25,15,.13);
+}
+
+.international-image {
+    height: 225px;
+    background-size: cover;
+    background-position: center;
+}
+
+.international-body {
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.international-body h3 {
+    margin: 8px 0 8px;
+}
+
+.international-body p {
+    color: #635c51;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.international-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.international-bottom strong {
+    font-size: .95rem;
+}
+
+.international-bottom small {
+    font-weight: 500;
+    opacity: .65;
+}
+
+.international-view-package {
+    border: 0;
+    background: #9a6a2f;
+    color: white;
+    border-radius: 999px;
+    padding: 11px 17px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.international-arrow {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #d5c9b7;
+    background: white;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.international-slider-hint {
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    opacity: .55;
+    margin-top: 7px;
+}
+
+/* International popup uses the same visual language as the Kenya package popup. */
+.international-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.international-modal.active {
+    display: flex;
+}
+
+.international-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,8,5,.82);
+    backdrop-filter: blur(5px);
+}
+
+.international-modal-content {
+    position: relative;
+    z-index: 2;
+    width: min(920px,100%);
+    max-height: 94vh;
+    overflow-y: auto;
+    background: #fffdf8;
+    border-radius: 22px;
+    box-shadow: 0 30px 90px rgba(0,0,0,.4);
+    animation: modalIn .25s ease;
+}
+
+.international-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 5;
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,.65);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.international-modal-image {
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.international-modal-body {
+    padding: 32px;
+}
+
+.international-modal-body h2 {
+    margin: 7px 0;
+    font-size: clamp(2.4rem,5vw,4rem);
+}
+
+.international-modal-price {
+    color: #9a6a2f;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.international-modal-intro {
+    color: #635c51;
+    line-height: 1.8;
+}
+
+.international-itinerary {
+    margin-top: 28px;
+    display: grid;
+    gap: 12px;
+}
+
+.international-itinerary-day {
+    padding: 18px;
+    border-left: 3px solid #9a6a2f;
+    background: rgba(154,106,47,.07);
+    border-radius: 0 12px 12px 0;
+}
+
+.international-itinerary-day h4 {
+    margin: 0 0 7px;
+    font-size: 1.2rem;
+}
+
+.international-itinerary-day p {
+    margin: 0;
+    color: #625b50;
+    line-height: 1.7;
+}
+
+.international-highlights {
+    margin-top: 30px;
+}
+
+.international-highlights ul {
+    padding-left: 20px;
+}
+
+.international-book-btn {
+    margin-top: 20px;
+}
+
+@media (max-width: 1100px) {
+    .international-card {
+        flex-basis: calc((100% - 22px) / 2);
+    }
+}
+
+@media (max-width: 650px) {
+    .international-card {
+        flex-basis: 88%;
+    }
+
+    .international-arrow {
+        display: none;
+    }
+
+    .international-modal-body {
+        padding: 24px;
+    }
+
+    .international-modal-image {
+        height: 240px;
+    }
+
+    .international-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+
+/* =========================================================
+   INTERNATIONAL DESTINATION CARD
+========================================================= */
+
+.international-destination {
+    background-image: url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85");
+}
+
+.international-destination h3 {
+    font-size: 2rem;
+}
+
+.culture-heritage {
+    background-image: url("https://images.unsplash.com/photo-1640119259111-acc19f7c38f2?auto=format&fit=crop&w=1400&q=85");
+}
+
+.culture-heritage h3 {
+    font-size: 2rem;
+}
+
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+========================================================= */
+
+.whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 9998;
+    box-shadow: 0 10px 28px rgba(0,0,0,.22);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 14px 34px rgba(0,0,0,.28);
+}
+
+.whatsapp-float svg {
+    width: 31px;
+    height: 31px;
+    fill: currentColor;
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    right: 68px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #30291f;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: .78rem;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+}
+
+@media (max-width: 650px) {
+    .international-destination h3 {
+        font-size: 1.8rem;
+    }
+
+    .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .whatsapp-tooltip {
+        display: none;
+    }
+}
+
+
+
+/* =========================================================
+   CULTURAL & REMOTE EXPEDITIONS
+========================================================= */
+
+.cultural-expeditions {
+    background: #f5eee3;
+}
+
+.cultural-expeditions .heading h2 em {
+    color: #9a6a2f;
+}
+
+.cultural-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.cultural-slider {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 8px 2px 25px;
+    flex: 1;
+}
+
+.cultural-slider::-webkit-scrollbar { display: none; }
+
+.cultural-card {
+    flex: 0 0 calc((100% - 44px) / 3);
+    background: #fffdf8;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(30,25,15,.09);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.cultural-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 45px rgba(30,25,15,.15);
+}
+
+.cultural-image {
+    height: 225px;
+    background-size: cover;
+    background-position: center;
+}
+
+.cultural-body {
+    padding: 23px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cultural-body h3 { margin: 8px 0; }
+.cultural-body p { color: #635c51; line-height: 1.7; margin: 0; }
+
+.cultural-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cultural-bottom strong { font-size: .95rem; }
+.cultural-bottom small { font-weight: 500; opacity: .65; }
+
+.cultural-view-package {
+    border: 0;
+    background: #9a6a2f;
+    color: white;
+    border-radius: 999px;
+    padding: 11px 17px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cultural-arrow {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #d5c9b7;
+    background: white;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.cultural-slider-hint {
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    opacity: .55;
+    margin-top: 7px;
+}
+
+.cultural-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cultural-modal.active { display: flex; }
+
+.cultural-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,8,5,.84);
+    backdrop-filter: blur(5px);
+}
+
+.cultural-modal-content {
+    position: relative;
+    z-index: 2;
+    width: min(960px,100%);
+    max-height: 94vh;
+    overflow-y: auto;
+    background: #fffdf8;
+    border-radius: 22px;
+    box-shadow: 0 30px 90px rgba(0,0,0,.4);
+    animation: modalIn .25s ease;
+}
+
+.cultural-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 5;
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,.65);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.cultural-modal-image {
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.cultural-modal-body { padding: 32px; }
+.cultural-modal-body h2 { margin: 7px 0; font-size: clamp(2.2rem,5vw,4rem); }
+.cultural-modal-price { color: #9a6a2f; font-weight: 700; font-size: 1.1rem; }
+.cultural-modal-intro { color: #635c51; line-height: 1.8; }
+
+.cultural-itinerary { margin-top: 28px; display: grid; gap: 12px; }
+
+.cultural-itinerary-day {
+    padding: 18px;
+    border-left: 3px solid #9a6a2f;
+    background: rgba(154,106,47,.07);
+    border-radius: 0 12px 12px 0;
+}
+
+.cultural-itinerary-day h4 { margin: 0 0 7px; font-size: 1.2rem; }
+.cultural-itinerary-day p { margin: 0; color: #625b50; line-height: 1.75; }
+.cultural-highlights { margin-top: 30px; }
+.cultural-highlights ul { padding-left: 20px; }
+.cultural-book-btn { margin-top: 20px; }
+
+@media (max-width: 1100px) {
+    .cultural-card { flex-basis: calc((100% - 22px) / 2); }
+}
+
+@media (max-width: 650px) {
+    .cultural-card { flex-basis: 88%; }
+    .cultural-arrow { display: none; }
+    .cultural-modal-body { padding: 24px; }
+    .cultural-modal-image { height: 240px; }
+    .cultural-bottom { align-items: flex-start; flex-direction: column; }
+}
+
+/* Keep the site's original palette while rendering emphasis without italics. */
+em, i { font-style: normal; }
+
 
 /* Elah Safaris requested typography adjustment: remove italic styling, preserve palette */
 *, *::before, *::after { font-style: normal !important; }
 
-</style>
 
+.email-float{position:fixed;right:22px;bottom:90px;width:58px;height:58px;border-radius:50%;background:#9a6a2f;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:9998;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .25s ease}.email-float:hover{transform:translateY(-4px) scale(1.04)}.email-float svg{width:28px;height:28px;fill:currentColor}@media(max-width:650px){.email-float{right:16px;bottom:84px;width:52px;height:52px}.whatsapp-float{right:16px;bottom:18px;width:52px;height:52px}}
+
+.elah-signature-journeys .elah-journey-card{position:relative;overflow:hidden;padding:0 24px 26px;background:#fff;border:1px solid rgba(184,134,11,.22);border-radius:0;box-shadow:0 12px 30px rgba(40,30,15,.08)}
+.elah-signature-journeys .journey-photo{height:220px;margin:0 -24px 22px;background-position:center;background-size:cover;background-repeat:no-repeat;position:relative}
+.elah-signature-journeys .journey-photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(25,20,12,.45))}
+.elah-signature-journeys .journey-conservation .journey-photo{background-image:url("mara.jpg")}
+.elah-signature-journeys .journey-family .journey-photo{background-image:url("diani.jpg")}
+.elah-signature-journeys .journey-honeymoon .journey-photo{background-image:url("samburu-olpejeta.jpg")}
+.elah-signature-journeys .journey-number{position:absolute;top:185px;left:24px;z-index:2;color:#fff;font-weight:700;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+.elah-signature-journeys .elah-journey-card h3{margin-top:8px}
+.elah-signature-journeys .elah-journey-card .btn{display:inline-block;margin-top:12px}
+@media(max-width:850px){.elah-journey-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.elah-journey-grid{grid-template-columns:1fr}.elah-signature-journeys .journey-photo{height:205px}.elah-signature-journeys .journey-number{top:170px}}
+/* Contact actions are stacked immediately below the booking form. */
+.booking-contact-actions{display:flex;flex-direction:column;align-items:center;gap:10px;width:min(100%,420px);margin:24px auto 0}
+.booking-contact-actions .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:0;text-decoration:none}
+.booking-contact-actions .btn:first-child{background:#b8860b;border-color:#b8860b;color:#fff}
+.booking-email-btn{background:#fff;border:1px solid #9a6a2f;color:#805522}
+@media(max-width:580px){.booking-contact-actions{padding:0 12px}}
+
+
+.elah-signature-journeys{background:#fbf7f0;padding:90px 0}.elah-journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.elah-journey-card{position:relative;background:#fffdf8;border:1px solid rgba(154,106,47,.22);border-radius:18px;padding:30px;box-shadow:0 12px 35px rgba(48,41,31,.06)}.elah-journey-card h3{font-size:1.8rem;line-height:1.15;margin:12px 0}.elah-journey-card p:not(.eyebrow){color:#71685a;line-height:1.7}.journey-number{position:absolute;right:22px;top:18px;color:#b8860b;font-size:1.5rem;font-weight:700}.elah-journey-card .btn{background:#9a6a2f;color:#fff}.elah-journey-card .btn:hover{background:#785020}@media(max-width:850px){.elah-journey-grid{grid-template-columns:1fr}.elah-signature-journeys{padding:60px 0}}
+
+
+.elah-stories{padding:90px 0;background:#f5eee3}.elah-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.elah-story-card{min-height:410px;position:relative;display:flex;align-items:flex-end;overflow:hidden;border-radius:18px;background-color:#30291f;background-size:cover;background-position:center}.elah-story-card:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(22,18,13,.88),rgba(22,18,13,.02) 78%)}.story-mara{background-image:url('mara.jpg')}.story-coast{background-image:url('diani.jpg')}.story-culture{background-image:url('samburu-olpejeta.jpg')}.elah-story-copy{position:relative;z-index:1;color:#fff;padding:26px}.elah-story-copy .eyebrow{color:#f1c878}.elah-story-copy h3{font-size:1.8rem;line-height:1.15;margin:8px 0 10px}.elah-story-copy p:last-child{line-height:1.65;margin-bottom:0}@media(max-width:850px){.elah-story-grid{grid-template-columns:1fr}.elah-story-card{min-height:340px}.elah-stories{padding:60px 0}}
+
+/* Keep contact actions directly below the booking form */
+#booking .booking-contact-actions{display:flex;flex-direction:column;gap:12px;max-width:280px;margin:22px 0 0 auto;align-items:stretch}
+#booking .booking-contact-actions a{text-align:center;text-decoration:none;display:block}
+#booking .booking-email-btn{background:#fffaf2;color:#5b3b1e;border:1px solid #b8860b}
+.elah-journey-card,.elah-story-card{min-width:0}
+@media(max-width:700px){#booking .booking-contact-actions{margin:18px auto 0;max-width:100%;width:100%}}
+</style>
 </head>
 
 <body>
@@ -1861,12 +3710,6 @@ em, i { font-style: normal; }
     </svg>
 
 </a>
-
-<a class="email-float" href="mailto:elah.safaris@gmail.com" aria-label="Email Elah Safaris" title="Email Elah Safaris">
- <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8L4 7v10h16V7l-8 6Zm0-2 7-5H5l7 5Z" fill="currentColor"/></svg>
-</a>
-<style>.email-float{position:fixed;right:22px;bottom:90px;width:58px;height:58px;border-radius:50%;background:#9a6a2f;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:9998;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .25s ease}.email-float:hover{transform:translateY(-4px) scale(1.04)}.email-float svg{width:28px;height:28px;fill:currentColor}@media(max-width:650px){.email-float{right:16px;bottom:84px;width:52px;height:52px}.whatsapp-float{right:16px;bottom:18px;width:52px;height:52px}}</style>
-
 
 
 <!-- =====================================================
@@ -3241,45 +5084,6 @@ architecture and wilderness. Select <strong>View Itinerary</strong> for the full
 </div>
 </section>
 
-<!-- UPCOMING SIGNATURE JOURNEYS -->
-<section class="elah-signature-journeys" id="signature-journeys">
-  <div class="container">
-    <div class="heading">
-      <p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p>
-      <h2>Journeys worth <em>remembering.</em></h2>
-      <p>Explore a few of our upcoming tailor-made journeys. Detailed itineraries and quotations will be shared after your travel preferences are confirmed.</p>
-    </div>
-    <div class="elah-journey-grid">
-      <article class="elah-journey-card journey-conservation"><div class="journey-photo" role="img" aria-label="Wildlife conservation landscape"></div><span class="journey-number">01</span><p class="eyebrow">CONSERVATION & COMMUNITY</p><h3>8 Nights Conservation &amp; Community Journey</h3><p>A thoughtfully planned journey celebrating wildlife conservation and meaningful community connections.</p><a class="btn" href="#booking" data-journey="8 Nights Conservation & Community Journey">Enquire about this journey →</a></article>
-      <article class="elah-journey-card journey-family"><div class="journey-photo" role="img" aria-label="Kenyan coast and beach"></div><span class="journey-number">02</span><p class="eyebrow">FAMILY COAST ESCAPE</p><h3>6 Days Family Beach Itinerary</h3><p>A family-focused coastal escape, with the itinerary tailored to your dates, interests and pace.</p><a class="btn" href="#booking" data-journey="6 Days Family Beach Itinerary">Enquire about this journey →</a></article>
-      <article class="elah-journey-card journey-honeymoon"><div class="journey-photo" role="img" aria-label="Wilderness and sea honeymoon"></div><span class="journey-number">03</span><p class="eyebrow">HONEYMOON COLLECTION</p><h3>10 Nights Honeymoon: Wilderness &amp; Sea</h3><p>A romantic combination of wilderness and coast, planned around your preferred experiences.</p><a class="btn" href="#booking" data-journey="10 Nights Honeymoon: Wilderness & Sea">Enquire about this journey →</a></article>
-    </div>
-  </div>
-</section>
-<style>
-.elah-signature-journeys .elah-journey-card{position:relative;overflow:hidden;padding:0 24px 26px;background:#fff;border:1px solid rgba(184,134,11,.22);border-radius:0;box-shadow:0 12px 30px rgba(40,30,15,.08)}
-.elah-signature-journeys .journey-photo{height:220px;margin:0 -24px 22px;background-position:center;background-size:cover;background-repeat:no-repeat;position:relative}
-.elah-signature-journeys .journey-photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(25,20,12,.45))}
-.elah-signature-journeys .journey-conservation .journey-photo{background-image:url("mara.jpg")}
-.elah-signature-journeys .journey-family .journey-photo{background-image:url("diani.jpg")}
-.elah-signature-journeys .journey-honeymoon .journey-photo{background-image:url("samburu-olpejeta.jpg")}
-.elah-signature-journeys .journey-number{position:absolute;top:185px;left:24px;z-index:2;color:#fff;font-weight:700;text-shadow:0 1px 5px rgba(0,0,0,.6)}
-.elah-signature-journeys .elah-journey-card h3{margin-top:8px}
-.elah-signature-journeys .elah-journey-card .btn{display:inline-block;margin-top:12px}
-@media(max-width:850px){.elah-journey-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:580px){.elah-journey-grid{grid-template-columns:1fr}.elah-signature-journeys .journey-photo{height:205px}.elah-signature-journeys .journey-number{top:170px}}
-/* Contact actions are stacked immediately below the booking form. */
-.booking-contact-actions{display:flex;flex-direction:column;align-items:center;gap:10px;width:min(100%,420px);margin:24px auto 0}
-.booking-contact-actions .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:0;text-decoration:none}
-.booking-contact-actions .btn:first-child{background:#b8860b;border-color:#b8860b;color:#fff}
-.booking-email-btn{background:#fff;border:1px solid #9a6a2f;color:#805522}
-@media(max-width:580px){.booking-contact-actions{padding:0 12px}}
-</style>
-<style>
-.elah-signature-journeys{background:#fbf7f0;padding:90px 0}.elah-journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.elah-journey-card{position:relative;background:#fffdf8;border:1px solid rgba(154,106,47,.22);border-radius:18px;padding:30px;box-shadow:0 12px 35px rgba(48,41,31,.06)}.elah-journey-card h3{font-size:1.8rem;line-height:1.15;margin:12px 0}.elah-journey-card p:not(.eyebrow){color:#71685a;line-height:1.7}.journey-number{position:absolute;right:22px;top:18px;color:#b8860b;font-size:1.5rem;font-weight:700}.elah-journey-card .btn{background:#9a6a2f;color:#fff}.elah-journey-card .btn:hover{background:#785020}@media(max-width:850px){.elah-journey-grid{grid-template-columns:1fr}.elah-signature-journeys{padding:60px 0}}
-</style>
-
-
 <!-- =====================================================
      CULTURAL EXPEDITION MODAL
 ===================================================== -->
@@ -3404,6 +5208,21 @@ Book This Package
      EXPERIENCES
 ===================================================== -->
 
+<section class="elah-signature-journeys" id="signature-journeys">
+  <div class="container">
+    <div class="heading">
+      <p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p>
+      <h2>Journeys worth <em>remembering.</em></h2>
+      <p>Explore a few of our upcoming tailor-made journeys. Detailed itineraries and quotations will be shared after your travel preferences are confirmed.</p>
+    </div>
+    <div class="elah-journey-grid">
+      <article class="elah-journey-card journey-conservation"><div class="journey-photo" role="img" aria-label="Wildlife conservation landscape"></div><span class="journey-number">01</span><p class="eyebrow">CONSERVATION & COMMUNITY</p><h3>8 Nights Conservation &amp; Community Journey</h3><p>A thoughtfully planned journey celebrating wildlife conservation and meaningful community connections.</p><a class="btn" href="#booking" data-journey="8 Nights Conservation & Community Journey">Enquire about this journey →</a></article>
+      <article class="elah-journey-card journey-family"><div class="journey-photo" role="img" aria-label="Kenyan coast and beach"></div><span class="journey-number">02</span><p class="eyebrow">FAMILY COAST ESCAPE</p><h3>6 Days Family Beach Itinerary</h3><p>A family-focused coastal escape, with the itinerary tailored to your dates, interests and pace.</p><a class="btn" href="#booking" data-journey="6 Days Family Beach Itinerary">Enquire about this journey →</a></article>
+      <article class="elah-journey-card journey-honeymoon"><div class="journey-photo" role="img" aria-label="Wilderness and sea honeymoon"></div><span class="journey-number">03</span><p class="eyebrow">HONEYMOON COLLECTION</p><h3>10 Nights Honeymoon: Wilderness &amp; Sea</h3><p>A romantic combination of wilderness and coast, planned around your preferred experiences.</p><a class="btn" href="#booking" data-journey="10 Nights Honeymoon: Wilderness & Sea">Enquire about this journey →</a></article>
+    </div>
+  </div>
+</section>
+
 <section id="experiences">
 
 <div class="container two experience">
@@ -3525,7 +5344,10 @@ Wild places.
 
 </section>
 
-<!-- ELAH STORIES: ORIGINAL DESTINATION IMAGERY REUSED FROM THE EXISTING GALLERY -->
+<!-- =====================================================
+     BOOKING
+===================================================== -->
+
 <section class="elah-stories" id="elah-stories">
  <div class="container">
   <div class="heading"><p class="eyebrow">NOT JUST PLACES • PEOPLE & MOMENTS</p><h2>Every journey has <em>a story.</em></h2><p>Small moments, lasting memories — a glimpse of what makes travelling across Africa so special.</p></div>
@@ -3536,14 +5358,6 @@ Wild places.
   </div>
  </div>
 </section>
-<style>
-.elah-stories{padding:90px 0;background:#f5eee3}.elah-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.elah-story-card{min-height:410px;position:relative;display:flex;align-items:flex-end;overflow:hidden;border-radius:18px;background-color:#30291f;background-size:cover;background-position:center}.elah-story-card:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(22,18,13,.88),rgba(22,18,13,.02) 78%)}.story-mara{background-image:url('mara.jpg')}.story-coast{background-image:url('diani.jpg')}.story-culture{background-image:url('samburu-olpejeta.jpg')}.elah-story-copy{position:relative;z-index:1;color:#fff;padding:26px}.elah-story-copy .eyebrow{color:#f1c878}.elah-story-copy h3{font-size:1.8rem;line-height:1.15;margin:8px 0 10px}.elah-story-copy p:last-child{line-height:1.65;margin-bottom:0}@media(max-width:850px){.elah-story-grid{grid-template-columns:1fr}.elah-story-card{min-height:340px}.elah-stories{padding:60px 0}}
-</style>
-
-
-<!-- =====================================================
-     BOOKING
-===================================================== -->
 
 <section id="booking">
 
@@ -6012,10 +7826,6 @@ function sendInquiryToWhatsApp(event) {
 })();
 </script>
 
-
-<script>
-document.querySelectorAll('[data-journey]').forEach(function(link){link.addEventListener('click',function(){var form=document.querySelector('#form');if(!form)return;var message=form.querySelector('textarea[name="message"],textarea');if(message&&!message.value)message.value='I would like more information about: '+link.getAttribute('data-journey');});});
-</script>
 </body>
 
 </html>
