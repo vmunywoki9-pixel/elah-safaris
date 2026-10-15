@@ -1827,10 +1827,11 @@ img, video { max-width: 100%; }
 /* Remove italic styling without changing text colours. */
 em, i, cite, dfn, var { font-style: normal !important; }
 
-/* Floating email shortcut sits directly below WhatsApp. */
-.email-float { position:fixed; right:23px; bottom:18px; z-index:9998; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#9a6a2f; color:#fff; text-decoration:none; box-shadow:0 8px 24px rgba(0,0,0,.2); font-size:25px; }
-.whatsapp-float { bottom:88px !important; }
-@media(max-width:650px){ .email-float{right:18px;bottom:16px;width:54px;height:54px}.whatsapp-float{right:18px !important;bottom:80px !important;} }
+/* WhatsApp and Email shortcuts are grouped together at the bottom-right. */
+.email-float { position:fixed; right:23px; bottom:22px; z-index:9998; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#9a6a2f; color:#fff; text-decoration:none; box-shadow:0 8px 24px rgba(0,0,0,.2); font-size:25px; }
+.whatsapp-float { right:91px !important; bottom:22px !important; }
+.signature-view-package { display:inline-flex; align-items:center; justify-content:center; margin-top:10px; text-decoration:none; }
+@media(max-width:650px){ .email-float{right:18px;bottom:16px;width:54px;height:54px}.whatsapp-float{right:82px !important;bottom:16px !important;} .signature-view-package{width:100%;box-sizing:border-box;} }
 </style>
 
 </head>
@@ -3337,9 +3338,9 @@ id="packageModalItinerary">
 <div class="container">
 <div class="heading"><p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p><h2>Journeys made <em>for you.</em></h2><p>Explore these journeys; detailed itineraries and prices will be added once confirmed.</p></div>
 <div class="package-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px">
-<article class="package-card"><div class="package-image pkg-mara" role="img" aria-label="Original Maasai Mara safari photo"></div><div class="package-body"><span class="package-days">9 DAYS / 8 NIGHTS</span><h3>Conservation &amp; Community Journey</h3><p>An immersive journey focused on wildlife conservation and community connections.</p><p><strong>Itinerary and price coming soon</strong></p></div></article>
-<article class="package-card"><div class="package-image pkg-diani" role="img" aria-label="Original Diani coast photo"></div><div class="package-body"><span class="package-days">6 DAYS</span><h3>Family Beach Itinerary</h3><p>A family-focused coastal escape with time to relax and explore.</p><p><strong>Itinerary and price coming soon</strong></p></div></article>
-<article class="package-card"><div class="package-image pkg-amboseli" role="img" aria-label="Original Amboseli safari photo"></div><div class="package-body"><span class="package-days">10 NIGHTS</span><h3>Honeymoon: Wilderness &amp; Sea</h3><p>A romantic journey combining safari landscapes and a coastal retreat.</p><p><strong>Itinerary and price coming soon</strong></p></div></article>
+<article class="package-card"><div class="package-image pkg-mara" role="img" aria-label="Original Maasai Mara safari photo"></div><div class="package-body"><span class="package-days">8 NIGHTS</span><h3>Conservation &amp; Community Journey</h3><p>An immersive journey focused on wildlife conservation and community connections.</p><p><strong>Itinerary and price coming soon</strong></p><a class="btn gold signature-view-package" href="package1.html">View Package</a></div></article>
+<article class="package-card"><div class="package-image pkg-diani" role="img" aria-label="Original Diani coast photo"></div><div class="package-body"><span class="package-days">6 DAYS</span><h3>Family Beach Itinerary</h3><p>A family-focused coastal escape with time to relax and explore.</p><p><strong>Itinerary and price coming soon</strong></p><a class="btn gold signature-view-package" href="package2.html">View Package</a></div></article>
+<article class="package-card"><div class="package-image pkg-amboseli" role="img" aria-label="Original Amboseli safari photo"></div><div class="package-body"><span class="package-days">10 NIGHTS</span><h3>Honeymoon: Wilderness &amp; Sea</h3><p>A romantic journey combining safari landscapes and a coastal retreat.</p><p><strong>Itinerary and price coming soon</strong></p><a class="btn gold signature-view-package" href="package3.html">View Package</a></div></article>
 </div></div></section>
 
 <!-- =====================================================
