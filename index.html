@@ -656,100 +656,6 @@ nav > a:hover {
 
 
 /* =========================================================
-   CULTURAL EXPEDITION SLIDER & MODAL
-========================================================= */
-
-const culturalSlider = document.getElementById("culturalSlider");
-const culturalPrev = document.querySelector(".cultural-arrow.prev");
-const culturalNext = document.querySelector(".cultural-arrow.next");
-const culturalModal = document.getElementById("culturalModal");
-const culturalModalImage = document.getElementById("culturalModalImage");
-const culturalModalDays = document.getElementById("culturalModalDays");
-const culturalModalTitle = document.getElementById("culturalModalTitle");
-const culturalModalPrice = document.getElementById("culturalModalPrice");
-const culturalModalIntro = document.getElementById("culturalModalIntro");
-const culturalModalItinerary = document.getElementById("culturalModalItinerary");
-const culturalModalHighlights = document.getElementById("culturalModalHighlights");
-const culturalBookButton = document.getElementById("culturalBookButton");
-let culturalTimer;
-
-function getCulturalStep(){
-    if(!culturalSlider || !culturalSlider.firstElementChild) return 0;
-    return culturalSlider.firstElementChild.getBoundingClientRect().width + 22;
-}
-
-function scrollCultural(direction){
-    if(!culturalSlider) return;
-    culturalSlider.scrollBy({left: direction * getCulturalStep(), behavior:"smooth"});
-}
-
-function startCulturalAutoSlide(){
-    clearInterval(culturalTimer);
-    culturalTimer=setInterval(function(){ scrollCultural(1); }, 5200);
-}
-
-if(culturalPrev) culturalPrev.addEventListener("click", function(){ scrollCultural(-1); startCulturalAutoSlide(); });
-if(culturalNext) culturalNext.addEventListener("click", function(){ scrollCultural(1); startCulturalAutoSlide(); });
-if(culturalSlider){
-    culturalSlider.addEventListener("mouseenter", function(){ clearInterval(culturalTimer); });
-    culturalSlider.addEventListener("mouseleave", startCulturalAutoSlide);
-    culturalSlider.addEventListener("touchstart", function(){ clearInterval(culturalTimer); }, {passive:true});
-    culturalSlider.addEventListener("touchend", startCulturalAutoSlide, {passive:true});
-    startCulturalAutoSlide();
-}
-
-function openCulturalPackage(packageId){
-    const data=culturalPackages[packageId];
-    if(!data) return;
-    culturalModalDays.textContent=data.days;
-    culturalModalTitle.textContent=data.title;
-    culturalModalPrice.textContent=data.price;
-    culturalModalIntro.textContent=data.intro;
-    culturalModalImage.style.backgroundImage=`url("${data.image}")`;
-    culturalModalItinerary.innerHTML="";
-    data.itinerary.forEach(function(day){
-        const box=document.createElement("div");
-        box.className="cultural-itinerary-day";
-        const h=document.createElement("h4"); h.textContent=day[0];
-        const p=document.createElement("p"); p.textContent=day[1];
-        box.appendChild(h); box.appendChild(p); culturalModalItinerary.appendChild(box);
-    });
-    culturalModalHighlights.innerHTML="";
-    data.highlights.forEach(function(item){
-        const li=document.createElement("li"); li.textContent=item; culturalModalHighlights.appendChild(li);
-    });
-    culturalBookButton.href="#booking";
-    culturalModal.classList.add("active");
-    culturalModal.setAttribute("aria-hidden","false");
-    document.body.classList.add("modal-open");
-}
-
-function closeCulturalPackage(){
-    culturalModal.classList.remove("active");
-    culturalModal.setAttribute("aria-hidden","true");
-    document.body.classList.remove("modal-open");
-}
-
-document.querySelectorAll(".cultural-card").forEach(function(card){
-    const button=card.querySelector(".cultural-view-package");
-    if(button) button.addEventListener("click", function(event){
-        event.preventDefault(); event.stopPropagation();
-        openCulturalPackage(card.getAttribute("data-cultural-package"));
-    });
-});
-
-document.querySelectorAll("[data-close-cultural]").forEach(function(element){
-    element.addEventListener("click", closeCulturalPackage);
-});
-
-document.addEventListener("keydown", function(event){
-    if(event.key==="Escape" && culturalModal.classList.contains("active")) closeCulturalPackage();
-});
-
-if(culturalBookButton) culturalBookButton.addEventListener("click", closeCulturalPackage);
-
-
-/* =========================================================
    PACKAGE MODAL
 ========================================================= */
 
@@ -1830,6 +1736,13 @@ em, i, cite, dfn, var { font-style: normal !important; }
 .whatsapp-float { right:91px !important; bottom:22px !important; }
 .signature-view-package { display:inline-flex; align-items:center; justify-content:center; margin-top:10px; text-decoration:none; }
 @media(max-width:650px){ .email-float{right:18px;bottom:16px;width:54px;height:54px}.whatsapp-float{right:82px !important;bottom:16px !important;} .signature-view-package{width:100%;box-sizing:border-box;} }
+
+/* Booking form contact actions: keep WhatsApp and Email side by side and readable. */
+.booking-contact-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:20px; }
+.booking-contact-actions .btn { margin:0; }
+.email-booking-btn { display:inline-block; padding:14px 23px; border-radius:999px; text-decoration:none; font-weight:700; background:#fffdf8; color:#9a6a2f; border:1px solid #9a6a2f; }
+.email-booking-btn:hover { background:#f5eee3; }
+
 </style>
 
 </head>
@@ -3336,9 +3249,9 @@ id="packageModalItinerary">
 <div class="container">
 <div class="heading"><p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p><h2>Journeys made <em>for you.</em></h2><p>Explore these journeys; detailed itineraries and prices will be added once confirmed.</p></div>
 <div class="package-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px">
-<article class="package-card"><div class="package-image pkg-mara" role="img" aria-label="Original Maasai Mara safari photo"></div><div class="package-body"><span class="package-days">8 NIGHTS</span><h3>Conservation &amp; Community Journey</h3><p>An immersive journey focused on wildlife conservation and community connections.</p><p><strong>Itinerary and price coming soon</strong></p><a class="btn gold signature-view-package" href="package1.html">View Package</a></div></article>
-<article class="package-card"><div class="package-image pkg-diani" role="img" aria-label="Original Diani coast photo"></div><div class="package-body"><span class="package-days">6 DAYS</span><h3>Family Beach Itinerary</h3><p>A family-focused coastal escape with time to relax and explore.</p><p><strong>Itinerary and price coming soon</strong></p><a class="btn gold signature-view-package" href="package2.html">View Package</a></div></article>
-<article class="package-card"><div class="package-image pkg-amboseli" role="img" aria-label="Original Amboseli safari photo"></div><div class="package-body"><span class="package-days">10 NIGHTS</span><h3>Honeymoon: Wilderness &amp; Sea</h3><p>A romantic journey combining safari landscapes and a coastal retreat.</p><p><strong>Itinerary and price coming soon</strong></p><a class="btn gold signature-view-package" href="package3.html">View Package</a></div></article>
+<article class="package-card"><div class="package-image pkg-mara" role="img" aria-label="Original Maasai Mara safari photo"></div><div class="package-body"><span class="package-days">8 NIGHTS</span><h3>Conservation &amp; Community Journey</h3><p>An immersive journey focused on wildlife conservation and community connections.</p><a class="btn gold signature-view-package" href="package1.html">View Package</a></div></article>
+<article class="package-card"><div class="package-image pkg-diani" role="img" aria-label="Original Diani coast photo"></div><div class="package-body"><span class="package-days">6 DAYS</span><h3>Family Beach Itinerary</h3><p>A family-focused coastal escape with time to relax and explore.</p><a class="btn gold signature-view-package" href="package2.html">View Package</a></div></article>
+<article class="package-card"><div class="package-image pkg-amboseli" role="img" aria-label="Original Amboseli safari photo"></div><div class="package-body"><span class="package-days">10 NIGHTS</span><h3>Honeymoon: Wilderness &amp; Sea</h3><p>A romantic journey combining safari landscapes and a coastal retreat.</p><a class="btn gold signature-view-package" href="package3.html">View Package</a></div></article>
 </div></div></section>
 
 <!-- =====================================================
@@ -3631,7 +3544,7 @@ Send Safari Enquiry
 
 <div class="booking-contact-actions" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px">
 <a class="btn gold" href="https://wa.me/254710666222?text=Hello%20Elah%20Safaris%2C%20I%20would%20like%20to%20plan%20a%20trip." target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
-<a class="btn light" href="mailto:elah.safaris@gmail.com">Email Us</a>
+<a class="btn email-booking-btn" href="mailto:elah.safaris@gmail.com">Email Us</a>
 </div>
 
 </div>
@@ -5341,7 +5254,7 @@ const culturalPackages = {
 "senegal": {
  days:"16 DAYS • WEST AFRICA", title:"🇸🇳 Senegal — A Cultural Odyssey", price:"Price on request",
  intro:"A sixteen-day cultural journey through Dakar, Lac Rose, Senegal's fishing communities, south-eastern villages and the Casamance region, with a strong focus on living traditions, ceremonies, architecture and local life.",
- image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
+ image:"Senegal.jpg",
  itinerary:[
  ["Day 1 — Arrival in Dakar","Arrive in Dakar and begin the tour with dinner at a restaurant on the coast."],
  ["Day 2 — Dakar & Senegal Wrestling","Explore Dakar's historical sites, museums, galleries and shops. In the afternoon, meet famous Senegalese wrestlers and go behind the scenes to watch them training."],
@@ -5366,7 +5279,7 @@ const culturalPackages = {
 "chad": {
  days:"16 DAYS • SAHEL EXPEDITION", title:"🇹🇩 Chad — The Gerewol, Lake Chad & More", price:"Price on request",
  intro:"A remote expedition through Chad combining ancient settlements, Lake Chad water nomads, Guera communities, Arab nomads and an immersive visit with the Wodaabe during the Gerewol season.",
- image:"https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85",
+ image:"Chad.jpg",
  itinerary:[
  ["Day 1 — Arrival in N'Djamena","Begin at the hotel in N'Djamena with a welcome dinner and expedition briefing. Airport transfer provided."],
  ["Day 2 — Gaoui Village","Visit Gaoui, its ancient Palace and museum, then explore alleyways and Kotoko ceramic workshops and earth kilns. Spend the afternoon preparing permits, vehicles and equipment."],
@@ -5384,7 +5297,7 @@ const culturalPackages = {
 "angola-hidden": {
  days:"13 DAYS • SOUTHERN AFRICA", title:"🇦🇴 Angola — Hidden Tribes of the South", price:"Price on request",
  intro:"A thirteen-day journey through remote southern Angola, combining rare cultural encounters, dramatic desert landscapes, photography, colonial history and isolated coastal communities.",
- image:"https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85",
+ image:"Angola.jpg",
  itinerary:[
  ["Day 1 — Arrival in Lubango","Begin late afternoon or evening at a comfortable lodge in Lubango. Airport transfers are provided for guests arriving today."],
  ["Day 2 — Leba Plateau, Nguendelengo & Curoca","Drive over the scenic Leba Plateau to the foothills inhabited by the Nguendelengo people. Visit a village, continue to Moçamedes for lunch and then travel to established camp in Curoca National Park for sunset photography."],
@@ -5398,7 +5311,7 @@ const culturalPackages = {
 "ivory-coast": {
  days:"14 DAYS • WEST AFRICA", title:"🇨🇮 Ivory Coast — Land of Masks & Dance", price:"Price on request",
  intro:"A fourteen-day cultural photography journey through Ivory Coast, focusing on royal traditions, traditional healers, ancient architecture, sacred sites, hunters, masks and extraordinary dances.",
- image:"https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=85",
+ image:"Ivory Coast.jpg",
  itinerary:[
  ["Day 1 — Arrival in Abidjan","Arrive in Abidjan, transfer to the hotel and enjoy dinner."],
  ["Day 2 — Abengouro & Aniassué","Drive north to Abengouro, visit the Palace of King Nana Boa Komasi, head of the Agni people, then continue to Aniassué to meet Komian traditional healers and watch traditional dance."],
@@ -5421,7 +5334,7 @@ const culturalPackages = {
 "benin": {
  days:"14 DAYS • WEST AFRICA", title:"🇧🇯 Benin — Unseen West Africa", price:"Price on request",
  intro:"A fourteen-day cultural exploration of Benin featuring Voodoo traditions, historic Ouidah, Ganvie, Holi villages, Batonu horsemen, northern communities and ceremonies across the country.",
- image:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85",
+ image:"Benin.jpg",
  itinerary:[
  ["Day 1 — Arrival in Cotonou","Settle into the city hotel and enjoy a sunset dinner at a beachside fish restaurant."],
  ["Day 2 — Grand Popo Ceremonies","Travel towards the Benin–Togo border region and attend private Shango and Gambada ceremonies in preparation for the annual Voodoo Festival."],
@@ -5444,7 +5357,7 @@ const culturalPackages = {
 "south-sudan-tribal": {
  days:"15 DAYS • EAST AFRICA EXPEDITION", title:"🇸🇸 South Sudan — Tribal Wonders of the White Nile", price:"Price on request",
  intro:"A fifteen-day expedition across Eastern Equatoria and the Mundari cattle country, meeting Toposa, Jie, Laarim, Lopit and Mundari communities in remote landscapes.",
- image:"https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=85",
+ image:"South Sudan.jpg",
  itinerary:[
  ["Day 1 — Juba","Begin in Juba with dinner beside the White Nile."],
  ["Day 2 — Juba to Kapoeta & Toposa Country","Finalise permits and fly to Kapoeta in Eastern Equatoria. Meet drivers and travel into remote Toposa country."],
@@ -5465,7 +5378,7 @@ const culturalPackages = {
 "omo-valley": {
  days:"14 DAYS • ETHIOPIA", title:"🇪🇹 Omo Valley — Extraordinary Tribal People of Southern Ethiopia", price:"Price on request",
  intro:"A fourteen-day expedition from Addis Ababa into the Omo Valley and Central Rift Valley, visiting around thirteen different tribal peoples and combining remote camps with comfortable lodges.",
- image:"https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=85",
+ image:"Ethiopia.jpg",
  itinerary:[
  ["Day 1 — Addis Ababa","Begin the Omo Valley expedition in Addis Ababa this evening."],
  ["Day 2 — Addis Ababa to Jimma & Mizan Teferu","Fly from Addis Ababa to Jimma and drive to Mizan Teferu for an overnight stay before entering the Omo Valley."],
@@ -5480,7 +5393,7 @@ const culturalPackages = {
 "remote-kenya": {
  days:"14 DAYS • KENYA", title:"🇰🇪 Remote Kenya", price:"Price on request",
  intro:"A fourteen-day journey through some of Kenya's most remote cultural landscapes, from Lake Baringo and the Ndoto Mountains to Lake Turkana, Sibiloi, Chalbi, Marsabit and Samburu.",
- image:"https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85",
+ image:"Kenya.jpg",
  itinerary:[
  ["Day 1 — Nairobi","Arrive in Nairobi and overnight near Jomo Kenyatta International Airport."],
  ["Day 2 — Lake Baringo & Pokot","Drive to Lake Baringo and visit a Pokot community at their family boma in the afternoon. Overnight overlooking the lake."],
@@ -5502,7 +5415,7 @@ const culturalPackages = {
 "angola-hidden-2": {
  days:"13 DAYS • PHOTOGRAPHY EXPEDITION", title:"🇦🇴 Angola — Hidden Tribes of the South", price:"Price on request",
  intro:"This second listing uses the same thirteen-day Hidden Tribes of the South itinerary supplied for Angola, retained as a separate cultural expedition entry for the website collection.",
- image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
+ image:"Angola.jpg",
  itinerary:[
  ["Day 1 — Lubango","Arrive in Lubango and transfer to the lodge."],
  ["Day 2 — Leba Plateau to Curoca","Visit Nguendelengo people, continue to Moçamedes and camp in Curoca National Park for sunset."],
@@ -5516,7 +5429,7 @@ const culturalPackages = {
 "mundari": {
  days:"8 DAYS • SOUTH SUDAN", title:"🇸🇸 South Sudan — Mundari Photography Expedition", price:"Price on request",
  intro:"An immersive eight-day expedition focused on Mundari cattle culture, spending time in two large cattle camps and a Mundari village area near a favourite fishing lake.",
- image:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
+ image:"South Sudan.jpg",
  itinerary:[
  ["Day 1 — Juba","Begin in Juba with dinner beside the White Nile."],
  ["Days 2–6 — Mundari Cattle Camps & Village","Spend five expedition days camped in two separate large Mundari cattle camps and in a beautiful Mundari village area near a favourite fishing lake. Use the time for cultural immersion, photography and observation of daily cattle life and community traditions."],
@@ -5529,7 +5442,7 @@ const culturalPackages = {
 "northern-kenya": {
  days:"14 DAYS • KENYA CULTURE & WILDLIFE", title:"🇰🇪 Northern Kenya Cultural & Wildlife Tour", price:"Price on request",
  intro:"A fourteen-day Northern Kenya journey combining wildlife, remote landscapes and cultural encounters from the Mathews Range and Marsabit to Lake Turkana, South Horr and Samburu.",
- image:"https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85",
+ image:"Kenya.jpg",
  itinerary:[
  ["Day 1 — Arrival in Nairobi","Airport transfer and overnight at a Nairobi airport hotel on bed and breakfast."],
  ["Day 2 — Nairobi to Mathews Range","Fly from Wilson Airport towards Samburu, transfer to Kitich Camp in the Mathews Range and enjoy an afternoon bush activity such as a guided walk or sundowner."],
@@ -5551,7 +5464,7 @@ const culturalPackages = {
 "northern-kenya-2": {
  days:"9 DAYS • LAKE TURKANA", title:"🇰🇪 Northern Kenya & Lake Turkana Expedition", price:"Price on request",
  intro:"A nine-day expedition linking Samburu with Loiyangalani, Lake Turkana, archaeological sites, El Molo culture, Mount Porr, Lake Bogoria and the Great Rift Valley.",
- image:"https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85",
+ image:"Kenya.jpg",
  itinerary:[
  ["Day 1 — Nairobi to Samburu","Depart Nairobi at 0630hrs for Samburu National Reserve, arrive for lunch and enjoy an afternoon game drive."],
  ["Day 2 — Samburu National Reserve","Spend a full day with unlimited game drives, searching for Grevy's zebra, gerenuk, Somali ostrich, reticulated giraffe and Beisa oryx."],
@@ -5569,7 +5482,7 @@ const culturalPackages = {
 "algeria": {
  days:"14 DAYS • SAHARA", title:"🇩🇿 Algeria — Tuaregs of the Algerian Sahara", price:"Price on request",
  intro:"A fourteen-day Sahara expedition combining Tuareg culture, desert camping, rock art, ancient ksours, oases, semi-nomadic life and the annual Sabiba celebration.",
- image:"https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=85",
+ image:"Algeria.jpg",
  itinerary:[
  ["Day 1 — Algiers to Djanet","Meet at Algiers airport for the domestic flight to Djanet. Meet the local Tuareg team, rest at the hotel and visit the Ksour of Taghorfit until sunset."],
  ["Days 2–6 — Tadrart Rouge","Travel by 4x4 into Tadrart Rouge and wild camp with Tuareg guides while exploring rock art, slot canyons, caves and dunes. Enjoy a night excursion searching for nocturnal desert wildlife."],
@@ -5662,6 +5575,91 @@ document.addEventListener("keydown", function(event) {
 
 internationalBookButton.addEventListener("click", closeInternationalPackage);
 
+
+/* =========================================================
+   CULTURAL EXPEDITION SLIDER & MODAL (kept inside the script)
+========================================================= */
+const culturalSlider = document.getElementById("culturalSlider");
+const culturalPrev = document.querySelector(".cultural-arrow.prev");
+const culturalNext = document.querySelector(".cultural-arrow.next");
+const culturalModal = document.getElementById("culturalModal");
+const culturalModalImage = document.getElementById("culturalModalImage");
+const culturalModalDays = document.getElementById("culturalModalDays");
+const culturalModalTitle = document.getElementById("culturalModalTitle");
+const culturalModalPrice = document.getElementById("culturalModalPrice");
+const culturalModalIntro = document.getElementById("culturalModalIntro");
+const culturalModalItinerary = document.getElementById("culturalModalItinerary");
+const culturalModalHighlights = document.getElementById("culturalModalHighlights");
+const culturalBookButton = document.getElementById("culturalBookButton");
+let culturalTimer;
+
+function getCulturalStep() {
+  if (!culturalSlider || !culturalSlider.firstElementChild) return 0;
+  return culturalSlider.firstElementChild.getBoundingClientRect().width + 22;
+}
+function scrollCultural(direction) {
+  if (culturalSlider) culturalSlider.scrollBy({left: direction * getCulturalStep(), behavior: "smooth"});
+}
+function startCulturalAutoSlide() {
+  if (!culturalSlider) return;
+  clearInterval(culturalTimer);
+  culturalTimer = setInterval(() => {
+    const maxScroll = culturalSlider.scrollWidth - culturalSlider.clientWidth;
+    if (culturalSlider.scrollLeft >= maxScroll - 5) culturalSlider.scrollTo({left: 0, behavior: "smooth"});
+    else scrollCultural(1);
+  }, 5200);
+}
+if (culturalPrev) culturalPrev.addEventListener("click", () => { scrollCultural(-1); startCulturalAutoSlide(); });
+if (culturalNext) culturalNext.addEventListener("click", () => { scrollCultural(1); startCulturalAutoSlide(); });
+if (culturalSlider) {
+  culturalSlider.addEventListener("mouseenter", () => clearInterval(culturalTimer));
+  culturalSlider.addEventListener("mouseleave", startCulturalAutoSlide);
+  culturalSlider.addEventListener("touchstart", () => clearInterval(culturalTimer), {passive:true});
+  culturalSlider.addEventListener("touchend", startCulturalAutoSlide, {passive:true});
+  startCulturalAutoSlide();
+}
+function openCulturalPackage(packageId) {
+  const data = culturalPackages && culturalPackages[packageId];
+  if (!data || !culturalModal) return;
+  culturalModalDays.textContent = data.days || "";
+  culturalModalTitle.textContent = data.title || "";
+  culturalModalPrice.textContent = data.price || "Price on request";
+  culturalModalIntro.textContent = data.intro || "";
+  if (culturalModalImage) culturalModalImage.style.backgroundImage = `url("${data.image || ""}")`;
+  culturalModalItinerary.innerHTML = "";
+  (data.itinerary || []).forEach(day => {
+    const box = document.createElement("div"); box.className = "cultural-itinerary-day";
+    const h = document.createElement("h4"); h.textContent = day[0] || "";
+    const p = document.createElement("p"); p.textContent = day[1] || "";
+    box.append(h, p); culturalModalItinerary.appendChild(box);
+  });
+  culturalModalHighlights.innerHTML = "";
+  (data.highlights || []).forEach(item => { const li = document.createElement("li"); li.textContent = item; culturalModalHighlights.appendChild(li); });
+  culturalModal.classList.add("active");
+  culturalModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+function closeCulturalPackage() {
+  if (!culturalModal) return;
+  culturalModal.classList.remove("active");
+  culturalModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+document.querySelectorAll(".cultural-card").forEach(card => {
+  const packageData = culturalPackages && culturalPackages[card.getAttribute("data-cultural-package")];
+  const cardImage = card.querySelector(".cultural-image");
+  if (packageData && packageData.image && cardImage) cardImage.style.backgroundImage = `url("${packageData.image}")`;
+  const button = card.querySelector(".cultural-view-package");
+  if (button) button.addEventListener("click", event => {
+    event.preventDefault(); event.stopPropagation();
+    openCulturalPackage(card.getAttribute("data-cultural-package"));
+  });
+});
+document.querySelectorAll("[data-close-cultural]").forEach(el => el.addEventListener("click", closeCulturalPackage));
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && culturalModal && culturalModal.classList.contains("active")) closeCulturalPackage();
+});
+if (culturalBookButton) culturalBookButton.addEventListener("click", closeCulturalPackage);
 
 /* =========================================================
    PACKAGE MODAL FUNCTIONS
