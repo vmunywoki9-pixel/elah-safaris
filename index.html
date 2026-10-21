@@ -3245,14 +3245,49 @@ id="packageModalItinerary">
 <!-- =====================================================
      SIGNATURE JOURNEYS (photo backgrounds reuse original website image classes)
 ===================================================== -->
-<section id="signature-journeys" class="signature-journeys">
+<section id="signature-journeys" class="signature-journeys elah-itineraries">
 <div class="container">
-<div class="heading"><p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p><h2>Journeys made <em>for you.</em></h2><p>Explore these journeys; detailed itineraries and prices will be added once confirmed.</p></div>
-<div class="package-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px">
-<article class="package-card"><div class="package-image pkg-mara" role="img" aria-label="Original Maasai Mara safari photo"></div><div class="package-body"><span class="package-days">8 NIGHTS</span><h3>Conservation &amp; Community Journey</h3><p>An immersive journey focused on wildlife conservation and community connections.</p><a class="btn gold signature-view-package" href="package1.html">View Package</a></div></article>
-<article class="package-card"><div class="package-image pkg-diani" role="img" aria-label="Original Diani coast photo"></div><div class="package-body"><span class="package-days">6 DAYS</span><h3>Family Beach Itinerary</h3><p>A family-focused coastal escape with time to relax and explore.</p><a class="btn gold signature-view-package" href="package2.html">View Package</a></div></article>
-<article class="package-card"><div class="package-image pkg-amboseli" role="img" aria-label="Original Amboseli safari photo"></div><div class="package-body"><span class="package-days">10 NIGHTS</span><h3>Honeymoon: Wilderness &amp; Sea</h3><p>A romantic journey combining safari landscapes and a coastal retreat.</p><a class="btn gold signature-view-package" href="package3.html">View Package</a></div></article>
-</div></div></section>
+  <div class="heading elah-itineraries-heading">
+    <p class="eyebrow">ELAH SAFARIS • SIGNATURE JOURNEYS</p>
+    <h2>Itineraries</h2>
+    <p>We create thoughtful journeys, not standard packages. Every itinerary is shaped around your pace and passions.</p>
+    <a class="btn gold" href="#booking">DESIGN YOUR STAY</a>
+  </div>
+  <div class="elah-itinerary-grid">
+    <article class="elah-itinerary-card">
+      <a class="elah-itinerary-photo" href="package1.html" aria-label="Conservation and Community Journey" style="background-image:url('https://www.hemingways-collection.com/wp-content/uploads/2025/06/3_Activties_008_OlSekiJune23-1-scaled.jpg')"></a>
+      <div class="elah-itinerary-content"><span class="package-days">8 Nights</span><h3><a href="package1.html">CONSERVATION &amp; COMMUNITY JOURNEY</a></h3><ul><li>Eden Residence</li><li>Ol Seki Mara</li><li>River Camp Mara</li><li>Watamu</li></ul><a class="elah-itinerary-link" href="package1.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
+    </article>
+    <article class="elah-itinerary-card">
+      <a class="elah-itinerary-photo" href="package2.html" aria-label="Family Beach Itinerary" style="background-image:url('https://www.hemingways-collection.com/wp-content/uploads/2025/06/Itinerary-banner-scaled-e1757529515873.webp')"></a>
+      <div class="elah-itinerary-content"><span class="package-days">6 Days</span><h3><a href="package2.html">FAMILY BEACH ITINERARY</a></h3><ul><li>Watamu</li></ul><a class="elah-itinerary-link" href="package2.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
+    </article>
+    <article class="elah-itinerary-card">
+      <a class="elah-itinerary-photo" href="package3.html" aria-label="Honeymoon Wilderness and Sea" style="background-image:url('https://www.hemingways-collection.com/wp-content/uploads/2025/06/Beach-walk-2-1-scaled.jpg')"></a>
+      <div class="elah-itinerary-content"><span class="package-days">10 Nights</span><h3><a href="package3.html">HONEYMOON: WILDERNESS &amp; SEA</a></h3><ul><li>Eden Residence</li><li>River Camp Mara</li><li>Watamu</li></ul><a class="elah-itinerary-link" href="package3.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
+    </article>
+  </div>
+</div>
+</section>
+<style>
+.elah-itineraries{background:#fbf8f2;padding:clamp(54px,7vw,100px) 0;color:#2f3029}
+.elah-itineraries-heading{max-width:760px;margin:0 auto 38px;text-align:center}
+.elah-itineraries-heading>p:not(.eyebrow){max-width:650px;margin:12px auto 24px;color:#6f6b61;line-height:1.8}
+.elah-itineraries-heading .btn{display:inline-flex;text-decoration:none;letter-spacing:.08em;font-size:.78rem;padding:14px 23px}
+.elah-itinerary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:stretch}
+.elah-itinerary-card{background:#fff;border:1px solid rgba(130,103,63,.16);box-shadow:0 14px 36px rgba(45,38,25,.07);overflow:hidden;display:flex;flex-direction:column}
+.elah-itinerary-photo{display:block;width:100%;aspect-ratio:1.32;background-size:cover;background-position:center;transition:transform .35s ease;}
+.elah-itinerary-card:hover .elah-itinerary-photo{filter:brightness(.94)}
+.elah-itinerary-content{padding:25px 25px 28px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.elah-itinerary-content h3{font-size:1.22rem;line-height:1.35;letter-spacing:.035em;margin:12px 0 15px}
+.elah-itinerary-content h3 a{color:inherit;text-decoration:none}
+.elah-itinerary-content ul{list-style:none;padding:0;margin:0 0 22px;color:#6d685d;line-height:1.9}
+.elah-itinerary-content li:before{content:'— ';color:#b8860b}
+.elah-itinerary-link{margin-top:auto;color:#8c6428;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid #c4a56d;padding-bottom:5px}
+.elah-itinerary-link span{padding-left:8px}
+@media(max-width:900px){.elah-itinerary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.elah-itinerary-grid{grid-template-columns:1fr}.elah-itinerary-photo{aspect-ratio:1.45}.elah-itinerary-content{padding:22px}}
+</style>
 
 <!-- =====================================================
      EXPERIENCES
@@ -5637,24 +5672,46 @@ function openCulturalPackage(packageId) {
   (data.highlights || []).forEach(item => { const li = document.createElement("li"); li.textContent = item; culturalModalHighlights.appendChild(li); });
   culturalModal.classList.add("active");
   culturalModal.setAttribute("aria-hidden", "false");
+  culturalModal.style.display = "flex";
   document.body.classList.add("modal-open");
+  const closeButton = culturalModal.querySelector(".cultural-modal-close");
+  if (closeButton) closeButton.focus();
 }
 function closeCulturalPackage() {
   if (!culturalModal) return;
   culturalModal.classList.remove("active");
   culturalModal.setAttribute("aria-hidden", "true");
+  culturalModal.style.display = "none";
   document.body.classList.remove("modal-open");
 }
+// Keep each cultural card image in sync with its country JPG and use delegated clicks
+// so the itinerary popup works for every card, including cards in the horizontal slider.
 document.querySelectorAll(".cultural-card").forEach(card => {
-  const packageData = culturalPackages && culturalPackages[card.getAttribute("data-cultural-package")];
+  const id = card.getAttribute("data-cultural-package");
+  const data = culturalPackages && culturalPackages[id];
   const cardImage = card.querySelector(".cultural-image");
-  if (packageData && packageData.image && cardImage) cardImage.style.backgroundImage = `url("${packageData.image}")`;
-  const button = card.querySelector(".cultural-view-package");
-  if (button) button.addEventListener("click", event => {
-    event.preventDefault(); event.stopPropagation();
-    openCulturalPackage(card.getAttribute("data-cultural-package"));
-  });
+  if (data && data.image && cardImage) {
+    cardImage.style.backgroundImage = `url("${data.image}")`;
+    cardImage.style.backgroundSize = "cover";
+    cardImage.style.backgroundPosition = "center";
+  }
 });
+
+document.addEventListener("click", event => {
+  const button = event.target.closest(".cultural-view-package");
+  if (!button) return;
+  const card = button.closest(".cultural-card");
+  if (!card) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const id = card.getAttribute("data-cultural-package");
+  if (culturalPackages && culturalPackages[id]) {
+    openCulturalPackage(id);
+  } else {
+    console.error("Missing cultural itinerary data for:", id);
+  }
+});
+
 document.querySelectorAll("[data-close-cultural]").forEach(el => el.addEventListener("click", closeCulturalPackage));
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && culturalModal && culturalModal.classList.contains("active")) closeCulturalPackage();
