@@ -1745,6 +1745,19 @@ em, i, cite, dfn, var { font-style: normal !important; }
 
 </style>
 
+
+<style id="elah-sharp-image-corners-fix">
+/* User-requested sharp right-angle corners for Elah Moments and story photos. */
+#elahMomentsSlider, #elahMomentsSlider .gallery-slide, #elahMomentsSlider .gallery-caption,
+#elah-stories .story-card, #elah-stories .story-card::before, #elah-stories .story-card::after,
+#elah-stories .story-copy, .elah-itinerary-card, .elah-itinerary-photo { border-radius: 0 !important; }
+.package-modal-highlights { margin: 22px 0; }
+.package-modal-highlights h3 { margin-bottom: 10px; }
+.package-modal-highlights ul { padding-left: 20px; line-height: 1.8; }
+#packageModal .package-modal-body > .btn { display: inline-flex; margin-top: 12px; text-decoration: none; }
+.cultural-image { display:block; width:100%; min-height:225px; background-color:#e9e2d5; }
+</style>
+
 </head>
 
 <body>
@@ -3108,31 +3121,31 @@ architecture and wilderness. Select <strong>View Itinerary</strong> for the full
 <button class="cultural-arrow prev" type="button" aria-label="Previous cultural expeditions">‹</button>
 <div class="cultural-slider" id="culturalSlider">
 
-<article class="cultural-card" data-cultural-package="senegal"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">16 DAYS • WEST AFRICA</span><h3>🇸🇳 Senegal — A Cultural Odyssey</h3><p>From Dakar and Lac Rose to Casamance, discover wrestling, fishing communities, Fulani, Bedik, Bassari and Diola traditions.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="senegal"><div class="cultural-image" data-image="Senegal.jpg"></div><div class="cultural-body"><span class="package-days">16 DAYS • WEST AFRICA</span><h3>🇸🇳 Senegal — A Cultural Odyssey</h3><p>From Dakar and Lac Rose to Casamance, discover wrestling, fishing communities, Fulani, Bedik, Bassari and Diola traditions.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="chad"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">16 DAYS • SAHEL EXPEDITION</span><h3>🇹🇩 Chad — Gerewol, Lake Chad & More</h3><p>An expedition through Gaoui, Lake Chad, Buduma communities, Guera villages, Arab nomads and the Wodaabe Gerewol.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="chad"><div class="cultural-image" data-image="Chad.jpg"></div><div class="cultural-body"><span class="package-days">16 DAYS • SAHEL EXPEDITION</span><h3>🇹🇩 Chad — Gerewol, Lake Chad & More</h3><p>An expedition through Gaoui, Lake Chad, Buduma communities, Guera villages, Arab nomads and the Wodaabe Gerewol.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="angola-hidden"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">13 DAYS • SOUTHERN AFRICA</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>Travel through remote southern Angola, visiting Nguendelengo and Kwepe communities, Curoca landscapes and coastal fishing villages.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="angola-hidden"><div class="cultural-image" data-image="Angola.jpg"></div><div class="cultural-body"><span class="package-days">13 DAYS • SOUTHERN AFRICA</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>Travel through remote southern Angola, visiting Nguendelengo and Kwepe communities, Curoca landscapes and coastal fishing villages.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="ivory-coast"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇨🇮 Ivory Coast — Land of Masks & Dance</h3><p>Meet Agni, Baoulé, Senoufo, Fulani, Dozo, Yacouba, Guéré and Gouro communities through ceremonies and traditional arts.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="ivory-coast"><div class="cultural-image" data-image="Ivory Coast.jpg"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇨🇮 Ivory Coast — Land of Masks & Dance</h3><p>Meet Agni, Baoulé, Senoufo, Fulani, Dozo, Yacouba, Guéré and Gouro communities through ceremonies and traditional arts.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="benin"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇧🇯 Benin — Unseen West Africa</h3><p>Explore Voodoo traditions, Ganvie, Ouidah, Holi villages, Batonu horsemen, Otamari, Fulani and historic Abomey.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="benin"><div class="cultural-image" data-image="Benin.jpg"></div><div class="cultural-body"><span class="package-days">14 DAYS • WEST AFRICA</span><h3>🇧🇯 Benin — Unseen West Africa</h3><p>Explore Voodoo traditions, Ganvie, Ouidah, Holi villages, Batonu horsemen, Otamari, Fulani and historic Abomey.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="south-sudan-tribal"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">15 DAYS • EAST AFRICA EXPEDITION</span><h3>🇸🇸 South Sudan — Tribal Wonders of the White Nile</h3><p>Journey through Toposa, Jie, Laarim, Lopit and Mundari communities in one of Africa's most remote cultural frontiers.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="south-sudan-tribal"><div class="cultural-image" data-image="South Sudan.jpg"></div><div class="cultural-body"><span class="package-days">15 DAYS • EAST AFRICA EXPEDITION</span><h3>🇸🇸 South Sudan — Tribal Wonders of the White Nile</h3><p>Journey through Toposa, Jie, Laarim, Lopit and Mundari communities in one of Africa's most remote cultural frontiers.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="omo-valley"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • ETHIOPIA</span><h3>🇪🇹 Omo Valley — Extraordinary Tribal People</h3><p>Explore the Omo Valley and Central Rift Valley while meeting around 13 different tribal peoples and discovering extraordinary landscapes.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="omo-valley"><div class="cultural-image" data-image="Ethiopia.jpg"></div><div class="cultural-body"><span class="package-days">14 DAYS • ETHIOPIA</span><h3>🇪🇹 Omo Valley — Extraordinary Tribal People</h3><p>Explore the Omo Valley and Central Rift Valley while meeting around 13 different tribal peoples and discovering extraordinary landscapes.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="remote-kenya"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA</span><h3>🇰🇪 Remote Kenya</h3><p>Travel from Lake Baringo through the Ndoto Mountains and Lake Turkana to Sibiloi, Chalbi, Marsabit and Samburu.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="remote-kenya"><div class="cultural-image" data-image="Kenya.jpg"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA</span><h3>🇰🇪 Remote Kenya</h3><p>Travel from Lake Baringo through the Ndoto Mountains and Lake Turkana to Sibiloi, Chalbi, Marsabit and Samburu.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="angola-hidden-2"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">13 DAYS • PHOTOGRAPHY EXPEDITION</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>A second listing for the southern Angola photography expedition supplied for the cultural collection.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="angola-hidden-2"><div class="cultural-image" data-image="Angola.jpg"></div><div class="cultural-body"><span class="package-days">13 DAYS • PHOTOGRAPHY EXPEDITION</span><h3>🇦🇴 Angola — Hidden Tribes of the South</h3><p>A second listing for the southern Angola photography expedition supplied for the cultural collection.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="mundari"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">8 DAYS • SOUTH SUDAN</span><h3>🇸🇸 South Sudan — Mundari Expedition</h3><p>Spend time in two Mundari cattle camps and a Mundari village area, immersed in cattle culture, fishing life and traditional celebrations.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="mundari"><div class="cultural-image" data-image="South Sudan.jpg"></div><div class="cultural-body"><span class="package-days">8 DAYS • SOUTH SUDAN</span><h3>🇸🇸 South Sudan — Mundari Expedition</h3><p>Spend time in two Mundari cattle camps and a Mundari village area, immersed in cattle culture, fishing life and traditional celebrations.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="northern-kenya"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA CULTURE & WILDLIFE</span><h3>🇰🇪 Northern Kenya Cultural & Wildlife</h3><p>From Nairobi and the Mathews Range to Marsabit, Kalacha, Lake Turkana and Samburu, combine remote cultures with wildlife.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="northern-kenya"><div class="cultural-image" data-image="Kenya.jpg"></div><div class="cultural-body"><span class="package-days">14 DAYS • KENYA CULTURE & WILDLIFE</span><h3>🇰🇪 Northern Kenya Cultural & Wildlife</h3><p>From Nairobi and the Mathews Range to Marsabit, Kalacha, Lake Turkana and Samburu, combine remote cultures with wildlife.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="northern-kenya-2"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1519659528534-7fd733a832a0?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">9 DAYS • LAKE TURKANA</span><h3>🇰🇪 Northern Kenya & Lake Turkana</h3><p>Combine Samburu, Loiyangalani, archaeological sites, El Molo culture, Mount Porr, Lake Bogoria and the Great Rift Valley.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="northern-kenya-2"><div class="cultural-image" data-image="Kenya.jpg"></div><div class="cultural-body"><span class="package-days">9 DAYS • LAKE TURKANA</span><h3>🇰🇪 Northern Kenya & Lake Turkana</h3><p>Combine Samburu, Loiyangalani, archaeological sites, El Molo culture, Mount Porr, Lake Bogoria and the Great Rift Valley.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
-<article class="cultural-card" data-cultural-package="algeria"><div class="cultural-image" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=85')"></div><div class="cultural-body"><span class="package-days">14 DAYS • SAHARA</span><h3>🇩🇿 Algeria — Tuaregs of the Algerian Sahara</h3><p>Explore Tadrart Rouge, Erg Admer, ancient rock art, Tuareg communities, oases, desert ceremonies and Sabiba.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
+<article class="cultural-card" data-cultural-package="algeria"><div class="cultural-image" data-image="Algeria.jpg"></div><div class="cultural-body"><span class="package-days">14 DAYS • SAHARA</span><h3>🇩🇿 Algeria — Tuaregs of the Algerian Sahara</h3><p>Explore Tadrart Rouge, Erg Admer, ancient rock art, Tuareg communities, oases, desert ceremonies and Sabiba.</p><div class="cultural-bottom"><strong>Price on request</strong><button class="cultural-view-package" type="button">View Itinerary</button></div></div></article>
 
 </div>
 <button class="cultural-arrow next" type="button" aria-label="Next cultural expeditions">›</button>
@@ -3236,6 +3249,12 @@ class="itinerary"
 id="packageModalItinerary">
 </div>
 
+<div class="package-modal-highlights" id="packageModalHighlightsWrap">
+  <h3>Package Highlights</h3>
+  <ul id="packageModalHighlights"></ul>
+</div>
+<a class="btn gold" id="packageBookButton" href="#booking">Enquire About This Package</a>
+
 </div>
 
 </div>
@@ -3256,15 +3275,15 @@ id="packageModalItinerary">
   <div class="elah-itinerary-grid">
     <article class="elah-itinerary-card">
       <a class="elah-itinerary-photo" href="package1.html" aria-label="Conservation and Community Journey" style="background-image:url('https://www.hemingways-collection.com/wp-content/uploads/2025/06/3_Activties_008_OlSekiJune23-1-scaled.jpg')"></a>
-      <div class="elah-itinerary-content"><span class="package-days">8 Nights</span><h3><a href="package1.html">CONSERVATION &amp; COMMUNITY JOURNEY</a></li></ul><a class="elah-itinerary-link" href="package1.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
+      <div class="elah-itinerary-content"><span class="package-days">8 Nights</span><h3><a href="package1.html">CONSERVATION &amp; COMMUNITY JOURNEY</a></h3><a class="elah-itinerary-link" href="package1.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
     </article>
     <article class="elah-itinerary-card">
       <a class="elah-itinerary-photo" href="package2.html" aria-label="Family Beach Itinerary" style="background-image:url('https://www.hemingways-collection.com/wp-content/uploads/2025/06/Itinerary-banner-scaled-e1757529515873.webp')"></a>
-      <div class="elah-itinerary-content"><span class="package-days">6 Days</span><h3><a href="package2.html">FAMILY BEACH ITINERARY</a></li></ul><a class="elah-itinerary-link" href="package2.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
+      <div class="elah-itinerary-content"><span class="package-days">6 Days</span><h3><a href="package2.html">FAMILY BEACH ITINERARY</a></h3><a class="elah-itinerary-link" href="package2.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
     </article>
     <article class="elah-itinerary-card">
       <a class="elah-itinerary-photo" href="package3.html" aria-label="Honeymoon Wilderness and Sea" style="background-image:url('https://www.hemingways-collection.com/wp-content/uploads/2025/06/Beach-walk-2-1-scaled.jpg')"></a>
-      <div class="elah-itinerary-content"><span class="package-days">10 Nights</span><h3><a href="package3.html">HONEYMOON: WILDERNESS &amp; SEA</a></h3><ul><li></li></ul><a class="elah-itinerary-link" href="package3.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
+      <div class="elah-itinerary-content"><span class="package-days">10 Nights</span><h3><a href="package3.html">HONEYMOON: WILDERNESS &amp; SEA</a></h3><a class="elah-itinerary-link" href="package3.html">Explore itinerary <span aria-hidden="true">→</span></a></div>
     </article>
   </div>
 </div>
@@ -4841,7 +4860,62 @@ highlights: [
 
 };
 
-
+/* Complete itinerary data for all 16 Kenya package cards. */
+packages["tsavo-east"] = {
+  title: "Tsavo East Red Elephants Safari", days: "3 DAYS • WILDLIFE", price: "Price on request", image: "tsavo-east.jpg",
+  intro: "Explore Tsavo East's vast red-earth landscapes, Galana River scenery and wildlife-rich plains.",
+  itinerary: [
+    ["Day 1 — Nairobi to Tsavo East", "Depart Nairobi and travel to Tsavo East National Park. Check in at your lodge or camp, enjoy lunch and head out for an afternoon game drive in search of elephants, lions, giraffes, zebras and other wildlife."],
+    ["Day 2 — Full-Day Tsavo East Safari", "Enjoy morning and afternoon game drives around the park, with opportunities to explore the Galana River area and observe Tsavo's famous red-dust elephants. Return to the lodge for meals and overnight."],
+    ["Day 3 — Sunrise Drive & Return", "Take an early morning game drive, return for breakfast and begin the journey back to Nairobi with a lunch stop en route."]
+  ], highlights: ["Tsavo East National Park", "Red-dust elephants", "Galana River landscapes", "Morning and afternoon game drives"]
+};
+packages["tsavo-west"] = {
+  title: "Tsavo West Wilderness & Springs", days: "3 DAYS • WILDERNESS", price: "Price on request", image: "tsavo-west.jpg",
+  intro: "Discover Tsavo West's volcanic scenery, rugged hills, wildlife and the clear waters of Mzima Springs.",
+  itinerary: [
+    ["Day 1 — Nairobi to Tsavo West", "Travel to Tsavo West National Park, check in at your accommodation and enjoy lunch before an afternoon game drive across the park's dramatic landscapes."],
+    ["Day 2 — Mzima Springs & Wildlife", "Explore Mzima Springs and selected park routes on game drives, looking for elephants, buffalo, giraffes, antelopes and predators among lava flows and open woodland."],
+    ["Day 3 — Morning Safari & Return", "Enjoy a final morning game drive and breakfast before returning to Nairobi."]
+  ], highlights: ["Tsavo West National Park", "Mzima Springs", "Volcanic landscapes", "Wildlife game drives"]
+};
+packages["tsavo-both"] = {
+  title: "Tsavo East & West Safari", days: "4 DAYS • WILDLIFE & WILDERNESS", price: "Price on request", image: "tsavo-east.jpg",
+  intro: "Combine the wide plains and red elephants of Tsavo East with the rugged scenery and springs of Tsavo West.",
+  itinerary: [
+    ["Day 1 — Nairobi to Tsavo East", "Travel to Tsavo East, settle into your lodge and enjoy an afternoon game drive."],
+    ["Day 2 — Tsavo East Safari", "Spend the day exploring Tsavo East's wildlife areas and Galana River landscapes with morning and afternoon game drives."],
+    ["Day 3 — Transfer to Tsavo West", "Travel to Tsavo West with wildlife viewing en route. Visit Mzima Springs if conditions and timing permit, then check in for dinner and overnight."],
+    ["Day 4 — Morning Drive & Return", "Enjoy a final morning game drive before breakfast and the return journey to Nairobi."]
+  ], highlights: ["Two iconic Tsavo parks", "Red elephants", "Mzima Springs", "Diverse landscapes and wildlife"]
+};
+packages["samburu-olpejeta"] = {
+  title: "Samburu & Ol Pejeta Conservation Safari", days: "4 DAYS • WILDLIFE & CONSERVATION", price: "Price on request", image: "samburu-olpejeta.jpg",
+  intro: "Pair Samburu's distinctive northern wildlife with conservation experiences at Ol Pejeta Conservancy.",
+  itinerary: [
+    ["Day 1 — Nairobi to Ol Pejeta", "Travel to Ol Pejeta Conservancy, check in and enjoy an afternoon game drive through the conservancy."],
+    ["Day 2 — Ol Pejeta to Samburu", "Enjoy a morning wildlife experience before travelling north to Samburu. Arrive at your accommodation and relax before dinner."],
+    ["Day 3 — Samburu National Reserve", "Enjoy morning and afternoon game drives in search of Samburu's Special Five, elephants, big cats and other wildlife."],
+    ["Day 4 — Morning Safari & Return", "Take an early game drive, have breakfast and return to Nairobi."]
+  ], highlights: ["Ol Pejeta Conservancy", "Samburu National Reserve", "Northern Kenya Special Five", "Conservation-focused travel"]
+};
+packages["lake-nakuru-hells-gate"] = {
+  title: "Lake Nakuru & Hell's Gate Safari", days: "3 DAYS • RIFT VALLEY", price: "Price on request", image: "lake-nakuru.jpg",
+  intro: "Explore Lake Nakuru's wildlife and the dramatic cliffs, gorges and cycling trails of Hell's Gate National Park.",
+  itinerary: [
+    ["Day 1 — Nairobi to Lake Nakuru", "Drive through the Great Rift Valley to Lake Nakuru National Park. Enjoy lunch and an afternoon game drive looking for rhinos, giraffes, buffalo and birdlife."],
+    ["Day 2 — Hell's Gate & Naivasha", "Travel to Hell's Gate National Park for a guided walk or optional cycling experience among the park's cliffs and gorges. Continue to the Naivasha area for overnight."],
+    ["Day 3 — Naivasha & Return", "Enjoy breakfast and optional time by the lake before beginning the return journey to Nairobi."]
+  ], highlights: ["Lake Nakuru National Park", "Rhino viewing", "Hell's Gate gorges", "Great Rift Valley scenery"]
+};
+packages["nairobi-park"] = {
+  title: "Nairobi National Park & City Escape", days: "2 DAYS • CITY & WILDLIFE", price: "Price on request", image: "nairobi.jpg",
+  intro: "Experience wildlife close to the capital with time to discover selected Nairobi city highlights.",
+  itinerary: [
+    ["Day 1 — Nairobi National Park", "Enjoy an early game drive in Nairobi National Park, looking for rhinos, giraffes, buffalo, lions and other wildlife against the city skyline. Spend the afternoon at leisure or visit a selected city attraction."],
+    ["Day 2 — Nairobi Highlights & Departure", "After breakfast, explore selected Nairobi cultural or heritage sites according to your interests before departure or onward travel."]
+  ], highlights: ["Nairobi National Park", "Wildlife and city skyline", "Rhino viewing opportunities", "Optional city heritage visit"]
+};
 
 
 /* =========================================================
@@ -5690,11 +5764,15 @@ document.querySelectorAll(".cultural-card").forEach(card => {
   const id = card.getAttribute("data-cultural-package");
   const data = culturalPackages && culturalPackages[id];
   const cardImage = card.querySelector(".cultural-image");
-  if (data && data.image && cardImage) {
-    cardImage.style.backgroundImage = `url("${data.image}")`;
+  const file = card.getAttribute("data-image") || (data && data.image) || "";
+  if (cardImage && file) {
+    cardImage.style.backgroundImage = `url('${file.replace(/'/g, "%27")}')`;
     cardImage.style.backgroundSize = "cover";
     cardImage.style.backgroundPosition = "center";
+    cardImage.style.backgroundRepeat = "no-repeat";
+    cardImage.style.minHeight = "225px";
   }
+  if (data && file) data.image = file;
 });
 
 document.addEventListener("click", event => {
@@ -5811,9 +5889,9 @@ function openPackage(packageId) {
 
     });
 
-    modalHighlights.innerHTML = "";
+    if (modalHighlights) modalHighlights.innerHTML = "";
 
-    data.highlights.forEach(function(highlight) {
+    (data.highlights || []).forEach(function(highlight) {
 
         const li =
             document.createElement("li");
@@ -5821,12 +5899,11 @@ function openPackage(packageId) {
         li.textContent =
             highlight;
 
-        modalHighlights.appendChild(li);
+        if (modalHighlights) modalHighlights.appendChild(li);
 
     });
 
-    packageBookButton.href =
-        "#booking";
+    if (packageBookButton) packageBookButton.href = "#booking";
 
     packageModal.classList.add("active");
 
@@ -5926,13 +6003,9 @@ document.addEventListener(
    BOOK PACKAGE BUTTON
 ========================================================= */
 
-packageBookButton.addEventListener(
+if (packageBookButton) packageBookButton.addEventListener(
     "click",
-    function() {
-
-        closePackage();
-
-    }
+    function() { closePackage(); }
 );
 
 </script>
