@@ -1,9 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Conservation & Community Journey | Elah Safaris</title>
+<meta name="theme-color" content="#fffdf8">
+<meta name="description" content="Explore Kenya through an eight-night conservation and community journey connecting Nairobi, the Maasai Mara and Watamu with Elah Safaris.">
+<title>Conservation &amp; Community Journey | Elah Safaris</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -13,178 +19,958 @@
   --green: #354c3b;
   --ink: #30291f;
   --muted: #746b60;
+  --line: #e9e0d2;
+  --soft: #f4eee4;
+  --white: #fff;
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
 body {
   margin: 0;
   background: var(--cream);
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
-  line-height: 1.7;
+  line-height: 1.8;
 }
-h1, h2, h3 {
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
   font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
   line-height: 1.15;
 }
-em, i { font-style: normal; }
-a { text-decoration: none; }
-.container { width: 90%; max-width: 1050px; margin: auto; }
-header { padding: 20px 0; border-bottom: 1px solid #e9e0d2; }
+
+p {
+  margin-top: 0;
+}
+
+.container {
+  width: min(90%, 1120px);
+  margin-inline: auto;
+}
+
+/* HEADER */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,253,248,.97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.navbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .brand {
   color: var(--green);
-  font: 700 1.7rem "Cormorant Garamond", serif;
+  font: 700 1.85rem "Cormorant Garamond", serif;
+  white-space: nowrap;
 }
-.hero {
-  min-height: 440px;
+
+.nav-links {
   display: flex;
-  align-items: end;
-  color: white;
-  background: linear-gradient(0deg, #161b12e8, transparent 90%),
-  url("https://www.hemingways-collection.com/wp-content/uploads/2025/06/conservation-img.webp") center/cover;
+  align-items: center;
+  gap: 26px;
+  font-size: .79rem;
+  font-weight: 600;
 }
-.hero-content { padding: 65px 0; }
-.eyebrow {
-  color: #e4c493;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: .75rem;
+
+.nav-links a:not(.btn):hover {
+  color: var(--gold);
 }
-h1 { font-size: clamp(2.7rem, 6vw, 4.8rem); margin: 12px 0; }
-.hero p { max-width: 700px; }
-main { padding: 45px 0; }
-.intro { color: var(--muted); max-width: 850px; }
-.day {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 25px;
-  padding: 23px 0;
-  border-bottom: 1px solid #e9e0d2;
-}
-.day h3 { margin: 0; color: var(--gold); font-size: 1.5rem; }
-.day p { margin: 0; }
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 30px 0;
-}
-.gallery img { width: 100%; height: 280px; object-fit: cover; }
-.contact {
-  background: #f4eee4;
-  padding: 28px;
-  margin-top: 35px;
-}
+
+/* BUTTONS */
+
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 11px 21px;
   background: var(--gold);
-  color: white;
-  padding: 12px 20px;
-  margin: 8px 8px 0 0;
-  font-weight: 700;
-  font-size: .85rem;
+  color: var(--white);
+  border: 1px solid var(--gold);
+  font: 700 .78rem "DM Sans", sans-serif;
+  letter-spacing: .5px;
+  text-align: center;
+  transition: background .2s, color .2s, transform .2s;
 }
+
+.btn:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
 .btn.secondary {
   background: transparent;
   color: var(--ink);
-  border: 1px solid var(--gold);
+  border-color: #b99b75;
 }
-footer { background: #211f19; color: white; padding: 25px 0; }
-footer p { margin: 0; }
-@media(max-width:600px) {
-  .day { grid-template-columns: 1fr; gap: 6px; }
-  .gallery { grid-template-columns: 1fr; }
-  .gallery img { height: 230px; }
+
+.btn.secondary:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  min-height: 570px;
+  display: flex;
+  align-items: flex-end;
+  color: var(--white);
+  background-color: #41483b;
+  background-image:
+    linear-gradient(0deg, rgba(21,27,18,.92) 0%, rgba(21,27,18,.35) 52%, rgba(21,27,18,.08) 100%),
+    url("https://www.hemingways-collection.com/wp-content/uploads/2025/06/conservation-img.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-content {
+  padding-top: 90px;
+  padding-bottom: 76px;
+}
+
+.eyebrow {
+  color: #e6c99c;
+  font-size: .73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+h1 {
+  max-width: 850px;
+  margin: 17px 0;
+  font-size: clamp(2.8rem, 6.5vw, 5.1rem);
+  letter-spacing: -.7px;
+}
+
+.hero-description {
+  max-width: 700px;
+  color: rgba(255,255,255,.9);
+  font-size: 1rem;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  margin: 24px 0;
+  font-size: .81rem;
+  color: #f6ead7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero .btn.secondary {
+  color: white;
+  border-color: rgba(255,255,255,.7);
+}
+
+/* INTRODUCTION */
+
+main {
+  padding: 66px 0;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+}
+
+.section-heading {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-size: clamp(2.2rem, 4vw, 3.3rem);
+}
+
+.intro {
+  max-width: 900px;
+  color: var(--muted);
+  font-size: .96rem;
+}
+
+.intro p {
+  margin-bottom: 17px;
+}
+
+/* ROUTE SUMMARY */
+
+.route-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 40px 0 70px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.route-card {
+  min-height: 145px;
+  padding: 25px;
+  background: var(--soft);
+}
+
+.route-card span {
+  color: var(--gold);
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.route-card h3 {
+  margin: 8px 0;
+  color: var(--green);
+  font-size: 1.65rem;
+}
+
+.route-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* ITINERARY */
+
+.itinerary-header {
+  margin-bottom: 30px;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 35px;
+  padding: 33px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.day:first-of-type {
+  border-top: 1px solid var(--line);
+}
+
+.day-marker {
+  padding-top: 4px;
+}
+
+.day-number {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--gold);
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+}
+
+.day h3 {
+  margin: 0 0 10px;
+  color: var(--green);
+  font-size: 1.65rem;
+}
+
+.day-location {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.day-content p {
+  margin-bottom: 15px;
+  color: #655c51;
+  font-size: .91rem;
+}
+
+.day-content p:last-child {
+  margin-bottom: 0;
+}
+
+.experience-note {
+  padding: 17px 20px;
+  margin-top: 18px;
+  background: var(--soft);
+  border-left: 3px solid var(--gold);
+  color: #62594e;
+  font-size: .84rem;
+}
+
+/* GALLERY */
+
+.gallery-section {
+  padding-top: 76px;
+}
+
+.gallery-intro {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: .91rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin-top: 28px;
+}
+
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.gallery img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.gallery figure:hover img {
+  transform: scale(1.035);
+}
+
+.gallery figcaption {
+  padding: 13px 16px;
+  color: var(--green);
+  font: 600 1.25rem "Cormorant Garamond", serif;
+}
+
+/* ENQUIRY */
+
+.contact {
+  position: relative;
+  margin-top: 75px;
+  padding: 45px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.contact h2 {
+  margin: 0 0 15px;
+  color: var(--green);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.contact p {
+  max-width: 650px;
+  margin: 0 auto 20px;
+  color: var(--muted);
+  font-size: .91rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 34px 0;
+  background: #252a22;
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-brand {
+  color: #e5c28f;
+  font: 700 1.8rem "Cormorant Garamond", serif;
+}
+
+footer p {
+  margin: 5px 0 0;
+  color: #d2cec4;
+  font-size: .77rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: .78rem;
+}
+
+.footer-links a:hover {
+  color: #e5c28f;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 760px) {
+  .navbar {
+    min-height: 70px;
+  }
+
+  .brand {
+    font-size: 1.55rem;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links > a:not(.btn) {
+    display: none;
+  }
+
+  .nav-links .btn {
+    min-height: 40px;
+    padding: 9px 13px;
+    font-size: .7rem;
+  }
+
+  .hero {
+    min-height: 510px;
+  }
+
+  .hero-content {
+    padding-top: 70px;
+    padding-bottom: 52px;
+  }
+
+  main {
+    padding: 45px 0;
+  }
+
+  .route-summary {
+    grid-template-columns: 1fr;
+    margin-bottom: 52px;
+  }
+
+  .route-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .day {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 25px 0;
+  }
+
+  .gallery img {
+    height: 250px;
+  }
+
+  .contact {
+    padding: 30px 20px;
+    margin-top: 55px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 91%;
+  }
+
+  .hero {
+    min-height: 470px;
+  }
+
+  .hero-meta {
+    gap: 8px 15px;
+  }
+
+  .hero-description {
+    font-size: .91rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery img {
+    height: 245px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+
+  .contact-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <div class="container">
-    <a class="brand" href="index.html">Elah Safaris</a>
+  <div class="container navbar">
+    <a class="brand" href="index.html" aria-label="Elah Safaris home">Elah Safaris</a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="#itinerary">Itinerary</a>
+      <a href="#gallery">Gallery</a>
+      <a class="btn" href="#enquiry">Book Now</a>
+    </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="container hero-content">
-    <div class="eyebrow">Conservation · Community · Coast</div>
-    <h1>8 Nights Conservation &amp; Community Journey</h1>
-    <p>Nine days connecting Nairobi's community initiatives, the wildlife of the Maasai Mara and the marine environments of Watamu.</p>
+    <span class="eyebrow">Conservation · Community · Coast</span>
+
+    <h1>Conservation &amp; Community Journey</h1>
+
+    <p class="hero-description">
+      A meaningful journey through Kenya's communities, wildlife conservancies
+      and coastal ecosystems, discovering the people and partnerships helping
+      to protect the country's natural and cultural heritage.
+    </p>
+
+    <div class="hero-meta">
+      <span>9 Days / 8 Nights</span>
+      <span>Nairobi · Maasai Mara · Watamu</span>
+      <span>Community &amp; Conservation</span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn" href="#enquiry">Make an Enquiry</a>
+      <a class="btn secondary" href="#itinerary">Explore Itinerary</a>
+    </div>
   </div>
 </section>
 
 <main class="container">
-  <h2>The Journey</h2>
-  <p class="intro">
-    Discover a meaningful side of Kenya through community encounters,
-    wildlife conservation and coastal environmental initiatives.
-    Visits and activities are subject to availability, access and local schedules.
-  </p>
 
-  <article class="day">
-    <h3>Day 1 · Nairobi</h3>
-    <p>Arrive in Nairobi and settle into your accommodation. Depending on your arrival time, enjoy a relaxed introduction to the city and an evening at leisure.</p>
-  </article>
+  <section class="intro">
+    <span class="section-label">A Journey with Purpose</span>
+    <h2 class="section-heading">Discover a Different Side of Kenya</h2>
 
-  <article class="day">
-    <h3>Day 2 · Community &amp; Culture</h3>
-    <p>Spend time learning about community initiatives, including a possible visit to One Horizon. Explore an artisanal gallery and, subject to arrangements, enjoy a cultural performance, campfire cocktails and dinner.</p>
-  </article>
+    <p>
+      Moving from Nairobi's social enterprises and creative communities to
+      the community-owned conservancies of the Maasai Mara and the marine
+      conservation initiatives of the Kenyan coast, this journey offers a
+      deeper understanding of responsible tourism in action.
+    </p>
 
-  <article class="day">
-    <h3>Day 3 · Maasai Mara</h3>
-    <p>Travel to the Maasai Mara region and settle into your safari camp. Meet your guide and, time permitting, enjoy an afternoon game drive or relax while taking in the surrounding wilderness.</p>
-  </article>
+    <p>
+      Meet people and organisations working to support communities, protect
+      wildlife habitats and safeguard coastal ecosystems. Along the way,
+      enjoy exceptional hospitality, memorable wildlife encounters and the
+      beauty of Kenya's landscapes.
+    </p>
 
-  <article class="day">
-    <h3>Day 4 · Conservation</h3>
-    <p>Explore the conservancy on guided game drives. Learn about wildlife protection, habitats and the importance of conserving Kenya's natural heritage. Guided walks may be available where permitted.</p>
-  </article>
-
-  <article class="day">
-    <h3>Day 5 · Wildlife &amp; Community</h3>
-    <p>Continue wildlife viewing and, where arrangements allow, learn about conservation projects such as elephant protection initiatives. Enjoy a sundowner and an evening surrounded by the sounds of the bush.</p>
-  </article>
-
-  <article class="day">
-    <h3>Day 6 · Watamu</h3>
-    <p>Travel to Kenya's Indian Ocean coast and settle into Watamu. Spend the remainder of the day relaxing by the sea.</p>
-  </article>
-
-  <article class="day">
-    <h3>Day 7 · Marine Conservation</h3>
-    <p>Discover Watamu's marine ecosystems and, subject to availability, learn about the work of local organisations involved in marine research, conservation and coastal education.</p>
-  </article>
-
-  <article class="day">
-    <h3>Day 8 · Coastal Communities</h3>
-    <p>Explore local environmental initiatives, including community recycling projects where visits can be arranged. In the late afternoon, enjoy an optional sunset dhow cruise on Mida Creek, weather and tides permitting.</p>
-  </article>
-
-  <article class="day">
-    <h3>Day 9 · Departure</h3>
-    <p>Enjoy breakfast before your transfer for your onward journey, bringing your conservation and community experience to a close.</p>
-  </article>
-
-  <h2>Moments Along the Way</h2>
-  <div class="gallery">
-    <img src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/3_Activties_008_OlSekiJune23-1-scaled.jpg" alt="Safari experience in Kenya">
-    <img src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/conservation-img.webp" alt="Conservation experience">
-    <img src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Conservation-full-img-scaled.webp" alt="Conservation landscape">
-    <img src="https://www.hemingways-collection.com/wp-content/uploads/2025/07/wildlife_2.jpg" alt="African wildlife">
-  </div>
-
-  <section class="contact">
-    <h2>Plan Your Journey</h2>
-    <p>Contact Elah Safaris to discuss travel dates, accommodation options and a personalised itinerary. No price is listed on this page.</p>
-    <a class="btn" href="https://wa.me/254710666222?text=Hello%20Elah%20Safaris%2C%20I%20would%20like%20to%20enquire%20about%20the%20Conservation%20and%20Community%20Journey.">WhatsApp Us</a>
-    <a class="btn secondary" href="mailto:info@elahsafaris.com?subject=Conservation%20and%20Community%20Journey">Email Us</a>
-    <a class="btn secondary" href="index.html">Back to Elah Safaris</a>
+    <p>
+      Experiences with individual organisations are subject to confirmation,
+      availability, access permissions and local operating schedules.
+    </p>
   </section>
+
+  <section class="route-summary" aria-label="Journey overview">
+    <div class="route-card">
+      <span>Days 1–2</span>
+      <h3>Nairobi</h3>
+      <p>Community engagement, social enterprise and Kenyan creativity.</p>
+    </div>
+
+    <div class="route-card">
+      <span>Days 3–5</span>
+      <h3>Maasai Mara</h3>
+      <p>Wildlife viewing, community conservancies and conservation.</p>
+    </div>
+
+    <div class="route-card">
+      <span>Days 6–8</span>
+      <h3>Watamu</h3>
+      <p>Marine ecosystems, coastal communities and ocean conservation.</p>
+    </div>
+  </section>
+
+  <section id="itinerary">
+    <div class="itinerary-header">
+      <span class="section-label">Your Experience</span>
+      <h2 class="section-heading">The Itinerary</h2>
+      <p class="intro">
+        Eight nights connecting three remarkable destinations, followed by
+        departure on Day 9.
+      </p>
+    </div>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 01</span>
+        <h3>Arrival in Nairobi</h3>
+        <span class="day-location">Nairobi, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Arrive in Nairobi and settle into Hemingways Nairobi or Hemingways
+          Eden Residence, according to your confirmed accommodation
+          arrangements. Begin your journey in a welcoming setting before
+          discovering the community, creativity and social enterprise
+          initiatives that form part of Nairobi's cultural landscape.
+        </p>
+        <p>
+          Depending on your arrival time, enjoy a relaxed afternoon and
+          evening at leisure.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 02</span>
+        <h3>Community &amp; Culture</h3>
+        <span class="day-location">Nairobi, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Visit One Horizon, subject to confirmation, for an introduction to
+          community-led initiatives supporting vulnerable women and children
+          through education, healthcare, feeding programmes and skills
+          development. Learn about the organisation's approach to community
+          support and social impact.
+        </p>
+        <p>
+          Continue to the Artisanal Gallery at Hemingways Eden Residence,
+          where local artists, designers and craftspeople present their work.
+          Discover traditional techniques and contemporary Kenyan creativity
+          through curated displays and, where arranged, hands-on workshops.
+        </p>
+        <p>
+          In the evening, enjoy the planned hospitality experience at Eden
+          Residence, potentially including campfire cocktails, a Samburu
+          cultural performance and dinner at The Deck, subject to confirmation.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 03</span>
+        <h3>Into the Mara</h3>
+        <span class="day-location">Maasai Mara, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Travel to the Maasai Mara, with transport arrangements and any
+          domestic flights confirmed before departure. Settle into
+          Hemingways Ol Seki Mara or Hemingways River Camp Mara, depending
+          on your selected accommodation and availability.
+        </p>
+        <p>
+          Meet your safari guide and begin discovering the surrounding
+          wilderness. Depending on your arrival time, enjoy an afternoon
+          game drive or relax at camp while taking in the sights and sounds
+          of the African bush.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 04</span>
+        <h3>Wildlife &amp; Conservancies</h3>
+        <span class="day-location">Maasai Mara, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Explore the conservancy on personalised game drives led by
+          experienced guides. Look for the Mara's remarkable wildlife while
+          learning about habitat protection, wildlife corridors and the
+          importance of conserving the wider Greater Mara ecosystem.
+        </p>
+        <p>
+          Where permitted and available, a guided nature walk offers another
+          perspective on the landscape, its smaller wildlife and the
+          relationship between people and nature.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 05</span>
+        <h3>Conservation &amp; Community</h3>
+        <span class="day-location">Maasai Mara, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Continue exploring the conservancy and learn how community-owned
+          conservation areas can connect wildlife protection with local
+          livelihoods. Conservancy lease payments funded through responsible
+          tourism provide an important income stream for participating
+          Maasai landowners.
+        </p>
+        <p>
+          Subject to arrangements, learn about the work of the Mara Elephant
+          Project, whose conservation activities include elephant protection,
+          habitat security, wildlife corridor protection and community
+          engagement.
+        </p>
+        <p>
+          Complete your Mara experience with further wildlife viewing,
+          sundowners where available, and an evening beneath the stars.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 06</span>
+        <h3>From Savannah to Sea</h3>
+        <span class="day-location">Watamu, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Leave the Mara and continue to Kenya's Indian Ocean coast according
+          to your confirmed transfer arrangements. Arrive in Watamu and settle
+          into your coastal accommodation.
+        </p>
+        <p>
+          Enjoy time to unwind by the sea and discover the relaxed atmosphere
+          of this coastal destination, known for its beaches, marine
+          environments and surrounding natural habitats.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 07</span>
+        <h3>Marine Conservation</h3>
+        <span class="day-location">Watamu, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Discover the conservation work taking place along Kenya's coast.
+          Subject to confirmation, meet representatives of Kenya Marine
+          Mammals Research &amp; Conservation (KMMREC) to learn about marine
+          mammal monitoring, dolphin and whale research, rescue programmes
+          and community education.
+        </p>
+        <p>
+          Continue exploring the work of the Watamu Marine Association,
+          which brings together local communities, conservation organisations,
+          tourism operators and other stakeholders to support marine
+          protection and the sustainable use of coastal resources.
+        </p>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 08</span>
+        <h3>Coastal Communities</h3>
+        <span class="day-location">Watamu, Kenya</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Explore community-led environmental initiatives, with a potential
+          visit to EcoWorld Recycling to learn how marine plastic waste can
+          be transformed into useful products and support opportunities for
+          local women and young people.
+        </p>
+        <p>
+          Later, enjoy an optional sunset dhow cruise on Mida Creek, subject
+          to availability, weather and tidal conditions. Take in the coastal
+          scenery and reflect on the connection between communities,
+          conservation and the ocean.
+        </p>
+
+        <div class="experience-note">
+          The dhow cruise and conservation visits should be confirmed before
+          travel. Alternative activities may be arranged if a visit is
+          unavailable.
+        </div>
+      </div>
+    </article>
+
+    <article class="day">
+      <div class="day-marker">
+        <span class="day-number">Day 09</span>
+        <h3>Departure</h3>
+        <span class="day-location">Watamu / onward journey</span>
+      </div>
+
+      <div class="day-content">
+        <p>
+          Enjoy breakfast before your scheduled transfer for your onward
+          journey. Depending on your confirmed transport, this may involve
+          a transfer to Malindi Airport, Mombasa or another agreed departure
+          point.
+        </p>
+        <p>
+          Leave with a deeper understanding of Kenya's conservation story,
+          from community initiatives in Nairobi and wildlife conservancies
+          in the Mara to marine protection efforts along the Indian Ocean.
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section id="gallery" class="gallery-section">
+    <span class="section-label">Kenya in Focus</span>
+    <h2 class="section-heading">Moments Along the Way</h2>
+    <p class="gallery-intro">
+      Discover the landscapes, wildlife and conservation experiences that
+      make this journey special.
+    </p>
+
+    <div class="gallery">
+      <figure>
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/3_Activties_008_OlSekiJune23-1-scaled.jpg"
+          alt="Safari experience in the Maasai Mara"
+          loading="lazy">
+        <figcaption>Life in the Mara</figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/conservation-img.webp"
+          alt="Conservation and community experience in Kenya"
+          loading="lazy">
+        <figcaption>Conservation in Action</figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/06/Conservation-full-img-scaled.webp"
+          alt="Kenyan conservation landscape"
+          loading="lazy">
+        <figcaption>Protecting Natural Heritage</figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="https://www.hemingways-collection.com/wp-content/uploads/2025/07/wildlife_2.jpg"
+          alt="African wildlife in its natural habitat"
+          loading="lazy">
+        <figcaption>Wildlife &amp; Wilderness</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="contact" id="enquiry">
+    <span class="section-label">Your Journey Starts Here</span>
+    <h2>Plan Your Conservation Journey</h2>
+    <p>
+      Let Elah Safaris help you personalise this experience. Enquire about
+      your preferred travel dates, accommodation, transport and conservation
+      activities. We'll help you plan the details around your interests.
+    </p>
+
+    <div class="contact-actions">
+      <a
+        class="btn"
+        href="https://wa.me/254710666222?text=Hello%20Elah%20Safaris%2C%20I%20would%20like%20to%20enquire%20about%20the%20Conservation%20and%20Community%20Journey."
+        target="_blank"
+        rel="noopener noreferrer">
+        WhatsApp Us
+      </a>
+
+      <a
+        class="btn secondary"
+        href="mailto:info@elahsafaris.com?subject=Conservation%20%26%20Community%20Journey">
+        Email Us
+      </a>
+
+      <a class="btn secondary" href="index.html">
+        Back to Itineraries
+      </a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  <div class="container"><p>Elah Safaris · Bespoke journeys across Africa</p></div>
+  <div class="container footer-content">
+    <div>
+      <a class="footer-brand" href="index.html">Elah Safaris</a>
+      <p>Bespoke Sub-Saharan safari and cultural tours from Nairobi.</p>
+      <p>&copy; 2026 Elah Safaris. All rights reserved.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#packages">Our Journeys</a>
+      <a href="#itinerary">Itinerary</a>
+      <a href="#enquiry">Contact</a>
+      <a href="mailto:info@elahsafaris.com">Email</a>
+    </nav>
+  </div>
 </footer>
+
 </body>
 </html>
